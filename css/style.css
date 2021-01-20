@@ -1,0 +1,20 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html, body{
+    height: 100%;
+    background-color: #F8F8F8;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --------------------------------------- Global Styles --------------------------------------- */
+/* Nav bar styles */
+.nav-style {
+    background-color: #313638;
+    border-bottom: 5px solid #F09D51;
+}
+
+.nav-link {
+    text-align: center;
+}
+/* --------------------------------------- Index Page --------------------------------------- */
