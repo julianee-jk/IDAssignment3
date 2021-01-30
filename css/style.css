@@ -8,6 +8,10 @@ html, body{
 
 /* --------------------------------------- Global Styles --------------------------------------- */
 /* Nav bar styles */
+.navbar {
+    padding: 24px;
+}
+
 .nav-active {
     color: #4F359B;
 }
