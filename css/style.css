@@ -1,20 +1,19 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
 html, body{
     height: 100%;
-    background-color: #F8F8F8;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 /* --------------------------------------- Global Styles --------------------------------------- */
 /* Nav bar styles */
-.nav-style {
-    background-color: #313638;
-    border-bottom: 5px solid #F09D51;
+.nav-active {
+    color: #4F359B;
 }
 
 .nav-link {
     text-align: center;
 }
+
 /* --------------------------------------- Index Page --------------------------------------- */
