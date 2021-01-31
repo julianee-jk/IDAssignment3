@@ -33,6 +33,7 @@ var x = setInterval(function() {
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    document.getElementById("countdown-spin").innerHTML = "GAME EXPIRED";
+    document.getElementById("countdown-flip").innerHTML = "GAME EXPIRED";
   }
 }, 1000);

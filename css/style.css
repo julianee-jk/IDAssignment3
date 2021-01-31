@@ -33,6 +33,7 @@ footer {
 .btn.btn-primary {
     color: #FFFFFF;
     background-color: #4F359B;
+    margin-top: 5px;
 }
 
 /* --------------------------------------- Index Page --------------------------------------- */
@@ -53,6 +54,7 @@ footer {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(79, 53, 155, 0.25);
 }
+
 .explore-header {
     padding: 24px;
     text-align: center;
@@ -175,4 +177,8 @@ footer {
 
 .countdown-text {
     font-size: 12px;
+}
+
+#countdown-flip, #countdown-spin {
+    margin-top: 10px;
 }
