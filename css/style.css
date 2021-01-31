@@ -6,7 +6,7 @@ html, body{
     font-family: 'Inter', sans-serif;
 }
 
-/* --------------------------------------- Global Styles --------------------------------------- */
+/* --------------------------------------- Global Styles ------------------------------------ */
 /* Nav bar styles */
 .navbar {
     padding: 24px;
@@ -18,7 +18,7 @@ html, body{
 
 /* --------------------------------------- Index Page --------------------------------------- */
 
-/* --------------------------------------- Explore Page --------------------------------------- */
+/* --------------------------------------- Explore Page ------------------------------------- */
 
 .explore-header {
     padding: 24px;
@@ -61,7 +61,7 @@ html, body{
 
 #searchBar {
     border-radius: 0;
-    margin-top: 24px;
+    margin: 32px 0 32px 0;
     width: 800px;
     border: 2px;
     border-style: none  none solid none;
@@ -71,7 +71,34 @@ html, body{
 
 #searchBar:focus + #searchBar, #searchBar:focus {
     outline: 0;
-    box-shadow: none;
+    box-shadow: 0 8px 0 0 rgba(79, 53, 155, 0.25);
 }
 
+.sneaker-cards {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 64px;
+}
 
+.sneaker-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 33.3%;
+    height: 420px;
+    border: 1px solid rgba(136, 136, 136, 0.5);
+    padding: 24px;
+}
+
+.sneaker-card img {
+    max-width: 90%;
+}
+
+.sneaker-title {
+    font-weight: 900;
+    font-size: 21px;
+}
+
+.sneaker-colorway {
+    color: #888;
+}
