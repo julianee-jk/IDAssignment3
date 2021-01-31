@@ -1,7 +1,7 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
-html, body{
+html, body {
     height: 100%;
     font-family: 'Inter', sans-serif;
 }
@@ -16,15 +16,28 @@ html, body{
     color: #4F359B;
 }
 
+footer {
+    background-color: #000000;
+    height: 4em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-text {
+    color: #FFFFFF;
+    font-size: 13px;
+}
+
+.btn.btn-primary {
+    color: #FFFFFF;
+    background-color: #4F359B;
+}
+
 /* --------------------------------------- Index Page --------------------------------------- */
 
 /* --------------------------------------- Explore Page ------------------------------------- */
-
-.explore-header {
-    padding: 24px;
-    text-align: center;
-}
-
 .btn {
     border-color: #4F359B;
     color: #4F359B;
@@ -39,6 +52,10 @@ html, body{
 .btn-check:focus + .btn, .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(79, 53, 155, 0.25);
+}
+.explore-header {
+    padding: 24px;
+    text-align: center;
 }
 
 .btn-group {
@@ -90,6 +107,11 @@ html, body{
     padding: 24px;
 }
 
+.sneaker-card:hover {
+    border: #4F359B solid 1px;
+    box-shadow:         inset 0 0 10px #4F359B;
+}
+
 .sneaker-card img {
     max-width: 90%;
 }
@@ -102,3 +124,5 @@ html, body{
 .sneaker-colorway {
     color: #888;
 }
+
+/* --------------------------------------- Game Page ------------------------------------- */
