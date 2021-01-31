@@ -126,3 +126,53 @@ footer {
 }
 
 /* --------------------------------------- Game Page ------------------------------------- */
+
+.games-header {
+    padding: 24px;
+    text-align: center;
+}
+
+.games-header-text {
+    padding: 1em 5em 0 5em;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.game-box {
+    width: 30em;
+    height: 30em;
+    border: #000000 solid 1px;
+    margin-bottom: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    flex-direction: column;
+}
+
+#countdown-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border: #4F359B solid 1px;
+    flex-direction: column;
+    font-size: 25px;
+}
+
+.countdown-text {
+    font-size: 12px;
+}
