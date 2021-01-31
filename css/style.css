@@ -16,8 +16,62 @@ html, body{
     color: #4F359B;
 }
 
-.nav-link {
+/* --------------------------------------- Index Page --------------------------------------- */
+
+/* --------------------------------------- Explore Page --------------------------------------- */
+
+.explore-header {
+    padding: 24px;
     text-align: center;
 }
 
-/* --------------------------------------- Index Page --------------------------------------- */
+.btn {
+    border-color: #4F359B;
+    color: #4F359B;
+    border-radius: 0;
+}
+
+.btn:hover, .btn-check:checked+.btn, .btn-check:active+.btn-outline-primary {
+    background-color: #4F359B;
+    border-color: #4F359B;
+}
+
+.btn-check:focus + .btn, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(79, 53, 155, 0.25);
+}
+
+.btn-group {
+    margin-top: 24px;
+}
+
+.cat-group {
+    width: 300px;
+}
+
+.sort-group {
+    margin-left: 23px;
+    width: 200px;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+}
+
+#searchBar {
+    border-radius: 0;
+    margin-top: 24px;
+    width: 800px;
+    border: 2px;
+    border-style: none  none solid none;
+    border-color: #4F359B;
+    font-style: italic;
+}
+
+#searchBar:focus + #searchBar, #searchBar:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+
