@@ -37,7 +37,36 @@ footer {
 }
 
 /* --------------------------------------- Index Page --------------------------------------- */
+.gif-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    background-color:#000000;
+    position: relative;
+}
 
+.gif-box > img {
+    width: 40%;
+    height: 100%;
+}
+
+.feature-text {
+    position: absolute;
+    color: #FFFFFF;
+    bottom: 22px;
+    left: 30px;
+    font-size: 30px;
+}
+
+.trending-box {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* --------------------------------------- Explore Page ------------------------------------- */
 .btn {
     border-color: #4F359B;
