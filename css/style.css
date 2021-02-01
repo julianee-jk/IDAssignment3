@@ -36,6 +36,15 @@ footer {
     margin-top: 5px;
 }
 
+.form-group {
+    margin-top: 30px;
+}
+
+textarea {
+    resize: none;
+    height: 12em;
+}
+
 /* ---------- Animations ---------- */
 /* Glow - Button Animation */
 .hvr-glow {
@@ -310,4 +319,13 @@ footer {
 .table-head {
     background-color: #4F359B;
     color: #FFFFFF;
+}
+
+.total-cost-header {
+    padding-left: 150px;
+    margin-top: 60px;
+}
+
+.shopping-form-box {
+    padding: 40px 700px 50px 150px;
 }
