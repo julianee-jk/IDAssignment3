@@ -295,3 +295,19 @@ footer {
 .shopping-header-text {
     padding: 1em 5em 0 5em;
 }
+
+.table-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 150px 0 150px;
+}
+
+.table {
+    border: #000000 solid 1px;
+}
+
+.table-head {
+    background-color: #4F359B;
+    color: #FFFFFF;
+}
