@@ -284,3 +284,14 @@ footer {
 #countdown-flip, #countdown-spin {
     margin-top: 10px;
 }
+
+/* --------------------------------------- Shopping Bag ------------------------------------- */
+
+.shopping-header {
+    padding: 24px;
+    text-align: center;
+}
+
+.shopping-header-text {
+    padding: 1em 5em 0 5em;
+}
