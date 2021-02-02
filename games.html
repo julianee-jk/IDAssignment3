@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
     <title>SneakerZone</title>
+    <script src="js/Winwheel.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -47,12 +49,27 @@
     <div class="game-container">
         <div class="game-box">
             <h2>Spin N Win</h2>
-            <button type="button" class="btn btn-primary hvr-glow">Play Now!</button>
+            <!-- Large modal -->
+            <button type="button" class="btn btn-primary hvr-glow" data-toggle="modal" data-target=".bd-example-modal-lg">Play Now!</button>
+
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <canvas id='canvas' width='1050' height='435'>
+                        Canvas not supported, use another browser.
+                    </canvas>
+                    <button type="button" id="spin_button" class="btn btn-primary hvr-glow" onClick="startSpin();">SPIN</button>
+                    <!-- <button type="button" class="btn btn-primary hvr-glow" onClick="resetWheel(); return false;">Play Again</button> -->
+                </div>
+            </div>
+            </div>
+            <!-- Countdown Spin & Win -->
             <div id="countdown-spin"></div>
         </div>
         <div class="game-box">
             <h2>Coin Flip</h2>
             <button type="button" class="btn btn-primary hvr-glow">Play Now!</button>
+            <!-- Count down Coinflip -->
             <div id="countdown-flip"></div>
         </div>
     </div>
@@ -60,8 +77,9 @@
         <div id="footer-text">Copyright © 2021 Ee Jun Kai Julian & Chew Kah Seng - All Rights Reserved.</div>
     </footer>
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/game.js"></script>
 </body>
 </html>

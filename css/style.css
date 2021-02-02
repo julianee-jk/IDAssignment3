@@ -294,6 +294,16 @@ textarea {
     margin-top: 10px;
 }
 
+.modal-content {
+    position: absolute;
+}
+
+#canvas {
+    bottom: 0;
+    left: 14.5em;
+    position: relative;
+}
+
 /* --------------------------------------- Shopping Bag ------------------------------------- */
 
 .shopping-header {
