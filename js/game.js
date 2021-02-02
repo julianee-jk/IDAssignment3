@@ -125,6 +125,7 @@ function startFlip() {
   // Ensure that flipping can't be clicked again while already running.
   if (flipExpired == true) {
     alert("Game has already expired, wait for next opening time!");
+    heads = false, tails = false;
   }
   else {
     if (coinFlipping == false) {
