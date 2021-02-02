@@ -50,25 +50,32 @@
         <div class="game-box">
             <h2>Spin N Win</h2>
             <!-- Large modal -->
-            <button type="button" class="btn btn-primary hvr-glow" data-toggle="modal" data-target=".bd-example-modal-lg">Play Now!</button>
-
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <canvas id='canvas' width='1050' height='435'>
-                        Canvas not supported, use another browser.
-                    </canvas>
-                    <button type="button" id="spin_button" class="btn btn-primary hvr-glow" onClick="startSpin();">SPIN</button>
-                    <!-- <button type="button" class="btn btn-primary hvr-glow" onClick="resetWheel(); return false;">Play Again</button> -->
+            <button type="button" class="btn btn-primary hvr-glow" data-toggle="modal" data-target=".spinNWinModal">Play Now!</button>
+            <div class="modal fade spinNWinModal" tabindex="-1" role="dialog" aria-labelledby="spinNWinModal" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <h2>Spin N Win</h2>
+                        <h3>&darr;</h3>
+                        <canvas id="canvas" width="1050px" height="460px">
+                            Canvas not supported, use another browser.
+                        </canvas>
+                        <button type="button" id="spin_button" class="btn btn-primary hvr-glow" onClick="startSpin();">SPIN</button>
+                    </div>
                 </div>
-            </div>
             </div>
             <!-- Countdown Spin & Win -->
             <div id="countdown-spin"></div>
         </div>
         <div class="game-box">
             <h2>Coin Flip</h2>
-            <button type="button" class="btn btn-primary hvr-glow">Play Now!</button>
+            <button type="button" class="btn btn-primary hvr-glow" data-toggle="modal" data-target=".coinFlipModal">Play Now!</button>
+            <div class="modal fade coinFlipModal" tabindex="-1" role="dialog" aria-labelledby="coinFlipModal" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        ...
+                    </div>
+                </div>
+            </div>
             <!-- Count down Coinflip -->
             <div id="countdown-flip"></div>
         </div>
