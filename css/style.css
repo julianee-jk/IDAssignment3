@@ -336,11 +336,22 @@ textarea {
             box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
 }
 
-.coin-flip-button {
+.coin-flip-button-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.coin-flip-button-box > button {
     position: relative;
     top: 170px;
     width: 380px;
 }
+
+.coin-flip-button-box > h6 {
+    position: relative;
+    top: 183px;
+}
+
 .side-a {
     background-color: #4F359B;
 }
