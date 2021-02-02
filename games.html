@@ -56,7 +56,7 @@
                     <div class="modal-content">
                         <h2>Spin N Win</h2>
                         <h3>&darr;</h3>
-                        <canvas id="canvas" width="1050px" height="460px">
+                        <canvas id="canvas" width="1050px" height="461px">
                             Canvas not supported, use another browser.
                         </canvas>
                         <button type="button" id="spin_button" class="btn btn-primary hvr-glow" onClick="startSpin();">SPIN</button>
@@ -72,7 +72,16 @@
             <div class="modal fade coinFlipModal" tabindex="-1" role="dialog" aria-labelledby="coinFlipModal" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        ...
+                        <h2>Coin Flip</h2>
+                        <h3 id="flip-text">Flip the Coin!</h3>
+                        <div id="coin">
+                            <div class="side-a"></div>
+                            <div class="side-b"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <button type="button" id="heads-button" class="btn btn-primary hvr-glow coin-flip-button" onClick="startFlip();headButton();">HEADS</button>
+                            <button type="button" id="tails-button" class="btn btn-primary hvr-glow coin-flip-button" onClick="startFlip();tailButton();">TAILS</button>
+                        </div>
                     </div>
                 </div>
             </div>
