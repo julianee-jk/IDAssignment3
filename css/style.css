@@ -254,7 +254,7 @@ textarea {
     padding: 38px;
 }
 
-.brand-name {
+.product-header {
     font-size: 42px;
     font-weight: 900;
     color: #999;
@@ -268,13 +268,18 @@ textarea {
     width: 50%;
 }
 
+.product-img > img {
+    margin-left: 5%;
+    width: 90%;
+}
+
 .product-info {
     display: flex;
     flex-direction: column;
     margin-left: 24px;
 }
 
-.product-name, .product-price {
+.product-title, .product-price {
     font-weight: 900;
     font-size: 38px;
     color: #000;
