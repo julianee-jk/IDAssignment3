@@ -1,6 +1,6 @@
 // Set the date we're counting down to
 var countDownDate = new Date().getTime() + 300000;
-let spinExpired = false, flipExpired = false, headWin = false;
+let spinExpired = false, flipExpired = false, headWin = false, tailWin = false;
 
 // Update the count down every 1 second
 var x = setInterval(function () {
@@ -141,6 +141,7 @@ function startFlip() {
         }
         else {
           $('#coin').addClass('tails'); // Add tails animation
+          tailWin = true;
         }
       }, 100);
 
@@ -158,14 +159,14 @@ function startFlip() {
               alert("You lost!");
           }
           // Check if tails win
-          else {
+          if (tailWin == true) {
             // Check if user picked tails - Win
             if (tails == true)
               alert("You won!");
             else
               alert("You lost!");
           }
-          heads = false, tails = false; // Reset user option to false
+          heads = false, tails = false, headWin = false, tailWin = false; // Reset user option to false
           document.getElementById('flip-text').innerHTML = "Flip the Coin!";
           document.getElementById('heads-button').innerHTML = "HEADS";
           document.getElementById('tails-button').innerHTML = "TAILS";
