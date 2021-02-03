@@ -242,7 +242,7 @@ textarea {
 
 .product {
     display: flex;
-    height: 73.5%;
+    height: 80%;
     padding: 38px;
 }
 
@@ -290,7 +290,7 @@ textarea {
 
 .product-size > .btn-group {
     margin: 0;
-    width: 240px;
+    width: 225px;
 }
 
 .product-qty {
