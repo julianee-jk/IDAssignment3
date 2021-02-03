@@ -238,6 +238,81 @@ textarea {
     color: #888;
 }
 
+/* --------------------------------------- Product Page ------------------------------------- */
+
+.product {
+    display: flex;
+    height: 73.5%;
+    padding: 38px;
+}
+
+.brand-name {
+    font-size: 42px;
+    font-weight: 900;
+    color: #999;
+    position: relative;
+    top: -40px;
+    left: 12px;
+}
+
+.product-img {
+    border: #999 solid 1px;
+    width: 50%;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+}
+
+.product-name, .product-price {
+    font-weight: 900;
+    font-size: 38px;
+    color: #000;
+}
+
+.product-colorway {
+    color: #888;
+}
+
+.product-options {
+    display: flex;
+    margin-top: 24px;
+}
+
+.product-size {
+    display: flex;
+    flex-direction: column;
+    margin-right: 24px;
+
+}
+
+.product-size > .btn-group {
+    margin: 0;
+    width: 240px;
+}
+
+.product-qty {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-qty > .input-group > input {
+    text-align: center;
+    border: #4F359B solid 1px;
+    max-width: 100px;
+}
+
+.product-qty > .input-group > button {
+    width: 40px;
+}
+
+#addToCart {
+    width: 130px;
+    margin-top: 24px;
+}
+
 /* --------------------------------------- Game Page ------------------------------------- */
 
 .games-header {
