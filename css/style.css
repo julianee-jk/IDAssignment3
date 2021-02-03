@@ -250,7 +250,7 @@ textarea {
 
 .product {
     display: flex;
-    height: 80%;
+    height: 80.3%;
     padding: 38px;
 }
 
@@ -285,7 +285,7 @@ textarea {
     color: #000;
 }
 
-.product-colorway {
+.product-colorway, .product-release-date {
     color: #888;
 }
 
