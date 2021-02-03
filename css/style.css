@@ -53,6 +53,11 @@ textarea {
     padding: 24px 24px 24px 150px;
 }
 
+.header-text {
+    padding: 24px;
+    text-align: center;
+}
+
 /* ---------- Animations ---------- */
 /* Glow - Button Animation */
 .hvr-glow {
@@ -70,7 +75,7 @@ textarea {
     box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
   }
 /* --------------------------------------- Index Page --------------------------------------- */
-.header-text {
+.index-header-text {
     color: #000000;
     font-size: 40px;
     font-weight: 700;
@@ -327,11 +332,6 @@ textarea {
 }
 
 /* --------------------------------------- Game Page ------------------------------------- */
-
-.games-header {
-    padding: 24px;
-    text-align: center;
-}
 
 .games-header-text {
     padding: 1em 5em 0 5em;
