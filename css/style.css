@@ -36,11 +36,11 @@ footer {
     margin-top: 5px;
 }
 
-.form-group {
+.shopping-form-box > form > .form-group {
     margin-top: 30px;
 }
 
-textarea {
+.shopping-form-box > form > .form-group > textarea {
     resize: none;
     height: 12em;
 }
@@ -207,7 +207,7 @@ textarea {
     margin: 32px 0 32px 0;
     width: 800px;
     border: 2px;
-    border-style: none  none solid none;
+    border-style: none none solid none;
     border-color: #4F359B;
     font-style: italic;
 }
@@ -234,8 +234,9 @@ textarea {
 }
 
 .sneaker-card:hover {
+    cursor: pointer;
     border: #4F359B solid 1px;
-    box-shadow:         inset 0 0 10px #4F359B;
+    box-shadow: inset 0 0 10px #4F359B;
 }
 
 .sneaker-card img {
@@ -489,34 +490,161 @@ textarea {
     from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
     to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
 }
+/* --------------------------------------- Contact Page ------------------------------------- */
 
-/* --------------------------------------- Shopping Bag ------------------------------------- */
-
-.shopping-header-text {
-    padding: 1em 5em 0 5em;
-}
-
-.table-box {
+.contact-main-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 150px 0 150px;
+    width: 100%;
+    height: 90vh
 }
 
-.table {
-    border: #000000 solid 1px;
+.contact-form-box {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 80vh;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+}
+/* Contact details section (purple) */
+.contact-details {
+    width: 30%;
+    height: 80vh;
+    background-color: #4F359B;
+    position: absolute;
+}
+
+.contact-details > h5 {
+    color: #FFFFFF;
+    font-weight: 600;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.contact-details > h4 {
+    font-weight: 700;
+    position: absolute;
+    top: -40px;
+    color: #4F359B;
+}
+
+.social-main-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Social media links with icon box */
+.social-text-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+.social-box {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 50%;
+    height: 50vh;
+    margin: 5.7em;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.social-icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contact form section (white) */
+.contact-form-section {
+    width: 80%;
+    height: 80vh;
+    position: absolute;
+}
+
+.contact-form {
+    position: relative;
+    left: 455px;
+    bottom: 1px;
+    width: 62.5%;
+    height: 80vh;
+    padding: 50px;
+}
+
+.contact-form > h5 {
+    font-weight: 600;
+    position: relative;
+    bottom: 30px;
+}
+
+.form-layer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-layer > .form-group {
+    margin-top: 50px;
+}
+
+.form-layer > .form-group > input, .form-layer > .form-group > select {
+    border-style: none none solid none;
+    width: 15em;
+}
+
+.form-layer > .form-group > textarea {
+    width: 40.6em;
+    height: 9em;
+    border-radius: 0;
+    resize: none;
+    margin: 5px 0 0 11px;
+}
+
+.form-layer > .form-group > label {
+    color: #6c757d;
+    padding: 5px 0 0 11px;
+}
+
+#contact-button {
+    margin: 20px 0 0 539px;
+    padding: 10px 40px 10px 40px;
+}
+/* --------------------------------------- Shopping Bag ------------------------------------- */
+
+.shop-header {
+    padding: 38px;
 }
 
 .table-head {
     background-color: #4F359B;
-    color: #FFFFFF;
+    color: #FFF;
+}
+
+.table-box {
+    padding: 0 38px 38px 38px;
 }
 
 .total-cost-header {
-    padding-left: 150px;
-    margin-top: 60px;
+    padding: 38px 38px 0 38px;
 }
 
 .shopping-form-box {
-    padding: 40px 700px 50px 150px;
+    padding: 0 38px 38px 38px
+}
+
+#checkout-button {
+    margin-top: 38px;
 }
