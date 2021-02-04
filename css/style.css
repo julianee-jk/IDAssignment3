@@ -16,6 +16,11 @@ html, body {
     color: #4F359B;
 }
 
+#login-text, #name-text {
+    color: #4F359B; 
+    cursor: pointer;
+}
+
 footer {
     background-color: #000000;
     height: 4em;
@@ -219,7 +224,7 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
 }
 
 .btn-group {
-    margin-top: 24px;
+    margin: 24px 0 24px 0;
 }
 
 .cat-group {
@@ -238,7 +243,6 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
 
 #searchBar {
     border-radius: 0;
-    margin: 32px 0 32px 0;
     width: 800px;
     border: 2px;
     border-style: none none solid none;
@@ -251,10 +255,15 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     box-shadow: 0 8px 0 0 rgba(79, 53, 155, 0.25);
 }
 
+.searchButton {
+    padding: 6px 10px 6px 10px;
+    margin-left: 12px;
+}
+
 .sneaker-cards {
+    margin-top: 24px;
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 64px;
 }
 
 .sneaker-card {
@@ -286,11 +295,34 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     color: #888;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 72px;
+}
+
+
+.page-item:first-child .page-link, .page-item:last-child .page-link {
+    border-radius: 0;
+}
+
+.page-link {
+    color: #4F359B;
+    border-color: #4F359B;
+}
+
+.page-item.active .page-link, .page-link:hover {
+    color: #fff;
+    background-color: #4F359B;
+    border-color: #4F359B;
+}
+
 /* --------------------------------------- Product Page ------------------------------------- */
 
 .product {
     display: flex;
-    height: 80.3%;
+    height: 82.2%;
     padding: 38px;
 }
 
@@ -363,7 +395,7 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
 
 #addToCart {
     width: 130px;
-    margin-top: 24px;
+    margin-top: 48px;
 }
 
 /* --------------------------------------- Game Page ------------------------------------- */

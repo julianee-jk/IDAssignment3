@@ -39,7 +39,64 @@
                     <a class="nav-link" href="shoppingbag.html"><img src="assets/img/icons/shoppingbag.svg" width="28px" height="28px" alt="shopping-bag"/></a>
                 </span>
                 <span class="nav-item">
-                    <a class="nav-link" href="#"><span style="color: #4F359B;">Login</span></a>
+                    <a class="nav-link" data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="login-text">Login</a>
+                    <a class="nav-link" href="account.html" id="name-text">Name</a>
+                    <!-- Login modal -->
+                    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content acc-modal-content">
+                                <h2>Login</h2>
+                                <div class="login-box">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="login-name">Account Name</label>
+                                            <input type="text" class="form-control" id="login-name"required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="login-password">Password</label>
+                                            <input type="password" class="form-control" id="login-password" required>
+                                        </div>
+                                        <div class="form-group login-button-box">
+                                            <button type="submit" class="btn btn-primary hvr-glow" id="login-button">Login</button>
+                                            <h6>&nbsp;or <a data-toggle="modal" data-toggle="modal" data-target="#createModal" id="createModalButton">
+                                                Create Account</a>
+                                            </h6>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Create Account modal -->
+                    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content acc-modal-content">
+                                <h2>Create Account</h2>
+                                <div class="create-box">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="create-name">Account Name</label>
+                                            <input type="text" class="form-control" id="create-name"required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="create-dob">Date of birth</label>
+                                            <input type="date" class="form-control" id="create-dob"required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="create-password">Password</label>
+                                            <input type="password" class="form-control" id="create-password" required>
+                                        </div>
+                                        <div class="form-group login-button-box">
+                                            <button type="submit" class="btn btn-primary hvr-glow" id="create-button">Create</button>
+                                            <h6>&nbsp;or <a data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="loginModalButton">
+                                                Login to an Existing Account</a>
+                                            </h6>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </span>
             </div>
         </div>
@@ -96,9 +153,10 @@
         <div id="footer-text">Copyright © 2021 Ee Jun Kai Julian & Chew Kah Seng - All Rights Reserved.</div>
     </footer>
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>    
     <script src="js/game.js"></script>
 </body>
 </html>
