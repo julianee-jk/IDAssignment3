@@ -562,6 +562,10 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     margin-top: 10px;
 }
 
+.account-details > h6:hover {
+    cursor: pointer;
+}
+
 .account-main-box {
     width: 100%;
     height: auto;
@@ -574,6 +578,20 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     font-size: 40px;
     font-weight: 700;
     margin: 150px 35px 0 0;
+}
+
+/* Account Settings */
+
+.changePass-modal-content {
+    height: 330px;
+}
+
+.changePass-box {
+    padding: 0px 70px 0 70px;
+}
+
+.changePass-box > form > .form-group {
+    margin-top: 50px;
 }
 
 #logout-button {
