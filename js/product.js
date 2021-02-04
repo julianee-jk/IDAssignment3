@@ -16,9 +16,16 @@ function loadSneakers(sneaker_id) {
 $(document).ready(function() {
     sneaker_id = localStorage.getItem('viewProductId')
     loadSneakers(sneaker_id);
-    var shoppingBag = [];
-    var size = "S"
 
+    if (localStorage.getItem('shoppingBag') != null) {
+        var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'))
+    }
+    
+    else {
+        var shoppingBag = [];
+    }
+
+    var size = "S"
     $(".size > input.btn-check").on("click", function(e){
         size = e.target.attributes.value.value
     });
