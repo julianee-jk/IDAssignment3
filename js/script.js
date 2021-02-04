@@ -1,13 +1,35 @@
-
+// Close login modal when create modal open
 $("#createModalButton").click(function (e) {
     $('#loginModal').modal('hide')
 });
+
+// Close create modal when login modal open
 $("#loginModalButton").click(function (e) {
     $('#createModal').modal('hide')
 });
 
+// Reset login header text
+$("#login-text").click(function (e) {
+    $('#login-header-text').html('Login');
+    $('#login-header-text').css('color', 'black');
+});
+
 //[STEP 0]: Make sure our document is A-OK
 $(document).ready(function () {
+    $('#name-text').hide();
+    $("form").submit(function() { // disable refresh when user press enter.
+        return false;
+    });
+
+    // Check if user is logged in
+    const value = localStorage.getItem('accountLoggedIn')
+
+    if (value != null) {
+        $('#name-text').html(value);
+        $('#login-text').hide();
+        $('#name-text').show();
+        $('#account-name').html(value);
+    }
     //what kind of interface we want at the start 
     const APIKEY = "601a5d306adfba69db8b6cfc";
     getAccountData();
@@ -29,7 +51,7 @@ $(document).ready(function () {
         };
         console.log(jsondata);
         //[STEP 4]: Create our AJAX settings. Take note of API key
-        var settings = {
+        let settings = {
             "async": true,
             "crossDomain": true,
             "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
@@ -43,9 +65,49 @@ $(document).ready(function () {
             "data": JSON.stringify(jsondata)
         }
 
-        //[STEP 5]: Send our ajax request over to the DB and print response of the RESTDB storage to console.
+        // Send our ajax request over to the DB
         $.ajax(settings).done(function (response) {
             console.log(response);
+            getAccountData(); // Update
+            alert("Account created!");
         });
     });//end click 
+
+    // Get account data from database
+    function getAccountData(limit = 10, all = true) {
+        // Create our AJAX settings
+        let settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
+            "method": "GET", // Use GET to retrieve info
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+        }
+
+        // Loop to continously add on data
+        $.ajax(settings).done(function (response) {
+            // On login click, check if login info is same as database info
+            $("#login-button").click(function (e) {
+                for (let i = 0; i < response.length && i < limit; i++) {
+                    if ($("#login-name").val() === response[i].name && $("#login-password").val() === response[i].password) {
+                        $('#login-text').html(response[i].name);
+                        localStorage.setItem("accountLoggedIn",response[i].name);
+                        $('#loginModal').modal('hide')
+                        location.reload();
+                        break;
+                    }
+                    else {
+                        $('#login-header-text').html('Invalid Details!');
+                        $('#login-header-text').css('color', 'red');
+                        console.log('invalid');
+                        continue;
+                    }
+                }
+            });
+        });
+    }
 });
