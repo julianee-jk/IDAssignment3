@@ -16,7 +16,6 @@ $(document).ready(function () {
         let message = $("#contact-message").val();
 
         //[STEP 3]: get form values when user clicks on send
-        //Adapted from restdb api
         let jsondata = {
             "name": name,
             "contactNumber": contactNumber,

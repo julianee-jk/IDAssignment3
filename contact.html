@@ -56,56 +56,61 @@
                             <div class="social-icon-circle">
                                 <img src="assets/img/icons/linkedin.svg" class="social-icon" alt="LinkedIn-Logo">
                             </div>
-                            <div>Ee Jun Kai Julian<br>Chew Kah Seng</div>
+                            <div><a href="https://www.linkedin.com/in/julian-ee-jun-kai/">Ee Jun Kai Julian</a>
+                                <br><a href="https://www.linkedin.com/in/chew-kah-seng/">Chew Kah Seng</a>
+                            </div>
                         </div>
                         <div class="social-text-box">
                             <div class="social-icon-circle">
                                 <img src="assets/img/icons/facebook.svg" class="social-icon" alt="Facebook-Logo">
                             </div>
-                            <div>Ee Jun Kai Julian<br>Chew Kah Seng</div>
+                            <div><a href="https://www.facebook.com/julianeejk/">Ee Jun Kai Julian</a></div>
                         </div>
                         <div class="social-text-box">
                             <div class="social-icon-circle">
                                 <img src="assets/img/icons/email.svg" class="social-icon" alt="Email-Logo">
                             </div>
-                            <div>Ee Jun Kai Julian<br>Chew Kah Seng</div>
+                            <div><a href="mailto:s10202587@connect.np.edu.sg">Ee Jun Kai Julian</a>
+                                <br><a href="mailto:s10208180@connect.np.edu.sg">Chew Kah Seng</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="contact-form-section">
                 <div class="contact-form">
                     <h5>Send us a message!</h5>
-                    <form>
-                        <div class="form-layer">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="contact-name" placeholder="Name" required>
+                    <div class="contact-form-section">
+                        <form>
+                            <div class="form-layer">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="contact-name" placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="contact-number" placeholder="Contact number" maxlength="8" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" id="contact-number" placeholder="Contact number" maxlength="8" required>
+                            <div class="form-layer">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email address" id="contact-email-address" required>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="contact-user-topic" required>
+                                        <option disabled selected>Select a topic</option>
+                                        <option>Request</option>
+                                        <option>Refund</option>
+                                        <option>Feedback</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-layer">
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email address" id="contact-email-address" required>
+                            <div class="form-layer">
+                                <div class="form-group">
+                                    <label for="contact-message">Message</label>
+                                    <textarea class="form-control" id="contact-message" rows="3" placeholder="Enquiry.." required></textarea>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <select class="form-control" id="contact-user-topic" required>
-                                    <option disabled selected>Select a topic</option>
-                                    <option>Request</option>
-                                    <option>Refund</option>
-                                    <option>Feedback</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-layer">
-                            <div class="form-group">
-                                <label for="contact-message">Message</label>
-                                <textarea class="form-control" id="contact-message" rows="3" placeholder="Enquiry.." required></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary hvr-glow" id="contact-button">Send</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary hvr-glow" id="contact-button">Send</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
