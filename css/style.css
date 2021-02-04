@@ -557,7 +557,27 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
 }
 /* --------------------------------------- Account Page ------------------------------------- */
+#account-name {
+    color: #4F359B;
+}
 
+.account-main-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 0 150px 0 150px;
+    border: red solid 1px;
+}
+
+#logout-button {
+    color: #FFFFFF;
+}
+
+#logout-button:hover {
+    background-color: #000000;
+}
 
 /* --------------------------------------- Contact Page ------------------------------------- */
 
