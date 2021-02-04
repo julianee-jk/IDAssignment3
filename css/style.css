@@ -76,6 +76,38 @@ footer {
 box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
 }
 
+/* Login popup modal */
+.login-box, .create-box {
+    padding: 0 40px 0 40px;
+}
+
+.login-box > form > .form-group {
+    margin-top: 50px;
+}
+
+.login-button-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20em;
+}
+
+#login-button, #create-button, .login-button-box > h6 {
+    margin: 0;
+}
+
+#createModalButton, #loginModalButton {
+    color:#4F359B;
+    cursor: pointer;
+}
+
+.create-box > form > .form-group {
+    margin-top: 40px;
+}
+
+.acc-modal-content {
+    height: 500px;
+}
 /* --------------------------------------- Index Page --------------------------------------- */
 .index-header-text {
     color: #000000;
@@ -386,7 +418,7 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
 }
 
 /* Spin N Win Game */
-.modal-content {
+.game-modal-content {
     position: absolute;
     width: 800px;
     height: 513px;
