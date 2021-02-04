@@ -102,7 +102,51 @@
 
     <div class="explore-header">
         <h1>Explore</h1>
+        <div class="btn-group cat-group" role="group">
+            <input type="radio" class="btn-check" name="category" id="catWomen" value="women">
+            <label class="btn btn-outline-primary" for="category">Women</label>
+          
+            <input type="radio" class="btn-check" name="category" id="catMen" value="men">
+            <label class="btn btn-outline-primary" for="category">Men</label>
+          
+            <input type="radio" class="btn-check" name="category" id="catKids" value="kids">
+            <label class="btn btn-outline-primary" for="category">Kids</label>
+        </div>
+
+        <div class="btn-group sort-group" role="group">
+            <input type="radio" class="btn-check" name="sort" id="sortTrend">
+            <label class="btn btn-outline-primary" for="sort">Trending</label>
+          
+            <input type="radio" class="btn-check" name="sort" id="sortRandom">
+            <label class="btn btn-outline-primary" for="sort">Random</label>
+        </div>
+        
+        <div class="searchBar">
+            <input type="text" class="form-control" id="searchBar" placeholder="Search...">
+            <button type="button" class="btn btn-outline-danger searchButton" id="search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </button>
+        </div>
     </div>
+
+    <div class="sneaker-cards"></div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Prev</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+
     <footer>
         <div id="footer-text">Copyright © 2021 Ee Jun Kai Julian & Chew Kah Seng - All Rights Reserved.</div>
     </footer>

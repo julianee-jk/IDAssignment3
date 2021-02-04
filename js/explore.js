@@ -1,7 +1,4 @@
-function loadSneakers() {
-    var limit = 21;
-    var url = `https://example-data.draftbit.com/sneakers?_limit=${limit}`
-
+function loadSneakers(url) {
     fetch(url)
     .then(response => response.json())
     .then(function(data) {
@@ -24,5 +21,26 @@ function selectCard(sneakerId) {
 }
 
 $(document).ready(function() {
-    loadSneakers();
+    var limit = 21;
+    var url = `https://example-data.draftbit.com/sneakers?_limit=${limit}`
+    loadSneakers(url);
+
+    $("#searchBar").keyup(function(e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            $('#search').click();
+        }
+    });
+    $('#search').on("click", function(e) {
+        var query = $("#searchBar").val().replaceAll(' ', '%20');
+        var url = `https://example-data.draftbit.com/sneakers?q=${query}&_limit=20`
+        loadSneakers(url);
+        console.log(url);
+    });
+
+    $(".cat-group > input.btn-check").on("click", function(e){
+        var url = `https://example-data.draftbit.com/sneakers?_limit=${limit}`
+        url += `?gender=${e.target.attributes.value.value}`
+        loadSneakers(url);
+    });
 });

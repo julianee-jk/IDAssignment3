@@ -243,7 +243,7 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
 
 #searchBar {
     border-radius: 0;
-    width: 800px;
+    width: 48em;
     border: 2px;
     border-style: none none solid none;
     border-color: #4F359B;
@@ -556,6 +556,9 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
     to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
 }
+/* --------------------------------------- Account Page ------------------------------------- */
+
+
 /* --------------------------------------- Contact Page ------------------------------------- */
 
 .contact-main-box {
