@@ -557,22 +557,28 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
 }
 /* --------------------------------------- Account Page ------------------------------------- */
-#account-name {
+#account-name, .account-details > h6{
     color: #4F359B;
+    margin-top: 10px;
 }
 
 .account-main-box {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     width: 100%;
     height: auto;
-    padding: 0 150px 0 150px;
     border: red solid 1px;
+    padding: 0 150px 0 150px;
+}
+
+.account-section-header {
+    color: #000000;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 150px 35px 0 0;
 }
 
 #logout-button {
     color: #FFFFFF;
+    margin-bottom: 50px;
 }
 
 #logout-button:hover {
