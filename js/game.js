@@ -65,20 +65,28 @@ function flipTimer() {
 }, 1000)};
 
 let theWheel = new Winwheel({
-  'numSegments': 8,         // Number of segments
+  'numSegments': 16,         // Number of segments
   'outerRadius': 212,       // The size of the wheel.
   'centerX': 217,       // Used to position on the background correctly.
   'centerY': 219,
-  'textFontSize': 28,        // Font size.
+  'textFontSize': 25,        // Font size.
   'segments':            // Definition of all the segments.
     [
       { 'fillStyle': '#9560a6', 'text': 'Voucher' },
       { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#9560a6', 'text': 'Voucher' },
+      { 'fillStyle': '#9560a6', 'text': '' },
       { 'fillStyle': '#c8b0d9', 'text': '' },
       { 'fillStyle': '#ffb217', 'text': 'JACKPOT' },
       { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
       { 'fillStyle': '#9560a6', 'text': 'Voucher' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': ''},
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '' },
       { 'fillStyle': '#c8b0d9', 'text': '' }
     ],
   'animation':               // Definition of the animation
