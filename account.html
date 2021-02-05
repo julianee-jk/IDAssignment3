@@ -101,31 +101,37 @@
     </div>
     <!-- Main box for page -->
     <div class="account-main-box">
-        <div class="account-section-header">Balance</div>
-        <div class="account-balance">
-            <h4 id="account-bal-id">Account Balance SZ</h4>
+        
+        <div class="account-section-header">Balance
             <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#addBalModal" id="add-bal">&#65291;</button>
-            <!-- Add account balance modal -->
-            <div class="modal fade" id="addBalModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content addBal-modal-content">
-                        <h2>Add Balance</h2>
-                        <div class="addBal-box">
-                            <h6>Current Account Balance</h6>
-                            <h6 id="account-bal-id">Account Balance SZ</h6>
-                            <div class="topup-box">
-                                <h6>Choose top-up option</h6>
-                                <input type="radio" name="topup-value" value="10SZ" id="topup10" checked>
-                                <label for="topup10">10 SZ</label>
-                                <input type="radio" name="topup-value" value="15SZ" id="topup15">
-                                <label for="topup15">15 SZ</label>
-                                <input type="radio" name="topup-value" value="20SZ" id="topup20">
-                                <label for="topup20">20 SZ</label>
-                                <input type="radio" name="topup-value" value="50SZ" id="topup50">
-                                <label for="topup50">50 SZ</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary hvr-glow" id="addBal-button">Confirm</button>
+        </div>
+        <div class="account-bal-id-box">
+            <h4 id="account-bal-id">Loading...</h4>
+            <span class="account-bal-id-text">&nbsp;SZ</span>
+        </div>
+        <!-- Add account balance modal -->
+        <div class="modal fade" id="addBalModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content addBal-modal-content">
+                    <h2>Add Balance</h2>
+                    <div class="addBal-box">
+                        <h6>Current Account Balance</h6>
+                        <div class="account-bal-id-box">
+                            <h4 id="account-bal-id2">Loading...</h4>
+                            <span class="account-bal-id-text">&nbsp;SZ</span>
                         </div>
+                        <div class="topup-box">
+                            <h6>Choose top-up option</h6>
+                            <input type="radio" name="topup-value" value="10SZ" id="topup10">
+                            <label for="topup10">10 SZ</label>
+                            <input type="radio" name="topup-value" value="15SZ" id="topup15">
+                            <label for="topup15">15 SZ</label>
+                            <input type="radio" name="topup-value" value="20SZ" id="topup20">
+                            <label for="topup20">20 SZ</label>
+                            <input type="radio" name="topup-value" value="50SZ" id="topup50">
+                            <label for="topup50">50 SZ</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary hvr-glow" id="addBal-button">Confirm</button>
                     </div>
                 </div>
             </div>
