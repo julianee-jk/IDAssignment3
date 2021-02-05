@@ -601,21 +601,30 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
 }
 
 .addBal-box {
-    padding: 32px 70px 0 70px;
+    padding: 32px 70px 32px 70px;
     text-align: center;
-}
-
-#addBal-button {
-    margin-top: 30px;
 }
 
 .topup-box {
     margin-top: 50px;
 }
 
-.topup-box > button {
-    margin-right: 10px;
+.topup-box > input {
+    display: none;
+}
+
+.topup-box > input + label {
+    position: relative;
+    margin: 10px;
     padding: 10px 20px 10px 20px;
+    cursor:pointer;
+    font-size: 15px;
+    border: #000000 solid 1px;
+}
+
+.topup-box > input + label:hover, .topup-box > input:checked + label {
+    background-color: #4F359B;
+    color: #FFFFFF;
 }
 
 /* Account Settings */
