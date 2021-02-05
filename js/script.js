@@ -23,7 +23,6 @@ $(document).ready(function () {
 
     // Check if user is logged in
     const value = localStorage.getItem('accountLoggedIn')
-
     if (value != null) {
         $('#name-text').html(value);
         $('#login-text').hide();
@@ -69,7 +68,10 @@ $(document).ready(function () {
         $.ajax(settings).done(function (response) {
             console.log(response);
             getAccountData(); // Update
-            alert("Account created!");
+            localStorage.setItem('accountBal', 0)
+            alert('Account successfully create! Login again!');
+            $('#createModal').modal('hide')
+            $('#loginModal').modal('show')
         });
     });//end click 
 

@@ -1,6 +1,35 @@
 $("#logout-button").click(function (e) {
     localStorage.removeItem('accountLoggedIn');
+    localStorage.removeItem('accountLoggedIn');
     window.location.href = 'index.html';
+});
+
+var topupChoice = '';
+
+$("#addBal-button").click(function (e) {
+    if ()
+    var accountBal = JSON.parse(localStorage.getItem('accountBal'));
+    var topupValue = document.getElementsByName('topup-value');
+    for(var i = 0; i < topupValue.length; i++){
+        if (topupValue[i].checked) {
+            topupChoice = topupValue[i].value; //Get topup-value radio button value
+            console.log(topupChoice)
+        }
+    }
+
+    if (topupChoice == '10SZ') {
+        accountBal += 10;
+    }
+    else if (topupChoice == '15SZ') {
+        accountBal += 15;
+    }
+    else if (topupChoice == '20SZ') {
+        accountBal += 20;
+    }
+    else if (topupChoice == '50SZ') {
+        accountBal += 50;
+    }
+    localStorage.setItem('accountBal', accountBal);
 });
 
 $(document).ready(function () {
