@@ -41,12 +41,14 @@ $(document).ready(function () {
         let name = $("#create-name").val();
         let dob = $("#create-dob").val();
         let password = $("#create-password").val();
+        let balance = 0;
 
         //[STEP 3]: get form values when user clicks on send
         let jsondata = {
             "name": name,
             "dob": dob,
-            "password": password
+            "password": password,
+            "balance": balance
         };
         console.log(jsondata);
         //[STEP 4]: Create our AJAX settings. Take note of API key
@@ -68,7 +70,7 @@ $(document).ready(function () {
         $.ajax(settings).done(function (response) {
             console.log(response);
             getAccountData(); // Update
-            localStorage.setItem('accountBal', 0)
+            // localStorage.setItem('accountBal', 0)
             alert('Account successfully create! Login again!');
             $('#createModal').modal('hide')
             $('#loginModal').modal('show')
@@ -105,11 +107,33 @@ $(document).ready(function () {
                     else {
                         $('#login-header-text').html('Invalid Details!');
                         $('#login-header-text').css('color', 'red');
-                        console.log('invalid');
                         continue;
                     }
                 }
             });
         });
     }
+
+    loadFlashDeals()
 });
+
+function loadFlashDeals() {
+    var url = "https://example-data.draftbit.com/sneakers?_limit=10"
+    fetch(url)
+    .then(response => response.json())
+    .then(function(data) {
+        var sneakers = data;
+        sneakers.map(function(s) {
+            $(".index-sneaker-cards").append(`
+                <div class="card" id="${s.id}">
+                    <img src="${s.media.imageUrl}" />
+                    <div class="card-body">
+                        <span class="sneaker-title">${s.title}</span>
+                        <span class="sneaker-colorway">${s.colorway}</span>
+                        <span class="sneaker-price">$${s.retailPrice}</span>
+                    </div>
+                </div>
+            `)
+        });
+    });
+}
