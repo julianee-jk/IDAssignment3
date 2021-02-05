@@ -580,8 +580,45 @@ box-shadow: 0 0 9px rgba(0, 0, 0, 0.6);
     margin: 150px 35px 0 0;
 }
 
-/* Account Settings */
+/* Account Balance */
+.account-balance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 18em;
+}
 
+#account-bal-id {
+    color: #707070;
+}
+
+#add-bal {
+    font-size: 20px;
+}
+
+.addBal-modal-content {
+    height: 400px;
+}
+
+.addBal-box {
+    padding: 32px 70px 0 70px;
+    text-align: center;
+}
+
+#addBal-button {
+    margin-top: 30px;
+}
+
+.topup-box {
+    margin-top: 50px;
+}
+
+.topup-box > button {
+    margin-right: 10px;
+    padding: 10px 20px 10px 20px;
+}
+
+/* Account Settings */
 .changePass-modal-content {
     height: 330px;
 }

@@ -102,12 +102,36 @@
     <!-- Main box for page -->
     <div class="account-main-box">
         <div class="account-section-header">Balance</div>
+        <div class="account-balance">
+            <h4 id="account-bal-id">Account Balance SZ</h4>
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#addBalModal" id="add-bal">&#65291;</button>
+            <!-- Add account balance modal -->
+            <div class="modal fade" id="addBalModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content addBal-modal-content">
+                        <h2>Add Balance</h2>
+                        <div class="addBal-box">
+                            <h6>Current Account Balance</h6>
+                            <h6 id="account-bal-id">Account Balance SZ</h6>
+                            <div class="topup-box">
+                                <h6>Choose top-up option</h6>
+                                <button type="button" class="btn btn-outline-danger" id="topup-10">10 SZ</button>
+                                <button type="button" class="btn btn-outline-danger" id="topup-15">15 SZ</button>
+                                <button type="button" class="btn btn-outline-danger" id="topup-20">20 SZ</button>
+                                <button type="button" class="btn btn-outline-danger" id="topup-50">50 SZ</button>
+                            </div>
+                            <button type="submit" class="btn btn-primary hvr-glow" id="addBal-button">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="account-section-header">Vouchers</div>
         <div class="account-section-header">Dashboard</div>
         <div class="account-details">
             <div class="account-section-header">Account Settings</div>
-            <h6><a id="#changePass" data-toggle="modal" data-toggle="modal" data-target="#changePassModal" id="changePass-text">Change Account Password</a></h6>
-            <!-- Create Account modal -->
+            <h6><a id="#changePass" data-toggle="modal" data-target="#changePassModal" id="changePass-text">Change Account Password</a></h6>
+            <!-- Change account password modal -->
             <div class="modal fade" id="changePassModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content changePass-modal-content">
