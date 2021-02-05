@@ -3,15 +3,28 @@ function loadSneakers(url) {
     .then(response => response.json())
     .then(function(data) {
         var sneakers = data;
-        const HTMLstring = sneakers.map((s) => `
-            <li class="sneaker-card" onclick="selectCard('${s.id}')" id="${s.id}">
-                <img src="${s.media.imageUrl}" />
-                <span class="sneaker-title">${s.title}</span>
-                <span class="sneaker-colorway">${s.colorway}</span>
-                <span class="sneaker-price">$${s.retailPrice}</span>
-            </li>
-        `);
-        $(".sneaker-cards").html(HTMLstring);
+        sneakers.map(function(s) {
+            if (s.retailPrice == null) {
+                $(".sneaker-cards").append(`
+                <li class="sneaker-card" id="${s.id}" style="opacity: 0.7">
+                    <img src="${s.media.imageUrl}" />
+                    <span class="sneaker-title">${s.title}</span>
+                    <span class="sneaker-colorway">${s.colorway}</span>
+                    <span class="sneaker-price">Not Available</span>
+                </li>
+                `)
+            }
+            else {
+                $(".sneaker-cards").append(`
+                    <li class="sneaker-card" onclick="selectCard('${s.id}')" id="${s.id}" style="cursor: pointer;">
+                        <img src="${s.media.imageUrl}" />
+                        <span class="sneaker-title">${s.title}</span>
+                        <span class="sneaker-colorway">${s.colorway}</span>
+                        <span class="sneaker-price">$${s.retailPrice}</span>
+                    </li>
+                `)
+            }
+        });
     });
 }
 
