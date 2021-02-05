@@ -213,3 +213,85 @@ function startFlip() {
     }
   }
 }
+
+var selectSpin = false, selectFlip = false;
+
+$("#selectSpin").click(function (e) {
+  selectSpin = true;
+});
+
+$("#selectFlip").click(function (e) {
+  selectFlip = true;
+});
+
+const APIKEY = "601a5d306adfba69db8b6cfc";
+$(document).ready(function () {
+  const value = localStorage.getItem('accountLoggedIn')
+  getAccountData();
+  // Get account data from database
+  function getAccountData(limit = 10, all = true) {
+    // Create our AJAX settings
+    let settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
+        "method": "GET", // Use GET to retrieve info
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+    }
+
+    // Loop to continously add on data
+    $.ajax(settings).done(function (response) {
+        for (let i = 0; i < response.length && i < limit; i++) {
+            if (value == response[i].name) {
+                let accountBal = response[i].balance;
+                if (accountBal > 0) {
+                  if (selectSpin == true) {
+                    accountBal -= 5
+                  }
+                  else if (selectFlip == true) {
+                    accountBal -= 3
+                  }
+                  else 
+                      break;
+                }
+                else {
+                  alert('Not enough SZ!');
+                  break;
+                }
+                console.log(accountBal);
+                let id = response[i]._id, accName = response[i].name, accDob = response[i].dob, accPass = response[i].password
+                updateAccountInfo(id, accName, accDob, accPass, accountBal);
+                break;
+            }
+            else 
+                continue;
+        }
+      }
+    )}
+  });
+
+function updateAccountInfo(id, accName, accDob, newPass, accountBal) {
+  //@TODO create validation methods for id etc. 
+  var jsondata = { "name": accName, "dob": accDob, "password": newPass, "balance": accountBal};
+  var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": `https://sneakerzone-11b9.restdb.io/rest/account-info/${id}`,
+      "method": "PUT",
+      "headers": {
+        "content-type": "application/json",
+        "x-apikey": APIKEY,
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": JSON.stringify(jsondata)
+    }
+    
+    $.ajax(settings).done(function () {
+      console.log('Account info updated. (Game Deduction)');
+    });
+}//end updateform function
