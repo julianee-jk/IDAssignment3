@@ -115,7 +115,7 @@
                             <h6 id="account-bal-id">Account Balance SZ</h6>
                             <div class="topup-box">
                                 <h6>Choose top-up option</h6>
-                                <input type="radio" name="topup-value" value="10SZ" id="topup10">
+                                <input type="radio" name="topup-value" value="10SZ" id="topup10" checked>
                                 <label for="topup10">10 SZ</label>
                                 <input type="radio" name="topup-value" value="15SZ" id="topup15">
                                 <label for="topup15">15 SZ</label>
@@ -134,12 +134,12 @@
         <div class="account-section-header">Dashboard</div>
         <div class="account-details">
             <div class="account-section-header">Account Settings</div>
-            <h6><a id="#changePass" data-toggle="modal" data-target="#changePassModal" id="changePass-text">Change Account Password</a></h6>
+            <h6><a data-toggle="modal" data-target="#changePassModal" id="changePass-text">Change Account Password</a></h6>
             <!-- Change account password modal -->
             <div class="modal fade" id="changePassModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content changePass-modal-content">
-                        <h2>Change Account Password</h2>
+                        <h2 id="changeAccountPass-text">Change Account Password</h2>
                         <div class="changePass-box">
                             <form>
                                 <div class="form-group">

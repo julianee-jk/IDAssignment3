@@ -4,10 +4,14 @@ $("#logout-button").click(function (e) {
     window.location.href = 'index.html';
 });
 
+$("#changePass-text").click(function (e) {
+    $('#changeAccountPass-text').html('Change Account Password');
+    $('#changeAccountPass-text').css('color', 'black');
+});
+
 var topupChoice = '';
 
 $("#addBal-button").click(function (e) {
-    if ()
     var accountBal = JSON.parse(localStorage.getItem('accountBal'));
     var topupValue = document.getElementsByName('topup-value');
     for(var i = 0; i < topupValue.length; i++){
@@ -66,7 +70,9 @@ $(document).ready(function () {
                         e.preventDefault();
                         let newPass = $("#change-pass").val();
                         let id = response[i]._id;
-                        updatePass(id, newPass);
+                        let accName = response[i].name;
+                        let accDob = response[i].dob;
+                        updatePass(id, accName, accDob, newPass);
                         break;
                     }
                     else {
@@ -76,10 +82,10 @@ $(document).ready(function () {
             });
         });
 
-        function updatePass(id, newPass) {
+        function updatePass(id, accName, accDob, newPass) {
             //@TODO create validation methods for id etc. 
         
-            var jsondata = { "password": newPass };
+            var jsondata = { "name": accName, "dob": accDob, "password": newPass };
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -94,8 +100,10 @@ $(document).ready(function () {
                 "data": JSON.stringify(jsondata)
               }
               
-              $.ajax(settings).done(function (response) {
-                console.log(response);
+              $.ajax(settings).done(function () {
+                $('#changeAccountPass-text').html('Password Changed!');
+                $('#changeAccountPass-text').css('color', 'green');
+                console.log('Password Updated!');
               });
           }//end updateform function
     }
