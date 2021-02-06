@@ -41,8 +41,8 @@ $(document).ready(function () {
         $.ajax(settings).done(function (response) {
             for (let i = 0; i < response.length && i < limit; i++) {
                 if (value == response[i].name) { 
-                    $('#account-bal-id').html(response[i].balance);
                     $('#account-bal-id2').html(response[i].balance);
+                    $('#account-bal-id').html(response[i].balance);
                 }
             }
             // On login click, check if login info is same as database info
@@ -90,8 +90,8 @@ $(document).ready(function () {
                     console.log(accountBal);
                     let id = response[i]._id, accName = response[i].name, accDob = response[i].dob, accPass = response[i].password
                     updateAccountInfo(id, accName, accDob, accPass, accountBal);
-                    $('#account-bal-id').html(accountBal);
                     $('#account-bal-id2').html(accountBal);
+                    $('#account-bal-id').html(accountBal);
                     break;
                 }
                 else 

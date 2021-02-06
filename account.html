@@ -106,8 +106,8 @@
             <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#addBalModal" id="add-bal">&#65291;</button>
         </div>
         <div class="account-bal-id-box">
+            <span class="account-bal-id-text">$</span>
             <h4 id="account-bal-id">Loading...</h4>
-            <span class="account-bal-id-text">&nbsp;SZ</span>
         </div>
         <!-- Add account balance modal -->
         <div class="modal fade" id="addBalModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -117,19 +117,19 @@
                     <div class="addBal-box">
                         <h6>Current Account Balance</h6>
                         <div class="account-bal-id-box">
+                            <span class="account-bal-id-text">$</span>
                             <h4 id="account-bal-id2">Loading...</h4>
-                            <span class="account-bal-id-text">&nbsp;SZ</span>
                         </div>
                         <div class="topup-box">
                             <h6>Choose top-up option</h6>
                             <input type="radio" name="topup-value" value="10SZ" id="topup10">
-                            <label for="topup10">10 SZ</label>
+                            <label for="topup10">$10</label>
                             <input type="radio" name="topup-value" value="15SZ" id="topup15">
-                            <label for="topup15">15 SZ</label>
+                            <label for="topup15">$15</label>
                             <input type="radio" name="topup-value" value="20SZ" id="topup20">
-                            <label for="topup20">20 SZ</label>
+                            <label for="topup20">$20</label>
                             <input type="radio" name="topup-value" value="50SZ" id="topup50">
-                            <label for="topup50">50 SZ</label>
+                            <label for="topup50">$50</label>
                         </div>
                         <button type="submit" class="btn btn-primary hvr-glow" id="addBal-button">Confirm</button>
                     </div>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            <h6>Add more Money to Balance</h6>
+            <h6><a data-toggle="modal" data-target="#addBalModal">Add more Money to Balance</a></h6>
             <h6>View Account Purchase History</h6>
             <button type="button" class="btn btn-danger" id="logout-button">Logout</button>
         </div>
