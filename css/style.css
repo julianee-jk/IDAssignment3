@@ -93,7 +93,7 @@ box-shadow: 0 0 12px #4F359B;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 20em;
+    width: 21em;
 }
 
 #login-button, #create-button, .login-button-box > h6 {
@@ -109,8 +109,12 @@ box-shadow: 0 0 12px #4F359B;
     margin-top: 40px;
 }
 
-.acc-modal-content {
+.accCreate-modal-content {
     height: 500px;
+}
+
+.accLogin-modal-content {
+    height: 440px;
 }
 /* --------------------------------------- Index Page --------------------------------------- */
 
@@ -144,15 +148,6 @@ box-shadow: 0 0 12px #4F359B;
 .index-section a {
     align-self: center;
     width: 200px;
-}
-
-.index-games {
-    display: flex;
-    justify-content: space-between;
-}
-
-.index-games img {
-    border: #000 solid 1px;
 }
 
 .index-sneaker-cards {
@@ -805,3 +800,7 @@ box-shadow: 0 0 12px #4F359B;
 #checkout-button {
     margin-top: 38px;
 }
+
+.delete {
+    cursor: pointer;
+    color: #ff0000;

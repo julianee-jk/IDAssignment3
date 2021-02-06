@@ -39,10 +39,11 @@
                 <span class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="login-text">Login</a>
                     <a class="nav-link" href="account.html" id="name-text">Name</a>
+
                     <!-- Login modal -->
                     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
-                            <div class="modal-content acc-modal-content">
+                            <div class="modal-content accLogin-modal-content">
                                 <h2 id="login-header-text">Login</h2>
                                 <div class="login-box">
                                     <form>
@@ -56,7 +57,7 @@
                                         </div>
                                         <div class="form-group login-button-box">
                                             <button type="submit" class="btn btn-primary hvr-glow" id="login-button">Login</button>
-                                            <h6>&nbsp;or <a data-toggle="modal" data-toggle="modal" data-target="#createModal" id="createModalButton">
+                                            <h6>&nbsp;&nbsp;&nbsp;or <a data-toggle="modal" data-toggle="modal" data-target="#createModal" id="createModalButton">
                                                 Create Account</a>
                                             </h6>
                                         </div>
@@ -65,10 +66,11 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Create Account modal -->
                     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
-                            <div class="modal-content acc-modal-content">
+                            <div class="modal-content accCreate-modal-content">
                                 <h2>Create Account</h2>
                                 <div class="create-box">
                                     <form>
@@ -86,7 +88,7 @@
                                         </div>
                                         <div class="form-group login-button-box">
                                             <button type="submit" class="btn btn-primary hvr-glow" id="create-button">Create</button>
-                                            <h6>&nbsp;or <a data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="loginModalButton">
+                                            <h6>&nbsp;&nbsp;&nbsp;or <a data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="loginModalButton">
                                                 Login to an Existing Account</a>
                                             </h6>
                                         </div>
@@ -105,31 +107,17 @@
         <div class="feature-text">FEATURE</div>
     </div>
 
-    <section class="index-section index-games">
-        <div>
-            <h2>Play & Win Vouchers!</h2>
-            <a href="games.html" class="btn btn-primary hvr-glow">Go to Games Page</a>
-        </div>
-        <img src="#" alt="Games_Graphic">
-    </section>
-
-    <!-- Flash Deals -->
-    <section class="index-section">
-        <h2>Flash Deals</h2>
-        <div class="index-sneaker-cards"></div>
-    </section>
-
     <!-- Trending -->
     <section class="index-section">
         <h2>Trending</h2>
-        <div class="index-sneaker-cards"></div>
+        <div class="index-sneaker-cards trending"></div>
         <a href="explore.html" class="btn btn-primary hvr-glow" style="letter-spacing: 3px">EXPLORE</a>
     </section>
 
     <!-- Random -->
     <section class="index-section">
         <h2>Random</h2>
-        <div class="index-sneaker-cards"></div>
+        <div class="index-sneaker-cards random"></div>
         <a href="explore.html" class="btn btn-primary hvr-glow" style="letter-spacing: 3px">EXPLORE</a>
     </section>
 
@@ -143,5 +131,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
