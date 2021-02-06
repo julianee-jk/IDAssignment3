@@ -116,22 +116,17 @@ box-shadow: 0 0 12px #4F359B;
 .accLogin-modal-content {
     height: 440px;
 }
+
 /* --------------------------------------- Index Page --------------------------------------- */
 
-/* Section 1 - Sneaker GIF */
-.gif-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80vh;
-    background-color:#000000;
-    position: relative;
+.carousel-item {
+    max-height: 75vh;
 }
 
-.gif-box > img {
-    width: 40%;
-    height: 100%;
+.carousel-item > img {
+    height: 40%;
+    position: relative;
+    bottom: 14.5em;
 }
 
 .index-section {
@@ -306,7 +301,8 @@ box-shadow: 0 0 12px #4F359B;
     position: relative;
     top: -40px;
     left: 12px;
-    background-color: #FFFFFF;
+    background-color: #FFF;
+    padding: 12px;
 }
 
 .product-img {
@@ -389,7 +385,7 @@ box-shadow: 0 0 12px #4F359B;
     width: 30em;
     height: 30em;
     border: #000000 solid 1px;
-    margin-bottom: 3em;
+    margin-bottom: 6em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -794,7 +790,7 @@ box-shadow: 0 0 12px #4F359B;
 }
 
 .shopping-form-box {
-    padding: 0 38px 38px 38px
+    padding: 0 38px 38px 38px;
 }
 
 #checkout-button {
