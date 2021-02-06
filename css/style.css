@@ -77,7 +77,7 @@ footer {
 }
 
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
-box-shadow: 0 0 12px #4F359B;
+    box-shadow: 0 0 12px #4F359B;
 }
 
 /* Login popup modal */
@@ -127,6 +127,18 @@ box-shadow: 0 0 12px #4F359B;
     height: 40%;
     position: relative;
     bottom: 14.5em;
+    opacity: 0.8;
+}
+
+.carousel-caption > h5 {
+    text-align: left;
+    font-size: 72px;
+    font-weight: 900;
+    width: 10em;
+}
+
+.carousel-inner {
+    background-color: #000;
 }
 
 .index-section {
@@ -135,12 +147,12 @@ box-shadow: 0 0 12px #4F359B;
     padding: 48px;
 }
 
-.index-section h2 {
+.index-section > h2 {
     color: #000;
     font-weight: 900;
 }
 
-.index-section a {
+.index-section > a {
     align-self: center;
     width: 200px;
 }
@@ -313,7 +325,7 @@ box-shadow: 0 0 12px #4F359B;
 
 .product-img > img {
     margin-left: 5%;
-    width: 90%;
+    width: 88%;
 }
 
 .product-info {
@@ -453,12 +465,8 @@ box-shadow: 0 0 12px #4F359B;
 #coin div {
     width: 100%;
     height: 100%;
-    -webkit-border-radius: 50%;
-       -moz-border-radius: 50%;
-            border-radius: 50%;
-    -webkit-box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-       -moz-box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-            box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+    border-radius: 50%;
+    box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
 }
 
 .coin-flip-button-box {
@@ -651,6 +659,7 @@ box-shadow: 0 0 12px #4F359B;
     height: 80vh;
     box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
 }
+
 /* Contact details section (purple) */
 .contact-details {
     width: 30%;
