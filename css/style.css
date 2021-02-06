@@ -96,7 +96,7 @@ box-shadow: 0 0 12px #4F359B;
     width: 21em;
 }
 
-#login-button, #create-button, .login-button-box > h6 {
+#login-button, #create-button, .login-button-box > h6, #login-header-text  {
     margin: 0;
 }
 
@@ -800,3 +800,4 @@ box-shadow: 0 0 12px #4F359B;
 .delete {
     cursor: pointer;
     color: #ff0000;
+}
