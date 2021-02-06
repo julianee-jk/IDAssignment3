@@ -15,25 +15,31 @@ function loadCart() {
                     <td>${s[1]}</td>
                     <td>${s[2]}</td>
                     <td>$${itemPrice}</td>
+                    <td class="delete" value="${shoppingBag.indexOf(s)}">Delete</td>
                 </tr>
             `)
             totalPrice += itemPrice;
-            $('#total-cost').html(`$${totalPrice}`);
-        })
-    })
+            $('#total-cost').html(`$${totalPrice}`); 
+        });
+    });
 }
 
-//[STEP 0]: Make sure our document is A-OK
 $(document).ready(function () {
     loadCart();
-    //what kind of interface we want at the start 
+
+    $('.table-body').on('click', ".delete", function(e) {
+        var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
+        shoppingBag.pop(e.target.attributes.value.value);
+        localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
+        location.reload();
+    })
+    
     const APIKEY = "601a5d306adfba69db8b6cfc";
 
     //[STEP 1]: Create our submit form listener
     $("#checkout-button").on("click", function (e) {
-        //prevent default action of the button 
-        e.preventDefault();
-  
+        e.preventDefault(); // prevent default action of the button 
+
         //[STEP 2]: let's retrieve form data
         let name = $("#user-name").val();
         let shippingAddress = $("#shipping-address").val();
