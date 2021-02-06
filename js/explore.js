@@ -1,4 +1,6 @@
 function loadSneakers(url) {
+    $(".sneaker-cards").html("") // clear sneaker cards
+
     fetch(url)
     .then(response => response.json())
     .then(function(data) {
@@ -16,7 +18,7 @@ function loadSneakers(url) {
             }
             else {
                 $(".sneaker-cards").append(`
-                    <li class="sneaker-card" onclick="selectCard('${s.id}')" id="${s.id}" style="cursor: pointer;">
+                    <li class="sneaker-card" onclick="selectCard('${s.id}')" id="${s.id}" style="cursor: pointer">
                         <img src="${s.media.imageUrl}" />
                         <span class="sneaker-title">${s.title}</span>
                         <span class="sneaker-colorway">${s.colorway}</span>
@@ -44,11 +46,11 @@ $(document).ready(function() {
             $('#search').click();
         }
     });
+
     $('#search').on("click", function(e) {
         var query = $("#searchBar").val().replaceAll(' ', '%20');
         var url = `https://example-data.draftbit.com/sneakers?q=${query}&_limit=20`
         loadSneakers(url);
-        console.log(url);
     });
 
     $(".cat-group > input.btn-check").on("click", function(e){

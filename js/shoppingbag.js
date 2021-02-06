@@ -1,4 +1,57 @@
+$(document).ready(function () {
+    checkBagEmpty();
+
+    $('.table-body').on('click', ".delete", function(e) {
+        $(".table-body").html("");
+        var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
+        shoppingBag.pop(e.target.attributes.value.value);
+        localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
+        checkBagEmpty();
+    })  
+
+    $("#checkout-button").on("click", function (e) {
+        const APIKEY = "601a5d306adfba69db8b6cfc";
+        e.preventDefault();
+
+        let name = $("#user-name").val();
+        let shippingAddress = $("#shipping-address").val();
+        let contactNumber = $("#contact-number").val();
+        let emailAddress = $("#email-address").val();
+        let specialRequest = $("#special-request").val();
+
+        let jsondata = {
+            "name": name,
+            "shippingAddress": shippingAddress,
+            "contactNumber": contactNumber,
+            "emailAddress": emailAddress,
+            "specialRequest": specialRequest
+        };
+        
+        console.log(jsondata);
+        
+        var settings = {
+            "async": true,
+            "crossDomain": true, 
+            "url": "https://sneakerzone-11b9.restdb.io/rest/shipping-info",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    });
+});
+
 function loadCart() {
+    $(".table-body").html("");
+
     var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
     var totalPrice = 0;
 
@@ -25,75 +78,19 @@ function loadCart() {
 }
 
 function checkBagEmpty() {
-    var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
-    if (shoppingBag[0] === undefined) {
-        console.log('empty');
+    if (localStorage.getItem('shoppingBag') == null || localStorage.getItem('shoppingBag') == "[]") {
         $('.table-body').append(`
-                <tr>
-                    <th colspan="6" style="text-align: center;">Your bag is empty!</th>
-                </tr>
-            `)
+            <tr>
+                <th colspan="6" style="text-align: center;">Your bag is empty!</th>
+            </tr>
+        `)
         $('footer').css('position','absolute')
         $('footer').css('bottom','0')
         $('.total-cost-header').hide();
         $('.shopping-form-box').hide();
     }
+
+    else {
+        loadCart();
+    }
 }
-
-$(document).ready(function () {
-    loadCart();
-    $('footer').css('position','none')
-    $('footer').css('bottom','0')
-    $('.shopping-form-box').show();
-    checkBagEmpty();
-    $('.table-body').on('click', ".delete", function(e) {
-        var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
-        shoppingBag.pop(e.target.attributes.value.value);
-        localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
-        location.reload();
-    })
-    
-    const APIKEY = "601a5d306adfba69db8b6cfc";
-
-    //[STEP 1]: Create our submit form listener
-    $("#checkout-button").on("click", function (e) {
-        e.preventDefault(); // prevent default action of the button 
-
-        //[STEP 2]: let's retrieve form data
-        let name = $("#user-name").val();
-        let shippingAddress = $("#shipping-address").val();
-        let contactNumber = $("#contact-number").val();
-        let emailAddress = $("#email-address").val();
-        let specialRequest = $("#special-request").val();
-
-        //[STEP 3]: get form values when user clicks on send
-        //Adapted from restdb api
-        let jsondata = {
-            "name": name,
-            "shippingAddress": shippingAddress,
-            "contactNumber": contactNumber,
-            "emailAddress": emailAddress,
-            "specialRequest": specialRequest
-        };
-        console.log(jsondata);
-        //[STEP 4]: Create our AJAX settings. Take note of API key
-        var settings = {
-            "async": true,
-            "crossDomain": true, 
-            "url": "https://sneakerzone-11b9.restdb.io/rest/shipping-info",
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": APIKEY,
-                "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-        }
-
-        //[STEP 5]: Send our ajax request over to the DB and print response of the RESTDB storage to console.
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
-    });//end click 
-});
