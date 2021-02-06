@@ -181,7 +181,6 @@ box-shadow: 0 0 12px #4F359B;
     display: flex;
     flex-direction: column;
 }
-
 /* --------------------------------------- Explore Page ------------------------------------- */
 .btn {
     border-color: #4F359B;
@@ -311,6 +310,7 @@ box-shadow: 0 0 12px #4F359B;
     position: relative;
     top: -40px;
     left: 12px;
+    background-color: #FFFFFF;
 }
 
 .product-img {
