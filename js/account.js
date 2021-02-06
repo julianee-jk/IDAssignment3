@@ -51,7 +51,7 @@ $(document).ready(function () {
                     if (value == response[i].name) {
                         e.preventDefault();
                         let newPass = $("#change-pass").val();
-                        let id = response[i]._id, accName = response[i].name, accDob = response[i].dob;
+                        let id = response[i]._id, accName = response[i].name, accDob = response[i].dob, accountBal = response[i].balance;
                         updateAccountInfo(id, accName, accDob, newPass, accountBal);
                         $('#changeAccountPass-text').html('Password Changed!');
                         $('#changeAccountPass-text').css('color', 'green');
