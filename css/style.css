@@ -181,6 +181,7 @@ box-shadow: 0 0 12px #4F359B;
     display: flex;
     flex-direction: column;
 }
+
 /* --------------------------------------- Explore Page ------------------------------------- */
 .btn {
     border-color: #4F359B;
@@ -399,6 +400,7 @@ box-shadow: 0 0 12px #4F359B;
     align-items: center;
     color: #000000;
     flex-direction: column;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
 }
 
 #countdown-box {
@@ -712,18 +714,8 @@ box-shadow: 0 0 12px #4F359B;
 }
 
 .social-icon {
-    width: 50px;
-    height: 50px;
-}
-
-.social-icon-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 60px;
+    height: 60px;
 }
 
 .social-text-box > div > a {
