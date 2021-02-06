@@ -24,9 +24,28 @@ function loadCart() {
     });
 }
 
+function checkBagEmpty() {
+    var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
+    if (shoppingBag[0] === undefined) {
+        console.log('empty');
+        $('.table-body').append(`
+                <tr>
+                    <th colspan="6" style="text-align: center;">Your bag is empty!</th>
+                </tr>
+            `)
+        $('footer').css('position','absolute')
+        $('footer').css('bottom','0')
+        $('.total-cost-header').hide();
+        $('.shopping-form-box').hide();
+    }
+}
+
 $(document).ready(function () {
     loadCart();
-
+    $('footer').css('position','none')
+    $('footer').css('bottom','0')
+    $('.shopping-form-box').show();
+    checkBagEmpty();
     $('.table-body').on('click', ".delete", function(e) {
         var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
         shoppingBag.pop(e.target.attributes.value.value);
