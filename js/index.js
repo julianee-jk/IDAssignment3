@@ -3,11 +3,6 @@ $(document).ready(function () {
     loadRandom();
 });
 
-function selectCard(sneakerId) {
-    localStorage.setItem("viewProductId", sneakerId);
-    window.location.href = "product.html";
-}
-
 function loadTrending() {
     var url = "https://example-data.draftbit.com/sneakers?_limit=10"
     fetch(url)
@@ -16,7 +11,7 @@ function loadTrending() {
         var sneakers = data;
         sneakers.map(function(s) {
             $(".trending").append(`
-                <div class="card" id="${s.id}">
+                <div class="card" id="${s.id}" onclick="selectCard('${s.id}')" style="cursor: pointer">
                     <img src="${s.media.imageUrl}" />
                     <div class="card-body">
                         <span class="sneaker-title">${s.title}</span>
@@ -37,7 +32,7 @@ function loadRandom() {
         var sneakers = data;
         sneakers.map(function(s) {
             $(".random").append(`
-                <div class="card" id="${s.id}">
+                <div class="card" id="${s.id}" onclick="selectCard('${s.id}')" style="cursor: pointer">
                     <img src="${s.media.imageUrl}" />
                     <div class="card-body">
                         <span class="sneaker-title">${s.title}</span>
@@ -48,4 +43,9 @@ function loadRandom() {
             `)
         });
     });
+}
+
+function selectCard(sneakerId) {
+    localStorage.setItem("viewProductId", sneakerId);
+    window.location.href = "product.html";
 }
