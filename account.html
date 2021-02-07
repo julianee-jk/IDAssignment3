@@ -105,16 +105,16 @@
     <div class="account-main-box">
         
         <div class="account-section-header">Balance
-            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#addBalModal" id="add-bal">&#65291;</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#addBalModal" id="add-bal">&#65291;</button>
         </div>
         <div class="account-bal-id-box">
             <span class="account-bal-id-text">$</span>
             <h4 id="account-bal-id">Loading...</h4>
         </div>
         <!-- Add account balance modal -->
-        <div class="modal fade" id="addBalModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content addBal-modal-content">
+        <div class="modal fade" id="addBalModal" tabindex="-1" aria-labelledby="addBalModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
                     <h2>Add Balance</h2>
                     <div class="addBal-box">
                         <h6>Current Account Balance</h6>

@@ -119,6 +119,7 @@ footer {
 
 /* --------------------------------------- Index Page --------------------------------------- */
 
+/* Main header section - Carousel */
 .carousel-item {
     max-height: 75vh;
 }
@@ -141,6 +142,7 @@ footer {
     background-color: #000;
 }
 
+/* Section styles */
 .index-section {
     display: flex;
     flex-direction: column;
@@ -164,6 +166,7 @@ footer {
     margin-bottom: 24px;
 }
 
+/* Individual displayed cards */
 .card {
     height: 200px;
     min-width: 600px;
@@ -174,7 +177,7 @@ footer {
     border-radius: 0;
 }
 
-.card img {
+.card > img {
     padding: 12px;
     max-width: 50%;
 }
@@ -269,12 +272,19 @@ footer {
 }
 
 .sneaker-title {
+    color: #000;
     font-weight: 900;
     font-size: 21px;
 }
 
 .sneaker-colorway {
     color: #888;
+}
+
+.sneaker-price {
+    color: #000;
+    font-weight: 900;
+    font-size: 24px;
 }
 
 .pagination {
@@ -587,12 +597,8 @@ footer {
 
 /* Add balance modal */
 
-.addBal-modal-content {
-    height: 400px;
-}
-
 .addBal-box {
-    padding: 32px 70px 32px 70px;
+    padding: 32px;
     text-align: center;
 }
 
