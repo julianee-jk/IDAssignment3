@@ -18,6 +18,9 @@ $(document).ready(function () {
     if (value != null) {
         $('#account-name').html(value);
     }
+    else  {
+        window.location.href = 'index.html';
+    }
     $("#addBal-button").click(function (e) { 
         getAccountData();
     });
