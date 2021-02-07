@@ -177,9 +177,15 @@ footer {
     border-radius: 0;
 }
 
+.card:hover {
+    border: #4F359B solid 1px;
+    box-shadow: inset 0 0 4px #4F359B;
+    cursor: pointer;
+}
+
 .card > img {
     padding: 12px;
-    max-width: 50%;
+    max-width: 48%;
 }
 
 .card-body {

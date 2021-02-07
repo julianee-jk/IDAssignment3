@@ -11,7 +11,7 @@ function loadTrending() {
         var sneakers = data;
         sneakers.map(function(s) {
             $(".trending").append(`
-                <div class="card" id="${s.id}" onclick="selectCard('${s.id}')" style="cursor: pointer">
+                <div class="card" id="${s.id}" onclick="selectCard('${s.id}')">
                     <img src="${s.media.imageUrl}" />
                     <div class="card-body">
                         <span class="sneaker-title">${s.title}</span>
@@ -32,7 +32,7 @@ function loadRandom() {
         var sneakers = data;
         sneakers.map(function(s) {
             $(".random").append(`
-                <div class="card" id="${s.id}" onclick="selectCard('${s.id}')" style="cursor: pointer">
+                <div class="card" id="${s.id}" onclick="selectCard('${s.id}')">
                     <img src="${s.media.imageUrl}" />
                     <div class="card-body">
                         <span class="sneaker-title">${s.title}</span>
