@@ -1,25 +1,29 @@
-//[STEP 0]: Make sure our document is A-OK
 $(document).ready(function () {
+    $("form").submit(function() { // disable refresh when user press enter.
+        return false;
+    });
+
     // Close login modal when create modal open
     $("#createModalButton").click(function (e) {
-        $('#loginModal').modal('hide')
+        $('#loginModal').modal('hide');
+        $('#createModal').modal('show');
+        $('#login-form-text-error').hide();
     });
 
     // Close create modal when login modal open
     $("#loginModalButton").click(function (e) {
-        $('#createModal').modal('hide')
+        $('#createModal').modal('hide');
+        $('#loginModal').modal('show');
+        $('#create-form-text-error').hide();
     });
 
     // Reset login header text
     $("#login-text").click(function (e) {
-        $('#login-header-text').html('Login');
-        $('#login-header-text').css('color', 'black');
+        $('#login-form-text-error').hide();
+        $('#create-form-text-error').hide();
     });
 
     $('#name-text').hide();
-    $("form").submit(function() { // disable refresh when user press enter.
-        return false;
-    });
 
     // Check if user is logged in
     const value = localStorage.getItem('accountLoggedIn')
@@ -29,29 +33,25 @@ $(document).ready(function () {
         $('#name-text').show();
         $('#account-name').html(value);
     }
-    //what kind of interface we want at the start 
+    
     const APIKEY = "601a5d306adfba69db8b6cfc";
     getAccountData();
-    //[STEP 1]: Create our submit form listener
+
     $("#create-button").on("click", function (e) {
-        //prevent default action of the button 
         e.preventDefault();
 
-        //[STEP 2]: let's retrieve form data
         let name = $("#create-name").val();
         let dob = $("#create-dob").val();
         let password = $("#create-password").val();
         let balance = 0;
 
-        //[STEP 3]: get form values when user clicks on send
         let jsondata = {
             "name": name,
             "dob": dob,
             "password": password,
             "balance": balance
         };
-        console.log(jsondata);
-        //[STEP 4]: Create our AJAX settings. Take note of API key
+
         let settings = {
             "async": true,
             "crossDomain": true,
@@ -66,24 +66,25 @@ $(document).ready(function () {
             "data": JSON.stringify(jsondata)
         }
 
-        // Send our ajax request over to the DB
         $.ajax(settings).done(function (response) {
             console.log(response);
             getAccountData(); // Update
-            alert('Account successfully created! Login again!');
-            $('#createModal').modal('hide')
-            $('#loginModal').modal('show')
+            $('#login-form-text-error').html('Account created successfully! Please log in again.');
+            $('#login-form-text-error').css('color','green');
+            $('#createModal').modal('hide');
+            $('#loginModal').modal('show');
+            $('#login-form-text-error').show();
+            $('#create-form-text-error').hide();
         });
-    });//end click 
+    });
 
-    // Get account data from database
     function getAccountData(limit = 10, all = true) {
-        // Create our AJAX settings
+
         let settings = {
             "async": true,
             "crossDomain": true,
             "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
-            "method": "GET", // Use GET to retrieve info
+            "method": "GET",
             "headers": {
                 "content-type": "application/json",
                 "x-apikey": APIKEY,
@@ -91,21 +92,32 @@ $(document).ready(function () {
             },
         }
 
-        // Loop to continously add on data
         $.ajax(settings).done(function (response) {
-            // On login click, check if login info is same as database info
+            $("#create-button").click(function (e) {
+                for (let i = 0; i < response.length && i < limit; i++) { 
+                    if (response[i].name === $('#create-name').val()) {
+                        $('#create-form-text-error').show();
+                        $('#login-form-text-error').hide();
+                    }
+                }
+            });
+
             $("#login-button").click(function (e) {
                 for (let i = 0; i < response.length && i < limit; i++) {
                     if ($("#login-name").val() === response[i].name && $("#login-password").val() === response[i].password) {
                         $('#login-text').html(response[i].name);
+                        $('#login-form-text-error').hide();
                         localStorage.setItem("accountLoggedIn",response[i].name);
                         $('#loginModal').modal('hide')
                         location.reload();
                         break;
                     }
+
                     else {
-                        $('#login-header-text').html('Invalid Details!');
-                        $('#login-header-text').css('color', 'red');
+                        $('#login-form-text-error').html('Invalid Account Name or Password!');
+                        $('#login-form-text-error').css('color','red');
+                        $('#login-form-text-error').show();
+                        $('#create-form-text-error').hide();
                         continue;
                     }
                 }

@@ -45,21 +45,27 @@
                     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content accLogin-modal-content">
-                                <h2 id="login-header-text">Login</h2>
+                                <h2 id="login-header-text">Login</h2> 
                                 <div class="login-box">
+                                    <small id="login-form-text-error">Invalid Account Name or Password!</small>
                                     <form>
                                         <div class="form-group">
                                             <label for="login-name">Account Name</label>
-                                            <input type="text" class="form-control" id="login-name"required>
+                                            <input type="text" class="form-control" id="login-name" required>
                                         </div>
+
                                         <div class="form-group">
                                             <label for="login-password">Password</label>
                                             <input type="password" class="form-control" id="login-password" required>
                                         </div>
+
                                         <div class="form-group login-button-box">
                                             <button type="submit" class="btn btn-primary hvr-glow" id="login-button">Login</button>
-                                            <h6>&nbsp;&nbsp;&nbsp;or <a data-bs-toggle="modal" data-bs-target="#createModal" id="createModalButton">
-                                                Create Account</a>
+                                            <h6>
+                                                &nbsp;&nbsp;&nbsp;or 
+                                                <a data-bs-toggle="modal" data-bs-target="#createModal" id="createModalButton">
+                                                    Create Account
+                                                </a>
                                             </h6>
                                         </div>
                                     </form>
@@ -67,12 +73,14 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Create Account modal -->
                     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModal" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content accCreate-modal-content">
                                 <h2 id="login-header-text">Create Account</h2>
                                 <div class="create-box">
+                                    <small id="create-form-text-error">Account Name already exists!</small>
                                     <form>
                                         <div class="form-group">
                                             <label for="create-name">Account Name</label>
@@ -88,8 +96,11 @@
                                         </div>
                                         <div class="form-group login-button-box">
                                             <button type="submit" class="btn btn-primary hvr-glow" id="create-button">Create</button>
-                                            <h6>&nbsp;&nbsp;&nbsp;or <a data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="loginModalButton">
-                                                Login to an Existing Account</a>
+                                            <h6>
+                                                &nbsp;&nbsp;&nbsp;or 
+                                                <a data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="loginModalButton">
+                                                    Login to an Existing Account
+                                                </a>
                                             </h6>
                                         </div>
                                     </form>

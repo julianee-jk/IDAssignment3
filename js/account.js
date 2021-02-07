@@ -12,27 +12,32 @@ var topupChoice = '';
 
 $(document).ready(function () {
     const APIKEY = "601a5d306adfba69db8b6cfc";
+
     // Check if user is logged in
     const value = localStorage.getItem('accountLoggedIn')
+
     getAccountData();
+
     if (value != null) {
         $('#account-name').html(value);
     }
+
     else  {
         window.location.href = 'index.html';
     }
+
     $("#addBal-button").click(function (e) { 
         getAccountData();
     });
     
     // Get account data from database
     function getAccountData(limit = 10, all = true) {
-        // Create our AJAX settings
+        
         let settings = {
             "async": true,
             "crossDomain": true,
             "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
-            "method": "GET", // Use GET to retrieve info
+            "method": "GET",
             "headers": {
                 "content-type": "application/json",
                 "x-apikey": APIKEY,
@@ -48,6 +53,7 @@ $(document).ready(function () {
                     $('#account-bal-id').html(response[i].balance);
                 }
             }
+
             // On login click, check if login info is same as database info
             $("#changePass-button").on("click", function (e) {
                 for (let i = 0; i < response.length && i < limit; i++) {
@@ -70,33 +76,40 @@ $(document).ready(function () {
                 if (value == response[i].name) {
                     let accountBal = response[i].balance;
                     var topupValue = document.getElementsByName('topup-value');
+
                     for (let i = 0; i < topupValue.length; i++) {
                         if (topupValue[i].checked) {
                             topupChoice = topupValue[i].value; //Get topup-value radio button value
                             console.log(topupChoice)
                         }
                     }
+
                     if (topupChoice == '10SZ') {
                         accountBal += 10;
                     }
+                    
                     else if (topupChoice == '15SZ') {
                         accountBal += 15;
                     }
+
                     else if (topupChoice == '20SZ') {
                         accountBal += 20;
                     }
+
                     else if (topupChoice == '50SZ') {
                         accountBal += 50;
                     }
+
                     else 
                         break;
-                    console.log(accountBal);
+
                     let id = response[i]._id, accName = response[i].name, accDob = response[i].dob, accPass = response[i].password
                     updateAccountInfo(id, accName, accDob, accPass, accountBal);
                     $('#account-bal-id2').html(accountBal);
                     $('#account-bal-id').html(accountBal);
                     break;
                 }
+
                 else 
                     continue;
             }

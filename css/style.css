@@ -80,19 +80,28 @@ footer {
     box-shadow: 0 0 12px #4F359B;
 }
 
-/* Login popup modal */
+/* Popup modal */
 .login-box, .create-box {
-    padding: 0 40px 0 40px;
+    text-align: center;
+    padding: 24px;
 }
 
-.login-box > form > .form-group {
-    margin-top: 50px;
+#create-form-text-error, #login-form-text-error {
+    color: #ff0000;
+}
+
+.login-box > form {
+    margin-top: 24px;
+}
+
+.login-box > form > .form-group, .create-box > form > .form-group {
+    margin-top: 24px;
+    text-align: left;
 }
 
 .login-button-box {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 }
 
 .changePass-box > form > .login-button-box {
@@ -108,18 +117,6 @@ footer {
 #createModalButton, #loginModalButton {
     color:#4F359B;
     cursor: pointer;
-}
-
-.create-box > form > .form-group {
-    margin-top: 40px;
-}
-
-.accCreate-modal-content {
-    height: 500px;
-}
-
-.accLogin-modal-content {
-    height: 440px;
 }
 
 /* --------------------------------------- Index Page --------------------------------------- */
@@ -551,6 +548,7 @@ footer {
 }
 
 /* --------------------------------------- Account Page ------------------------------------- */
+
 #account-name, .account-details > h6{
     color: #4F359B;
     margin-top: 10px;
