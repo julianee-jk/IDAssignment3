@@ -93,7 +93,12 @@ footer {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 21em;
+}
+
+.changePass-box > form > .login-button-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #login-button, #create-button, .login-button-box > h6, #login-header-text  {
@@ -638,7 +643,7 @@ footer {
 }
 
 .changePass-box {
-    padding: 0px 70px 0 70px;
+    padding: 0px 48px 0 48px;
 }
 
 .changePass-box > form > .form-group {
