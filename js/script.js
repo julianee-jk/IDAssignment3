@@ -1,21 +1,21 @@
-// Close login modal when create modal open
-$("#createModalButton").click(function (e) {
-    $('#loginModal').modal('hide')
-});
-
-// Close create modal when login modal open
-$("#loginModalButton").click(function (e) {
-    $('#createModal').modal('hide')
-});
-
-// Reset login header text
-$("#login-text").click(function (e) {
-    $('#login-header-text').html('Login');
-    $('#login-header-text').css('color', 'black');
-});
-
 //[STEP 0]: Make sure our document is A-OK
 $(document).ready(function () {
+    // Close login modal when create modal open
+    $("#createModalButton").click(function (e) {
+        $('#loginModal').modal('hide')
+    });
+
+    // Close create modal when login modal open
+    $("#loginModalButton").click(function (e) {
+        $('#createModal').modal('hide')
+    });
+
+    // Reset login header text
+    $("#login-text").click(function (e) {
+        $('#login-header-text').html('Login');
+        $('#login-header-text').css('color', 'black');
+    });
+
     $('#name-text').hide();
     $("form").submit(function() { // disable refresh when user press enter.
         return false;
@@ -70,8 +70,7 @@ $(document).ready(function () {
         $.ajax(settings).done(function (response) {
             console.log(response);
             getAccountData(); // Update
-            // localStorage.setItem('accountBal', 0)
-            alert('Account successfully create! Login again!');
+            alert('Account successfully created! Login again!');
             $('#createModal').modal('hide')
             $('#loginModal').modal('show')
         });
