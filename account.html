@@ -138,13 +138,13 @@
                         </div>
                         <div class="topup-box">
                             <h6>Choose top-up option</h6>
-                            <input type="radio" name="topup-value" value="10SZ" id="topup10">
+                            <input type="radio" name="topup-value" value="$10" id="topup10">
                             <label for="topup10">$10</label>
-                            <input type="radio" name="topup-value" value="15SZ" id="topup15">
+                            <input type="radio" name="topup-value" value="$15" id="topup15">
                             <label for="topup15">$15</label>
-                            <input type="radio" name="topup-value" value="20SZ" id="topup20">
+                            <input type="radio" name="topup-value" value="$20" id="topup20">
                             <label for="topup20">$20</label>
-                            <input type="radio" name="topup-value" value="50SZ" id="topup50">
+                            <input type="radio" name="topup-value" value="$50" id="topup50">
                             <label for="topup50">$50</label>
                         </div>
                         <button type="submit" class="btn btn-primary hvr-glow" id="addBal-button">Confirm</button>
@@ -152,7 +152,40 @@
                 </div>
             </div>
         </div>
-        <div class="account-section-header">Vouchers</div>
+        <div class="account-section-header">Game Coupons
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#addGCModal" id="add-gc">&#65291;</button>
+        </div>
+        <div class="account-bal-id-box">
+            <h4 id="account-gc-id">Loading...</h4>
+            <span class="account-bal-id-text">GC</span>
+        </div>
+        <!-- Add account balance modal -->
+        <div class="modal fade" id="addGCModal" tabindex="-1" aria-labelledby="addGCModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <h2>Add Game Coupon</h2>
+                    <div class="addBal-box">
+                        <h6>Current Account Balance</h6>
+                        <div class="account-bal-id-box">
+                            <h4 id="account-gc-id2">Loading...</h4>
+                            <span class="account-bal-id-text">GC</span>
+                        </div>
+                        <div class="topup-box">
+                            <h6>Choose top-up option</h6>
+                            <input type="radio" name="topupgc-value" value="1GC" id="topupGC1">
+                            <label for="topupGC1">1GC</label>
+                            <input type="radio" name="topupgc-value" value="5GC" id="topupGC5">
+                            <label for="topupGC5">5GC</label>
+                            <input type="radio" name="topupgc-value" value="15GC" id="topupGC15">
+                            <label for="topupGC15">15GC</label>
+                            <input type="radio" name="topupgc-value" value="50GC" id="topupGC50">
+                            <label for="topupGC50">50GC</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary hvr-glow" id="addGC-button">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="account-section-header">Dashboard</div>
         <div class="account-details">
             <div class="account-section-header">Account Settings</div>
