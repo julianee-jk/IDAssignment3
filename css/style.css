@@ -86,7 +86,7 @@ footer {
     padding: 24px;
 }
 
-#create-form-text-error, #login-form-text-error {
+#create-form-text-error, #login-form-text-error, #account-bal-error {
     color: #ff0000;
 }
 
@@ -575,30 +575,30 @@ footer {
 }
 
 /* Account Balance Add button */
-#add-bal {
+#add-bal, #add-gc {
     font-size: 15px;
     margin-left: 20px;
 }
 
 /* Always updated account balance */
-#account-bal-id, #account-bal-id2 {
+.account-bal, .account-gc{
     color: #707070;
     font-size: 30px;
     margin: 0;
 }
 
-.account-bal-id-box {
+.account-currency-box {
     display: flex;
     align-items: center;
 }
 
-.addBal-box > .account-bal-id-box {
+.addBal-box > .account-currency-box {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.account-bal-id-text {
+.account-currency {
     color: #707070;
     font-size: 30px;
     font-weight: 700;
@@ -614,7 +614,7 @@ footer {
 /* Top-up options buttons */
 
 .topup-box {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .topup-box > input {
@@ -623,7 +623,7 @@ footer {
 
 .topup-box > input + label {
     position: relative;
-    margin: 10px;
+    margin: 4px;
     padding: 10px 20px 10px 20px;
     cursor:pointer;
     font-size: 15px;
