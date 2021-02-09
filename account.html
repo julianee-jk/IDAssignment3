@@ -4,12 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <title>SneakerZone</title>
+    
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
-
-    <title>SneakerZone</title>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -22,225 +21,165 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="explore.html">Explore</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="games.html">Games</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="explore.html">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <span class="nav-item">
-                    <a class="nav-link" aria-current="page" href="shoppingbag.html"><img src="assets/img/icons/shoppingbag.svg" width="28px" height="28px" alt="shopping-bag"/></a>
-                </span>
-                <span class="nav-item">
-                    <!-- Button trigger modal -->
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal" id="login-text">Login</a>
-                    <a class="nav-link" href="account.html" id="name-text">Name</a>
-
-                    <!-- Login modal -->
-                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content accLogin-modal-content">
-                                <h2 id="login-header-text">Login</h2> 
-                                <div class="login-box">
-                                    <small id="login-form-text-error">Invalid Account Name or Password!</small>
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="login-name">Account Name</label>
-                                            <input type="text" class="form-control" id="login-name" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="login-password">Password</label>
-                                            <input type="password" class="form-control" id="login-password" required>
-                                        </div>
-
-                                        <div class="form-group login-button-box">
-                                            <button type="submit" class="btn btn-primary hvr-glow" id="login-button">Login</button>
-                                            <h6>
-                                                &nbsp;&nbsp;&nbsp;or 
-                                                <a data-bs-toggle="modal" data-bs-target="#createModal" id="createModalButton">
-                                                    Create Account
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Create Account modal -->
-                    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModal" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content accCreate-modal-content">
-                                <h2 id="login-header-text">Create Account</h2>
-                                <div class="create-box">
-                                    <small id="create-form-text-error">Account Name already exists!</small>
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="create-name">Account Name</label>
-                                            <input type="text" class="form-control" id="create-name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="create-dob">Date of birth</label>
-                                            <input type="date" class="form-control" id="create-dob" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="create-password">Password</label>
-                                            <input type="password" class="form-control" id="create-password" required>
-                                        </div>
-                                        <div class="form-group login-button-box">
-                                            <button type="submit" class="btn btn-primary hvr-glow" id="create-button">Create</button>
-                                            <h6>
-                                                &nbsp;&nbsp;&nbsp;or 
-                                                <a data-toggle="modal" data-toggle="modal" data-target="#loginModal" id="loginModalButton">
-                                                    Login to an Existing Account
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </span>
+                <span class="nav-item"><a class="nav-link" href="shoppingbag.html"><img src="assets/img/icons/shoppingbag.svg" width="28px" height="28px" alt="shopping-bag"/></a></span>
+                <span class="nav-item"><a class="nav-link" href="account.html" id="name-text"></a></span>
             </div>
         </div>
     </nav>
 
-    <div class="header-left-text">
-        <h1>Hi <span id="account-name">Account Name</span></h1>
-    </div>
+    <div class="account">
+        <section>
+            <h2>Hi <span id="account-name" style="color: #4F359B"></span></h2>
+        </section>
 
-    <!-- Main box for page -->
-    <div class="account-main-box">
+        <section>
+            <h2>Balance
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#add-balance-modal">+</button>
+            </h2>
+            <h3>$<span class="account-balance"></h3>
+        </section>
+
+        <section>
+            <h2>Game Coupons
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#add-gc-modal">+</button>
+            </h2>
+            <h3><span class="account-gc"></span>GC</h3>
+        </section>
+
+        <section>
+            <h2>Dashboard</h2>
+        </section>
+
+        <section>
+            <h2>Account Settings</h2>
+            <div class="account-settings">
+                <a data-bs-toggle="modal" data-bs-target="#add-balance-modal">Add More Money to Balance</a>
+                <a>View Account Purchase History</a>
+                <a data-bs-toggle="modal" data-bs-target="#change-password-modal">Change Account Password</a>
+            </div>
+        </section>
         
-        <div class="account-section-header">Balance
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#addBalModal" id="add-bal">&#65291;</button>
-        </div>
-
-        <div class="account-currency-box">
-            <span class="account-currency">$</span>
-            <h4 class="account-bal">Loading...</h4>
-        </div>
-
-        <!-- Add account balance modal -->
-        <div class="modal fade" id="addBalModal" tabindex="-1" aria-labelledby="addBalModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <h2>Add Balance</h2>
-
-                    <div class="addBal-box">
-                        <h6>Current Account Balance</h6>
-
-                        <div class="account-currency-box">
-                            <span class="account-currency">$</span>
-                            <h4 class="account-bal">Loading...</h4>
-                        </div>
-                        <div class="topup-box">
-                            <h6>Choose top-up option</h6>
-                            <input type="radio" name="topup-value" value="$10" id="topup10">
-                            <label for="topup10">$10</label>
-
-                            <input type="radio" name="topup-value" value="$15" id="topup15">
-                            <label for="topup15">$15</label>
-
-                            <input type="radio" name="topup-value" value="$20" id="topup20">
-                            <label for="topup20">$20</label>
-
-                            <input type="radio" name="topup-value" value="$50" id="topup50">
-                            <label for="topup50">$50</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary hvr-glow" id="addBal-button">Confirm</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="account-section-header">Game Coupons
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#addGCModal" id="add-gc">&#65291;</button>
-        </div>
-
-        <div class="account-currency-box">
-            <h4 class="account-gc">Loading...</h4>
-            <span class="account-currency">GC</span>
-        </div>
-
-        <!-- Add account balance modal -->
-        <div class="modal fade" id="addGCModal" tabindex="-1" aria-labelledby="addGCModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <h2>Add Game Coupon</h2>
-                    <div class="addBal-box">
-                        <h6>Current Game Coupons</h6>
-                        <div class="account-currency-box">
-                            <h4 class="account-gc">Loading...</h4>
-                            <span class="account-currency">GC</span>
-                        </div>
-                        <small id="account-bal-error">Insufficient Account Balance!</small>
-                        <div class="topup-box">
-                            <h6>Choose top-up option</h6>
-                            <input type="radio" name="topupgc-value" value="1GC" id="topupGC1">
-                            <label for="topupGC1">1GC <br><span style="color: #969696;">for $3</span></label>
-
-                            <input type="radio" name="topupgc-value" value="5GC" id="topupGC5">
-                            <label for="topupGC5">5GC <br><span style="color: #969696;">for $14</span></label>
-
-                            <input type="radio" name="topupgc-value" value="15GC" id="topupGC15">
-                            <label for="topupGC15">15GC <br><span style="color: #969696;">for $43</span></label>
-
-                            <input type="radio" name="topupgc-value" value="50GC" id="topupGC50">
-                            <label for="topupGC50">50GC <br><span style="color: #969696;">for $145</span></label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary hvr-glow" id="addGC-button">Confirm</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="account-section-header">Dashboard</div>
-        <div class="account-details">
-            <div class="account-section-header">Account Settings</div>
-            <h6><a data-bs-toggle="modal" data-bs-target="#changePassModal" id="changePass-text">Change Account Password</a></h6>
-            <!-- Change account password modal -->
-            <div class="modal fade" id="changePassModal" tabindex="-1" aria-labelledby="changePassModal" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content changePass-modal-content">
-                        <h2 id="changeAccountPass-text">Change Account Password</h2>
-                        <div class="changePass-box">
-                            <form>
-                                <div class="form-group">
-                                    <label for="change-pass">Enter new password</label>
-                                    <input type="password" class="form-control" id="change-pass" required>
-                                </div>
-                                <div class="form-group login-button-box">
-                                    <button type="submit" class="btn btn-primary hvr-glow" id="changePass-button">Confirm</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h6><a data-bs-toggle="modal" data-bs-target="#addBalModal">Add more Money to Balance</a></h6>
-            <h6>View Account Purchase History</h6>
+        <section>
             <button type="button" class="btn btn-danger" id="logout-button">Logout</button>
+        </section>
+    </div>
+
+    <!-- Add Balance Modal -->
+    <div class="modal fade" id="add-balance-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Balance</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div>
+                        <p>Current Account Balance</p>
+                        <h3>$<span class="account-balance"></span></h3>
+                    </div>
+
+                    <div>
+                        <p>Choose Top-Up Option</p>
+                        <div class="btn-group topUp-group" style="margin: 0 0 0 1px" role="group">
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$10" value="$10" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="topUp$10">$10</label>
+                        
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$15" value="$15" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="topUp$15">$15</label>
+                        
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$20" value="$20" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="topUp$20">$20</label>
+
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$50" value="$50" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="topUp$50">$50</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary hvr-glow" id="topUp-balance-button" style="margin-top: 24px" >Top Up Balance</button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Add Game Coupon Modal -->
+    <div class="modal fade" id="add-gc-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Game Coupon</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div>
+                        <p>Current Account Game Coupons</p>
+                        <h3><span class="account-gc"></span>GC</h3>
+                    </div>
+
+                    <small id="account-gc-error" style="display: none; color: red;">Insufficient Account Balance!</small>
+
+                    <div>
+                        <p>Choose Top-Up Option</p>
+                        <div class="btn-group topUp-group" style="margin: 0 0 0 1px" role="group">
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp1GC" value="1GC" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="topUp1GC">1GC<br><span style="color: #888">for $3</span></label>
+                        
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp5GC" value="5GC" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="topUp5GC">5GC<br><span style="color: #888">for $14</span></label>
+
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp15GC" value="15GC" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="topUp15GC">15GC<br><span style="color: #888">for $43</span></label>
+
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp50GC" value="50GC" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="topUp50GC">50GC<br><span style="color: #888">for $145</span></label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary hvr-glow" id="topUp-gc-button" style="margin-top: 24px" >Top Up GC</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Account Password Modal -->
+    <div class="modal fade" id="change-password-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Change Account Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <small id="password-change-text" style="display: none; color: green;">Password Changed!</small>
+                    <form id="password-change">
+                        <div class="form-group">
+                            <label for="new-password">Enter New Password</label>
+                            <input type="password" class="form-control" id="new-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary hvr-glow" style="margin-top: 24px" >Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
     <footer>
         <div id="footer-text">Copyright © 2021 Ee Jun Kai Julian & Chew Kah Seng - All Rights Reserved.</div>
     </footer>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
     <script src="js/account.js"></script>
 </body>
 </html>
