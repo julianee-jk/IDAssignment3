@@ -1,149 +1,17 @@
-// Set the date we're counting down to
-let spinExpired = false, flipExpired = false, headWin = false, tailWin = false;
-document.getElementById("countdown-flip").innerHTML = "GAME EXPIRED";
-spinTimer();
-
-function spinTimer() {
-  flipExpired = true;
-  var countDownDate = new Date().getTime() + 300000;
-  // Update the count down every 1 second
-  var x = setInterval(function () {
-  // Get today's date and time
-  var now = new Date().getTime();
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-  // Time calculations for days, hours, minutes and seconds
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  // Display the result in the element with id="countdown"
-  document.getElementById("countdown-spin").innerHTML =
-    `<div id="countdown-box">
-    <div class="countdown-timer">${hours}<div class="countdown-text">HOURS</div></div>
-    <div class="countdown-timer">${minutes}<div class="countdown-text">MINS</div></div>
-    <div class="countdown-timer">${seconds}<div class="countdown-text">SECS</div></div>
-  </div>`;
-  // If the count down is finished, check
-  if (distance < 0) {
-    clearInterval(x);
-    // Need to check when one cooldown ends, another starts
-    document.getElementById("countdown-spin").innerHTML = "GAME EXPIRED";
-    spinExpired = true, flipExpired = false;
-    flipTimer();
-  }
-}, 1000)};
-
-function flipTimer() {
-  spinExpired = true;
-  var countDownDate = new Date().getTime() + 300000;
-  // Update the count down every 1 second
-  var x = setInterval(function () {
-  // Get today's date and time
-  var now = new Date().getTime();
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-  // Time calculations for days, hours, minutes and seconds
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
-  // Display the result in the element with id="countdown"
-  document.getElementById("countdown-flip").innerHTML =
-    `<div id="countdown-box">
-    <div class="countdown-timer">${hours}<div class="countdown-text">HOURS</div></div>
-    <div class="countdown-timer">${minutes}<div class="countdown-text">MINS</div></div>
-    <div class="countdown-timer">${seconds}<div class="countdown-text">SECS</div></div>
-  </div>`;
-  // If the count down is finished, check
-  if (distance < 0) {
-    clearInterval(x);
-    // Need to check when one cooldown ends, another starts
-    document.getElementById("countdown-flip").innerHTML = "GAME EXPIRED";
-    flipExpired = true, spinExpired = false;
-    spinTimer();
-  }
-}, 1000)};
-
-let theWheel = new Winwheel({
-  'numSegments': 16,         // Number of segments
-  'outerRadius': 212,       // The size of the wheel.
-  'centerX': 217,       // Used to position on the background correctly.
-  'centerY': 219,
-  'textFontSize': 25,        // Font size.
-  'segments':            // Definition of all the segments.
-    [
-      { 'fillStyle': '#9560a6', 'text': 'Voucher' },
-      { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#9560a6', 'text': '' },
-      { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#ffb217', 'text': 'JACKPOT' },
-      { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#9560a6', 'text': '' },
-      { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#9560a6', 'text': '' },
-      { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#9560a6', 'text': 'Voucher' },
-      { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#9560a6', 'text': ''},
-      { 'fillStyle': '#c8b0d9', 'text': '' },
-      { 'fillStyle': '#9560a6', 'text': '' },
-      { 'fillStyle': '#c8b0d9', 'text': '' }
-    ],
-  'animation':               // Definition of the animation
-  {
-    'type': 'spinToStop',
-    'duration': 5,
-    'spins': 8,
-    'callbackFinished': alertPrize
-  }
-});
-
-let wheelSpinning = false;
-  
-function startSpin() {
-  if (spinExpired == true) {
-    alert("Game has already expired, wait for next opening time!");
-  }
-  else {
-    // Ensure that spinning can't be clicked again while already running.
-    if (wheelSpinning == false) {
-      theWheel.animation.spins = 8;
-      // // Disable the spin button so can't click again while wheel is spinning.
-      document.getElementById('spin_button').innerHTML = "SPINNING";
-
-      // Begin the spin animation by calling startAnimation on the wheel object.
-      theWheel.startAnimation();
-
-      // the current animation. The user will have to reset before spinning again.
-      wheelSpinning = true;
-    }
-  }
-}
-// Called when the animation has finished.
-function alertPrize(indicatedSegment) {
-  // Do basic alert of the segment text.
-  if (indicatedSegment.text == 'JACKPOT')
-    alert("CONGRATS! YOU HIT THE " + indicatedSegment.text + "!!");
-  else if (indicatedSegment.text == 'Voucher')
-    alert("You won a " + indicatedSegment.text + "!");
-  else
-    alert("You did not win anything.");
-
-  theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
-  theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
-  theWheel.draw();                // Call draw to render changes to the wheel.
-  document.getElementById('spin_button').innerHTML = "SPIN";
-  wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
-}
-
+let spinExpired = false, flipExpired = false, headWin = false, tailWin = false, wheelSpinning = false;
 // Coin flip
 let coinFlipping = false, heads = false, tails = false;
+
+$(document).ready(function() {
+  $('#countdown-flip').html('GAME EXPIRED');
+  spinTimer();
+});
 
 // Change heads button text & disable when tails is clicked
 function headButton() {
   if (tails == false && flipExpired == false) {
     heads = true;
-    document.getElementById('heads-button').innerHTML = "You picked Heads!";
+    $('#heads-button').html('You picked Heads!');
   }
 }
 
@@ -151,7 +19,7 @@ function headButton() {
 function tailButton() {
   if (heads == false && flipExpired == false) {
     tails = true;
-    document.getElementById('tails-button').innerHTML = "You picked Tails!";
+    $('#tails-button').html('You picked Tails!');
   }
 }
 
@@ -165,7 +33,7 @@ function startFlip() {
   else {
     if (coinFlipping == false) {
       var flipResult = Math.random();
-      document.getElementById('flip-text').innerHTML = "Flipping..";
+      $('#flip-text').html('Flipping..');
       $('#coin').removeClass(); // Remove class from coin to stop animation
       coinFlipping = true;
       // 50/50 coin flip result
@@ -182,29 +50,25 @@ function startFlip() {
 
       // Set 2 secs cooldown
       var timeleft = 2;
-      var downloadTimer = setInterval(function(){
-        if(timeleft <= 0){
+      var downloadTimer = setInterval(function () {
+        if (timeleft <= 0) {
           clearInterval(downloadTimer);
           // Check if heads win
           if (headWin == true) {
             // Check if user picked heads - Win
-            if (heads == true) 
-              alert("You won!");
-            else
-              alert("You lost!");
+            if (heads == true) alert("You won!");
+            else alert("You lost!");
           }
           // Check if tails win
           if (tailWin == true) {
             // Check if user picked tails - Win
-            if (tails == true)
-              alert("You won!");
-            else
-              alert("You lost!");
+            if (tails == true) alert("You won!");
+            else alert("You lost!");
           }
           heads = false, tails = false, headWin = false, tailWin = false; // Reset user option to false
-          document.getElementById('flip-text').innerHTML = "Flip the Coin!";
-          document.getElementById('heads-button').innerHTML = "HEADS";
-          document.getElementById('tails-button').innerHTML = "TAILS";
+          $('#flip-text').html('Flip the Coin!');
+          $('#heads-button').html('HEADS');
+          $('#tails-button').html('TAILS');
           $('#coin').removeClass();
           coinFlipping = false;
         }
@@ -213,3 +77,202 @@ function startFlip() {
     }
   }
 }
+
+let theWheel = new Winwheel({
+  'numSegments': 16,         // Number of segments
+  'outerRadius': 212,       // The size of the wheel.
+  'centerX': 217,       // Used to position on the background correctly.
+  'centerY': 219,
+  'textFontSize': 25,        // Font size.
+  'segments':            // Definition of all the segments.
+    [
+      { 'fillStyle': '#9560a6', 'text': '$15' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#ffb217', 'text': '$100' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '$20' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '$30' },
+      { 'fillStyle': '#c8b0d9', 'text': '' },
+      { 'fillStyle': '#9560a6', 'text': '' },
+      { 'fillStyle': '#c8b0d9', 'text': '' }
+    ],
+  'animation':               // Definition of the animation
+  {
+    'type': 'spinToStop',
+    'duration': 5,
+    'spins': 8,
+    'callbackFinished': alertPrize
+  }
+});
+
+function startSpin() {
+  var spinCost = 3;
+  if (spinExpired == true) {
+    alert("Game has already expired, wait for next opening time!");
+  }
+  else {
+    ModifyAccountBalance(0, spinCost);
+    console.log('$3 deducted');
+    // Ensure that spinning can't be clicked again while already running.
+    if (wheelSpinning == false) {
+      theWheel.animation.spins = 8;
+      $('#spin-button').html('SPINNING');
+      // Begin the spin animation by calling startAnimation on the wheel object.
+      theWheel.startAnimation();
+      // the current animation. The user will have to reset before spinning again.
+      wheelSpinning = true;
+    }
+  }
+}
+
+// Called when the animation has finished.
+function alertPrize(indicatedSegment) {
+  var spinAmountWon = 0;
+  switch (indicatedSegment.text) {
+    case '$15':
+      spinAmountWon = 15;
+      console.log('$15');
+      break;
+    case '$20':
+      spinAmountWon = 20;
+      console.log('$20');
+      break;
+    case '$30':
+      spinAmountWon = 30;
+      console.log('$30');
+      break;
+    case '$100':
+      spinAmountWon = 100;
+      console.log('$100');
+      break;
+    default:
+      console.log('You did not win anything.');
+  }
+  ModifyAccountBalance(spinAmountWon, 0);
+  console.log('$' + spinAmountWon + ' added');
+  theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+  theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+  theWheel.draw();                // Call draw to render changes to the wheel.
+  $('#spin-button').html('SPIN');
+  wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+  // Do basic alert of the segment text.
+      
+}
+
+function ModifyAccountBalance(spinAmountWon, spinCost) {
+  if (accLoggedIn != null) { // Check if user is logged in
+    if (spinAmountWon > 0 || spinCost == 3) {
+      $.ajax({ // Get account data from database
+        "async": true,
+        "crossDomain": true,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/account-info/${accLoggedIn[0]}`,
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+      })
+      .done(function(account) {
+        account.balance -= spinCost;
+        account.balance += spinAmountWon;
+        updateAccount(account);
+      }).fail(function() { window.location.href = 'index.html' });
+    }
+  } else window.location.href = 'index.html'
+}
+
+function updateAccount(account) {
+  var jsondata = { 
+      "name": account.name, 
+      "dob": account.dob, 
+      "password": account.password, 
+      "balance": account.balance, 
+      "coupon": account.coupon
+  };
+
+  $.ajax({
+      "async": true,
+      "crossDomain": true,
+      "url": `https://sneakerzone-11b9.restdb.io/rest/account-info/${account._id}`,
+      "method": "PUT",
+      "headers": {
+          "content-type": "application/json",
+          "x-apikey": APIKEY,
+          "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": JSON.stringify(jsondata)
+  })
+  .done(function() {
+      console.log("Account Info Updated.");
+  });
+}
+
+// Countdown Timers
+function spinTimer() {
+  flipExpired = true;
+  var countDownTime = new Date().getTime() + 300000;
+  // Update the count down every 1 second
+  var x = setInterval(function () {
+    var now = new Date().getTime();
+    var distance = countDownTime - now;
+    // Time calculations for hours, minutes and seconds
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Display the result in the element with id="countdown"
+    $('#countdown-spin').html(
+      `<div id="countdown-box">
+        <div class="countdown-timer">${hours}<div class="countdown-text">HOURS</div></div>
+      <div class="countdown-timer">${minutes}<div class="countdown-text">MINS</div></div>
+      <div class="countdown-timer">${seconds}<div class="countdown-text">SECS</div></div>
+      </div>`);
+;
+    // If the count down is finished, check
+    if (distance < 0) {
+      clearInterval(x);
+      // Need to check when one cooldown ends, another starts
+      $('#countdown-spin').html('GAME EXPIRED');
+      spinExpired = true, flipExpired = false;
+      flipTimer();
+    }
+  }, 1000)
+};
+
+function flipTimer() {
+  spinExpired = true;
+  var countDownTime = new Date().getTime() + 300000;
+  // Update the count down every 1 second
+  var x = setInterval(function () {
+    var now = new Date().getTime();
+    var distance = countDownTime - now;
+    // Time calculations for hours, minutes and seconds
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="countdown"
+    $('#countdown-flip').html(
+      `<div id="countdown-box">
+      <div class="countdown-timer">${hours}<div class="countdown-text">HOURS</div></div>
+      <div class="countdown-timer">${minutes}<div class="countdown-text">MINS</div></div>
+      <div class="countdown-timer">${seconds}<div class="countdown-text">SECS</div></div>
+      </div>`);
+    // If the count down is finished, check
+    if (distance < 0) {
+      clearInterval(x);
+      // Need to check when one cooldown ends, another starts
+      $('#countdown-flip').html('GAME EXPIRED');
+      flipExpired = true, spinExpired = false;
+      spinTimer();
+    }
+  }, 1000)
+};
