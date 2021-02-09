@@ -4,7 +4,7 @@ function loadSneakers(sneaker_id) {
     fetch(url)
     .then(response => response.json())
     .then(function(data) {
-        $('.product-img').append(`<img src="${data.media.imageUrl}" />`);
+        $('.product-img').append(`<img src="${data.media.imageUrl}" alt="${data.title}"/>`);
         $('.product-release-date').append(new Date(data.releaseDate).toDateString());
         $('.product-header').html(`${data.brand} ${data.year}`);
         $('.product-title').html(data.title);
