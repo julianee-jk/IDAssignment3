@@ -1,52 +1,43 @@
-// create accounts never really touched much. Still got that for loop
-// fail
-
 const APIKEY = "601a5d306adfba69db8b6cfc";
+const accLoggedIn = JSON.parse(localStorage.getItem('accLoggedIn'));
 
-$(document).ready(function () {
-    $("form").submit(function() { return false }); // disable refresh when user press enter.
-
-    $('#name-text').hide();
-    var accLoggedIn = localStorage.getItem('accLoggedIn')
-    
-    if (accLoggedIn != null) {
-        accLoggedIn = JSON.parse(accLoggedIn);
-        $('#login-text').hide(); // Hide Login text in nav bar
-        $('#name-text').html(accLoggedIn[1]); // Set nav bar name to account's name
-        $('#name-text').show(); // Show Name text in nav bar
+$(document).ready(function() {
+    if (accLoggedIn != null) { // Check if the user is logged in
+        $('#login-text').hide(); // Hide login text in nav bar
+        $('#name-text').html(accLoggedIn[1]); // Set it to account name
+        $('#name-text').show(); // Display the account name in nav bar
     }
 
-    // Close login modal when create modal open
-    $("#createModalButton").on("click", function(e) {
+    $("#login-text").on("click", function() { // Hide error messages on nav bar login button click
+        $('#login-form-text-error').hide();
+        $('#create-form-text-error').hide();
+    });
+
+    $("#createModalButton").on("click", function() { // Close login modal when create modal open
         $('#loginModal').modal('hide');
         $('#createModal').modal('show');
         $('#login-form-text-error').hide();
     });
     
-    // Close create modal when login modal open
-    $("#loginModalButton").on("click", function(e) {
+    $("#loginModalButton").on("click", function() { // Close create modal when login modal open
         $('#createModal').modal('hide');
         $('#loginModal').modal('show');
         $('#create-form-text-error').hide();
     });
 
-    // Reset login/create error message
-    $("#login-text").on("click", function(e) {
-        $('#login-form-text-error').hide();
-        $('#create-form-text-error').hide();
-    });
-
-    $("#login-button").on("click", function() {
+    $("#login-form").submit(function(e) {
+        e.preventDefault();
         loginAccount();
     });
 
-    $("#create-button").on("click", function(e) {
-        createAccount();
+    $("#create-form").submit(function(e) {
+        e.preventDefault();
+        validateNewAccount();
     });
 });
 
 function loginAccount() {
-    var settings = {
+    $.ajax({
         "async": true,
         "crossDomain": true,
         "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
@@ -56,9 +47,8 @@ function loginAccount() {
             "x-apikey": APIKEY,
             "cache-control": "no-cache"
         },
-    }
-
-    $.ajax(settings).done(function(response) {
+    })
+    .done(function(response) {
         response.map((account) => {
             if ($("#login-name").val() === account.name && $("#login-password").val() === account.password) {
                 setAccount(account._id, account.name);
@@ -68,17 +58,7 @@ function loginAccount() {
         $('#create-form-text-error').hide();
         $('#login-form-text-error').html('Invalid Account Name or Password!');
         $('#login-form-text-error').css('color','red');
-        $('#login-form-text-error').show();            
-
-        $("#create-button").click(function() {
-            $('#login-form-text-error').hide();
-
-            for (let i = 0; i < response.length; i++) {
-                if (response[i].name === $('#create-name').val()) {
-                    $('#create-form-text-error').show();
-                }
-            }
-        });
+        $('#login-form-text-error').show();
     });
 }
 
@@ -86,6 +66,47 @@ function setAccount(id, name) {
     $('#login-form-text-error').hide();
     localStorage.setItem("accLoggedIn", JSON.stringify([id, name]));
     $('#loginModal').modal('hide');
+    location.reload();
+}
+
+function validateNewAccount() {
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+    })
+    .done(function(response) {
+        var checkName = true;
+
+        response.map((account) => {
+            if ($("#create-name").val() === account.name) {
+                $('#login-form-text-error').hide();
+                $('#create-form-text-error').html('Account Name Already Exists!');
+                $('#create-form-text-error').css('color','red');
+                $('#create-form-text-error').show();
+                checkName = false;
+            }
+        })
+
+        if (checkName) {
+            if (new Date($("#create-dob").val()) > new Date) {
+                $('#login-form-text-error').hide();
+                $('#create-form-text-error').html('Invalid Account Details!');
+                $('#create-form-text-error').css('color','red');
+                $('#create-form-text-error').show();
+            }
+
+            else {
+                createAccount();
+            }
+        }
+    });
 }
 
 function createAccount() {
@@ -95,9 +116,9 @@ function createAccount() {
         "password": $("#create-password").val(), 
         "balance": 0,
         "coupon": 0 
-    };
+    }; 
 
-    var settings = {
+    $.ajax({
         "async": true,
         "crossDomain": true,
         "url": "https://sneakerzone-11b9.restdb.io/rest/account-info",
@@ -109,19 +130,13 @@ function createAccount() {
         },
         "processData": false,
         "data": JSON.stringify(jsondata)
-    }
-
-    $.ajax(settings).done(function() {
+    })
+    .done(function() {
         $('#login-form-text-error').html('Account created successfully! Please log in again.');
         $('#login-form-text-error').css('color','green');
         $('#createModal').modal('hide');
-
         $('#loginModal').modal('show');
         $('#create-form-text-error').hide();
         $('#login-form-text-error').show();
-    })
-
-    $.ajax(settings).fail(function(response) {
-        console.log(response);
     })
 }
