@@ -99,18 +99,19 @@ footer {
     text-align: left;
 }
 
-.login-button-box {
+.button-group {
     display: flex;
     align-items: center;
+    margin-top: 24px;
 }
 
-.changePass-box > form > .login-button-box {
+.changePass-box > form > .button-group {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#login-button, #create-button, .login-button-box > h6, #login-header-text  {
+#login-button, #create-button, .button-group > h6, #login-header-text  {
     margin: 0;
 }
 
@@ -213,21 +214,21 @@ footer {
     box-shadow: 0 0 0 0.25rem rgba(79, 53, 155, 0.25);
 }
 
-.explore-header {
+.explore {
     padding: 24px;
     text-align: center;
 }
 
-.btn-group {
+.explore > .btn-group {
     margin: 24px 0 24px 0;
 }
 
-.cat-group {
+.explore > .cat-group {
     width: 300px;
 }
 
-.sort-group {
-    margin-left: 23px;
+.explore > .sort-group {
+    margin-left: 24px;
     width: 200px;
 }
 
@@ -312,7 +313,7 @@ footer {
 }
 
 .page-item.active .page-link, .page-link:hover {
-    color: #fff;
+    color: #FFF;
     background-color: #4F359B;
     border-color: #4F359B;
 }
@@ -549,112 +550,53 @@ footer {
 
 /* --------------------------------------- Account Page ------------------------------------- */
 
-#account-name, .account-details > h6{
-    color: #4F359B;
-    margin-top: 10px;
+.account { padding: 38px }
+
+.account > section > h2 {
+    color: #000;
+    font-weight: 900;
+    font-size: 38px;
 }
 
-.account-details > h6:hover {
-    cursor: pointer;
-}
+.account > section { margin-bottom: 48px }
 
-.account-main-box {
-    width: 100%;
-    height: auto;
-    border: red solid 1px;
-    padding: 0 150px 0 150px;
-}
-
-.account-section-header {
-    color: #000000;
-    font-size: 40px;
-    font-weight: 700;
-    margin: 150px 35px 0 0;
-    display: flex;
-    align-items: center;
-}
-
-/* Account Balance Add button */
-#add-bal, #add-gc {
-    font-size: 15px;
-    margin-left: 20px;
-}
-
-/* Always updated account balance */
-.account-bal, .account-gc{
-    color: #707070;
-    font-size: 30px;
+.account > section > h3 {
+    color: #888;
+    font-size: 32px;
     margin: 0;
 }
 
-.account-currency-box {
+.account-settings {
+    cursor: pointer;
     display: flex;
-    align-items: center;
-}
-
-.addBal-box > .account-currency-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.account-currency {
-    color: #707070;
-    font-size: 30px;
-    font-weight: 700;
-}
-
-/* Add balance modal */
-
-.addBal-box {
-    padding: 32px;
-    text-align: center;
-}
-
-/* Top-up options buttons */
-
-.topup-box {
-    margin-top: 30px;
-}
-
-.topup-box > input {
-    display: none;
-}
-
-.topup-box > input + label {
-    position: relative;
-    margin: 4px;
-    padding: 10px 20px 10px 20px;
-    cursor:pointer;
-    font-size: 15px;
-    border: #000000 solid 1px;
-}
-
-.topup-box > input + label:hover, .topup-box > input:checked + label {
-    background-color: #4F359B;
-    color: #FFFFFF;
-}
-
-/* Account Settings */
-.changePass-modal-content {
-    height: 330px;
-}
-
-.changePass-box {
-    padding: 0px 48px 0 48px;
-}
-
-.changePass-box > form > .form-group {
-    margin-top: 50px;
+    flex-direction: column;
+    color: #4F359B;
 }
 
 #logout-button {
-    color: #FFFFFF;
-    margin-bottom: 50px;
+    border: none;
+    color: #FFF;
 }
 
-#logout-button:hover {
-    background-color: #000000;
+#logout-button:hover { background-color: #000 }
+
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-title {
+    color: #000;
+    font-weight: 700;
+}
+
+.modal-body > section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.modal-body > div > p {
+    margin: 0;
 }
 
 /* --------------------------------------- Contact Page ------------------------------------- */
@@ -790,29 +732,19 @@ footer {
 }
 /* --------------------------------------- Shopping Bag ------------------------------------- */
 
-.shop-header {
-    padding: 38px;
-}
+.shop-header { padding: 38px }
 
 .table-head {
     background-color: #4F359B;
     color: #FFF;
 }
-.table-box {
-    padding: 0 38px 38px 38px;
-}
+.table-box { padding: 0 38px 38px 38px }
 
-.total-cost-header {
-    padding: 38px 38px 0 38px;
-}
+.total-cost-header { padding: 38px 38px 0 38px }
 
-.shopping-form-box {
-    padding: 0 38px 38px 38px;
-}
+.shopping-form-box { padding: 0 38px 38px 38px }
 
-#checkout-button {
-    margin-top: 38px;
-}
+#checkout-button { margin-top: 38px }
 
 .delete {
     cursor: pointer;
