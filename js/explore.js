@@ -1,33 +1,7 @@
+let url = `https://example-data.draftbit.com/sneakers?`
+
 $(document).ready(function() {
-    var url = `https://example-data.draftbit.com/sneakers?_start=0&_end=21`
-    loadSneakers(url);
-
-    $(".page-item").on("click", function(e) {
-        var pageNumber = e.target.innerHTML;
-        $('.active').removeClass('active');
-        this.className += ' active';
-
-        var startValue = 0;
-        var endValue = 21;
-
-        switch (pageNumber) {
-            case 'Next':
-                // work on Next Button
-                break;
-
-            case 'Prev':
-                // work on Prev Button
-                break;
-
-            default:
-                startValue = 21 * pageNumber - 21;
-                endValue = 21 * pageNumber;
-                break;
-        }
-
-        var url = `https://example-data.draftbit.com/sneakers?_start=${startValue}&_end=${endValue}`
-        loadSneakers(url);
-    });
+    loadSneakers(`https://example-data.draftbit.com/sneakers?_limit=21`);
 
     $("#searchBar").keyup(function(e) {
         if (e.keyCode === 13) {
@@ -38,18 +12,99 @@ $(document).ready(function() {
 
     $('#search').on("click", function(e) {
         var query = $("#searchBar").val().replaceAll(' ', '%20');
-        var url = `https://example-data.draftbit.com/sneakers?q=${query}&_limit=21`
-        loadSneakers(url);
+        var load = url + `q=${query}`
+        loadSneakers(load);
     });
 
-    $(".cat-group > input.btn-check").on("click", function(e){
-        var url = `https://example-data.draftbit.com/sneakers?_limit=${limit}`
-        url += `?gender=${e.target.attributes.value.value}`
-        loadSneakers(url);
+    $(".page-item").on("click", function(e) {
+        var pageNumber = e.target.innerHTML;
+        $('.active').removeClass('active');
+        this.className += ' active';
+        var load = url + `_start=${21 * pageNumber - 21}&_end=${21 * pageNumber}`;
+        loadSneakers(load);
+
+        if ($('.active').text() == "1") {
+            $("#prev-page-button").addClass('disabled');
+            $("#prev-page-button").prop('disabled', true);
+        }
+
+        else {
+            $("#prev-page-button").removeClass('disabled');
+            $("#prev-page-button").prop('disabled', false);
+        }
+
+        if ($('.active').text() == "5") {
+            $("#next-page-button").addClass('disabled');
+            $("#next-page-button").prop('disabled', true);
+        }
+        
+        else {
+            $("#next-page-button").removeClass('disabled');
+            $("#next-page-button").prop('disabled', false);
+        }
     });
+
+    $("#next-page-button").on("click", function(e) {
+        var pageNumber = ($('.active').next()).text();
+        var nextActive = $('.active').next();
+        $('.active').removeClass('active');
+        nextActive.addClass('active');
+        var load = url + `_start=${21 * pageNumber - 21}&_end=${21 * pageNumber}`;
+        loadSneakers(load);
+
+        if ($('.active').text() == "1") {
+            $("#prev-page-button").addClass('disabled');
+            $("#prev-page-button").prop('disabled', true);
+        }
+
+        else {
+            $("#prev-page-button").removeClass('disabled');
+            $("#prev-page-button").prop('disabled', false);
+        }
+
+        if ($('.active').text() == "5") {
+            $("#next-page-button").addClass('disabled');
+            $("#next-page-button").prop('disabled', true);
+        }
+        
+        else {
+            $("#next-page-button").removeClass('disabled');
+            $("#next-page-button").prop('disabled', false);
+        }
+    })
+
+    $("#prev-page-button").on("click", function(e) {
+        var pageNumber = ($('.active').prev()).text();
+        var nextActive = $('.active').prev();
+        $('.active').removeClass('active');
+        nextActive.addClass('active');
+        var load = url + `_start=${21 * pageNumber - 21}&_end=${21 * pageNumber}`;
+        loadSneakers(load);
+
+        if ($('.active').text() == "1") {
+            $("#prev-page-button").addClass('disabled');
+            $("#prev-page-button").prop('disabled', true);
+        }
+
+        else {
+            $("#prev-page-button").removeClass('disabled');
+            $("#prev-page-button").prop('disabled', false);
+        }
+
+        if ($('.active').text() == "5") {
+            $("#next-page-button").addClass('disabled');
+            $("#next-page-button").prop('disabled', true);
+        }
+        
+        else {
+            $("#next-page-button").removeClass('disabled');
+            $("#next-page-button").prop('disabled', false);
+        }
+    })
 });
 
 function loadSneakers(url) {
+    console.log(url);
     $(".sneaker-cards").html("") // clear sneaker cards
 
     fetch(url)
@@ -60,7 +115,7 @@ function loadSneakers(url) {
             if (s.retailPrice == null) {
                 $(".sneaker-cards").append(`
                 <li class="sneaker-card" id="${s.id}" style="opacity: 0.7">
-                    <img src="${s.media.imageUrl}" />
+                    <img src="${s.media.imageUrl}" alt="${s.title}" />
                     <span class="sneaker-title">${s.title}</span>
                     <span class="sneaker-colorway">${s.colorway}</span>
                     <span class="sneaker-price">Not Available</span>
@@ -70,7 +125,7 @@ function loadSneakers(url) {
             else {
                 $(".sneaker-cards").append(`
                     <li class="sneaker-card" onclick="selectCard('${s.id}')" id="${s.id}" style="cursor: pointer">
-                        <img src="${s.media.imageUrl}" />
+                        <img src="${s.media.imageUrl}" alt="${s.title}" />
                         <span class="sneaker-title">${s.title}</span>
                         <span class="sneaker-colorway">${s.colorway}</span>
                         <span class="sneaker-price">$${s.retailPrice}</span>
@@ -84,4 +139,9 @@ function loadSneakers(url) {
 function selectCard(sneakerId) {
     localStorage.setItem("viewProductId", sneakerId);
     window.location.href = "product.html";
+}
+
+function selectCat(category) {
+    var load = url + `gender=${category}`;
+    loadSneakers(load);
 }
