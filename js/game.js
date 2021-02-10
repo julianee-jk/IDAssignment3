@@ -162,11 +162,11 @@ let theWheel = new Winwheel({
     'segments': [         // Definition of all the segments.
         { 'fillStyle': '#ffb217', 'text': '$100' }, { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '$15' },  { 'fillStyle': '#c8b0d9', 'text': '' },
+        { 'fillStyle': '#9560a6', 'text': '$20' },  { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '$15' },  { 'fillStyle': '#c8b0d9', 'text': '' },
+        { 'fillStyle': '#9560a6', 'text': '$20' },  { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '$25' },  { 'fillStyle': '#c8b0d9', 'text': '' },
+        { 'fillStyle': '#9560a6', 'text': '$30' },  { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '$50' },  { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' }
@@ -185,13 +185,13 @@ function alertPrize(indicatedSegment) {
     var spinAmountWon = 0;
     $('#spin-text-error').css('color', 'green');
     switch (indicatedSegment.text) {
-        case '$15':
-            spinAmountWon = 15;
-            $('#spin-text-error').html('You won $15!');
+        case '$20':
+            spinAmountWon = 20;
+            $('#spin-text-error').html('You won $20!');
             break;
-        case '$25':
-            spinAmountWon = 25;
-            $('#spin-text-error').html('You won $25!');
+        case '$30':
+            spinAmountWon = 30;
+            $('#spin-text-error').html('You won $30!');
             break;
         case '$50':
             spinAmountWon = 50;
@@ -241,16 +241,18 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         }
                         else {
                             $('#spin-text-error').hide();
-                            // Ensure that spinning can't be clicked again while already running.
-                            if (wheelSpinning == false) {
-                                theWheel.animation.spins = 8;
-                                $('#spin-button').html('SPINNING');
-                                // Begin the spin animation by calling startAnimation on the wheel object.
-                                theWheel.startAnimation();
-                                // the current animation. The user will have to reset before spinning again.
-                                wheelSpinning = true;
-                            }
                             account.coupon -= spinCost;
+                            if (spinCost == 1) {
+                                // Ensure that spinning can't be clicked again while already running.
+                                if (wheelSpinning == false) {
+                                    theWheel.animation.spins = 8;
+                                    $('#spin-button').html('SPINNING');
+                                    // Begin the spin animation by calling startAnimation on the wheel object.
+                                    theWheel.startAnimation();
+                                    // the current animation. The user will have to reset before spinning again.
+                                    wheelSpinning = true;
+                                }
+                            }
                             account.balance += spinAmountWon;
                             updateAccount(account);
                         }
