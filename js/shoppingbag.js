@@ -1,15 +1,16 @@
+var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
+
 $(document).ready(function () {
     checkBagEmpty();
 
     $('.table-body').on('click', ".delete", function(e) {
         $(".table-body").html("");
-        var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
-        shoppingBag.pop(e.target.attributes.value.value);
+        shoppingBag.splice(e.target.attributes.value.value, 1);
         localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
         checkBagEmpty();
     })  
 
-    $("#checkout-button").on("click", function (e) {
+    $("#checkout-button").on("click", function(e) {
         const APIKEY = "601a5d306adfba69db8b6cfc";
         e.preventDefault();
 
@@ -49,41 +50,50 @@ $(document).ready(function () {
     });
 });
 
-function loadCart() {
+async function loadBag() {
+    var products = [];
+
+    shoppingBag.map(s => {
+        let product = fetch(`https://example-data.draftbit.com/sneakers/${s[0]}`)
+        .then(res => res.json())
+        .then(data => {
+            return data;
+        })
+        products.push(product);
+    })
+    products = await Promise.all(products);
+    displayBag(products);
+}
+
+function displayBag(products) {
     $(".table-body").html("");
-
-    var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
     var totalPrice = 0;
+    var htmlString = '';
 
-    shoppingBag.map(function(s) {
-        var url = `https://example-data.draftbit.com/sneakers/${s[0]}`
-        fetch(url)
-        .then(response => response.json())
-        .then(function(data) {
-            var itemPrice = data.retailPrice * Number(s[1])
-            $('.table-body').append(`
-                <tr>
-                    <th scope="row">${shoppingBag.indexOf(s) + 1}</th>
-                    <td>${data.title}</td>
-                    <td>${s[1]}</td>
-                    <td>${s[2]}</td>
-                    <td>$${itemPrice}</td>
-                    <td class="delete" value="${shoppingBag.indexOf(s)}">Delete</td>
-                </tr>
-            `)
+    for (var i = 0; i <= shoppingBag.length - 1; i++) {
+        if (shoppingBag[i][0] == products[i].id) {
+            var itemPrice = products[i].retailPrice * shoppingBag[i][1]
             totalPrice += itemPrice;
-            $('#total-cost').html(`$${totalPrice}`); 
-        });
-    });
+            htmlString += (`
+                <tr>
+                    <th scope="row">${i + 1}</th>
+                    <td>${products[i].title}</td>
+                    <td>${shoppingBag[i][1]}</td>
+                    <td>${shoppingBag[i][2]}</td>
+                    <td>$${itemPrice}</td>
+                    <td class="delete" value="${i}">Delete</td>
+                </tr>
+            `);
+        }
+    }
+
+    $('.table-body').html(htmlString);
+    $('#total-cost').html(`$${totalPrice}`);
 }
 
 function checkBagEmpty() {
     if (localStorage.getItem('shoppingBag') == null || localStorage.getItem('shoppingBag') == "[]") {
-        $('.table-body').append(`
-            <tr>
-                <th colspan="6" style="text-align: center;">Your bag is empty!</th>
-            </tr>
-        `)
+        $('.table-body').append(`<tr><th colspan="6" style="text-align: center;">Your bag is empty!</th></tr>`)
         $('footer').css('position','absolute')
         $('footer').css('bottom','0')
         $('.total-cost-header').hide();
@@ -91,6 +101,6 @@ function checkBagEmpty() {
     }
 
     else {
-        loadCart();
+        loadBag();
     }
 }
