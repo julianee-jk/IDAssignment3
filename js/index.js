@@ -1,6 +1,6 @@
 $(document).ready(function () {
     loadTrending();
-    loadRandom();
+    loadLatest();
 });
 
 function loadTrending() {
@@ -24,14 +24,14 @@ function loadTrending() {
     });
 }
 
-function loadRandom() {
+function loadLatest() {
     var url = "https://example-data.draftbit.com/sneakers?_limit=10"
     fetch(url)
     .then(response => response.json())
     .then(function(data) {
         var sneakers = data;
         sneakers.map(function(s) {
-            $(".random").append(`
+            $(".latest").append(`
                 <div class="card" id="${s.id}" onclick="selectCard('${s.id}')">
                     <img src="${s.media.imageUrl}" />
                     <div class="card-body">
