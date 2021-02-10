@@ -73,7 +73,6 @@
         <div class="modal-dialog">
             <div class="modal-content accCreate-modal-content">
                 <h2 id="login-header-text">Create Account</h2>
-                
                 <div class="create-box">
                     <small id="create-form-text-error"></small>
                     <form id="create-form">
@@ -114,21 +113,24 @@
     <div class="game-container">
         <div class="game-box">
             <h2>Spin N Win</h2>
-            <h6>$3 per spin!</h6>
+            <h6>1GC per Spin!</h6>
             <!-- Spin N Win Modal Button  -->
-            <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".spinNWinModal">Play Now!</button>
+            <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".spinNWinModal" id="spin-play-button">Play Now!</button>
             <!-- Spin N Win Modal -->
             <div class="modal fade spinNWinModal" tabindex="-1" aria-labelledby="spinWinModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <h2>Spin N Win</h2>
-                        <h3>&darr;</h3>
+                        <div class="spin-text-box">
+                            <h2>Spin N Win</h2>
+                            <h3>&darr;</h3>
+                            <small id="spin-text-error"></small>
+                        </div>
                         <div class="canvas-box">
                             <canvas id="canvas" width="435px" height="470px">
                                 Canvas not supported, use another browser.
                             </canvas>
                         </div>
-                        <button type="button" id="spin_button" class="btn btn-primary hvr-glow" onClick="startSpin();">SPIN</button>
+                        <button type="button" id="spin-button" class="btn btn-primary hvr-glow" onClick="ModifyAccountBalance(0,1,0,0);">SPIN</button>
                     </div>
                 </div>
             </div>
@@ -137,22 +139,25 @@
         </div>
         <div class="game-box">
             <h2>Coin Flip</h2>
-            <h6>$10 per spin!</h6>
+            <h6>3GC per spin!</h6>
             <!-- Coin Flip Modal Button -->
-            <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".coinFlipModal">Play Now!</button>
+            <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".coinFlipModal" id="flip-play-button">Play Now!</button>
             <!-- Coin Flip Modal -->
             <div class="modal fade coinFlipModal" tabindex="-1" aria-labelledby="coinFlipModal" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content coin-modal-content">
-                        <h2>Coin Flip</h2>
-                        <h3 id="flip-text">Flip the Coin!</h3>
+                    <div class="modal-content">
+                        <div class="flip-text-box">
+                            <h2>Coin Flip</h2>
+                            <h3 id="flip-text">Flip the Coin!</h3>
+                            <small id="flip-text-error"></small>
+                        </div>
                         <div id="coin">
                             <div class="side-a"></div>
                             <div class="side-b"></div>
                         </div>
                         <div class="coin-flip-button-box">
-                            <button type="button" id="heads-button" class="btn btn-primary hvr-glow" onClick="headButton();startFlip();">HEADS</button>
-                            <button type="button" id="tails-button" class="btn btn-primary hvr-glow" onClick="tailButton();startFlip();">TAILS</button>
+                            <button type="button" id="heads-button" class="btn btn-primary hvr-glow" onClick="headButton();ModifyAccountBalance(0,0,0,3);">HEADS</button>
+                            <button type="button" id="tails-button" class="btn btn-primary hvr-glow" onClick="tailButton();ModifyAccountBalance(0,0,0,3);">TAILS</button>
                         </div>
                     </div>
                 </div>

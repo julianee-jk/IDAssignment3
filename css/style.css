@@ -365,7 +365,7 @@ footer {
     color: #000;
 }
 
-.product-colorway, .product-release-date {
+.product-colorway, .product-release-date, .product-category {
     color: #888;
 }
 
@@ -374,16 +374,20 @@ footer {
     margin-top: 24px;
 }
 
-.product-size {
-    display: flex;
-    flex-direction: column;
-    margin-right: 24px;
-
-}
-
 .product-size > .btn-group {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0;
     width: 225px;
+}
+
+.product-size {
+    margin-right: 24px;
+}
+
+.size > .btn {
+    width: 60px;
+    margin-bottom: -1px;
 }
 
 .product-qty {
@@ -429,7 +433,7 @@ footer {
     align-items: center;
     color: #000000;
     flex-direction: column;
-    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.5);
 }
 
 #countdown-box {
@@ -464,45 +468,53 @@ footer {
     justify-content: center;
     align-items: center;
 }
-.modal-content > h2 {
-    text-align: center;
+
+.spin-text-box, .flip-text-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.spin-text-box > h2, .flip-text-box > h2 {
     font-weight: 700;
     padding-top: 30px;
 }
 
-.modal-content > h3 {
-    text-align: center;
+#spin-text-error, #flip-text-error {
+    color: #FF0000;
 }
 
 /* Coin Flip Game */
 #coin {
-    position: relative;
     margin: 0 auto;
     width: 180px;
     height: 180px;
+    position: relative;
 }
 
-.coin-modal-content {
-    width: auto;
-    height: 487px;
-}
 
 #coin div {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+    backface-visibility: hidden;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
 }
 
 .coin-flip-button-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 70px;
 }
 
 .coin-flip-button-box > button {
-    position: relative;
-    top: 150px;
     width: 200px;
 }
 
@@ -520,15 +532,6 @@ footer {
 #coin {
     transition: transform 1s ease-in;
     transform-style: preserve-3d;
-}
-#coin div {
-    position: absolute;
-    top: 50px;
-    backface-visibility: hidden;
-}
-
-#flip-text {
-    text-align: center;
 }
 
 .side-a {
