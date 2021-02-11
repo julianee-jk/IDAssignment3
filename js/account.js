@@ -21,22 +21,26 @@ $(document).ready(function() {
                 var topUpBalance = $('input[name=topUpBalance]:checked').val();
                 switch(topUpBalance) {
                     case '$10':
-                        account.balance += 10;
+                        topUpValue = 10;
+                        account.balance += topUpValue;
                         break;
 
                     case '$15':
-                        account.balance += 15;
+                        topUpValue = 15;
+                        account.balance += topUpValue;
                         break;
 
                     case '$20':
-                        account.balance += 20;
+                        topUpValue = 20;
+                        account.balance += topUpValue;
                         break;
 
                     case '$50':
-                        account.balance += 50;
+                        topUpValue = 50;
+                        account.balance += topUpValue;
                         break;
                 }
-
+                addTransactionInfo(account._id, account.balance, topUpValue, topUpValue, new Date($.now()));
                 updateAccount(account);
             });
 
@@ -66,7 +70,7 @@ $(document).ready(function() {
                         break;
                 }
 
-                if (account.balance - gcCost <= 0) { // Check if sufficient account balance
+                if (account.balance - gcCost < 0) { // Check if sufficient account balance
                     $('#account-gc-error').show(); 
                 }
 
@@ -122,5 +126,33 @@ function updateAccount(account) {
     })
     .done(function() {
         console.log("Account Info Updated.");
+    });
+}
+
+function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
+    var jsondata = {
+    "userID": userID, 
+    "balance": balance, 
+    "moneySpent": moneySpent, 
+    "purchaseType": 'BalanceTopUp', 
+    "purchaseData": purchaseData, 
+    "purchaseDateTime": purchaseDateTime}
+
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
+    "method": "POST",
+    "headers": {
+        "content-type": "application/json",
+        "x-apikey": APIKEY,
+        "cache-control": "no-cache"
+    },
+    "processData": false,
+    "data": JSON.stringify(jsondata)
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
     });
 }
