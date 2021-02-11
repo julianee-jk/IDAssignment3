@@ -1,9 +1,10 @@
-let url = `https://example-data.draftbit.com/sneakers?`
+let url = `https://example-data.draftbit.com/sneakers?_limit=21`
 var category, query;
-var range = "_start=0&_end=21";
+var range = "_page=1";
 
 $(document).ready(function() {
-    loadSneakers(url + `_start=0&_end=21`);
+    loadSneakers(`${url}&${range}`);
+    loadPageCount(20);
 
     $("#searchBar").keyup(function(e) {
         if (e.keyCode === 13) {
@@ -13,27 +14,27 @@ $(document).ready(function() {
     });
 
     $('#search').on("click", function(e) {
-        if ($('.cat-group > input.btn-check').is(':checked')) url = `https://example-data.draftbit.com/sneakers?gender=${category}&`;
-        else url = `https://example-data.draftbit.com/sneakers?`;
+        if ($('.cat-group > input.btn-check').is(':checked')) url = `https://example-data.draftbit.com/sneakers?_limit=21&gender=${category}`;
+        else url = `https://example-data.draftbit.com/sneakers?_limit=21`;
         query = $("#searchBar").val().replaceAll(' ', '%20');
-        loadSneakers(url + `q=${query}&${range}`);
-        url = url + `q=${query}`;
+        loadSneakers(url + `&q=${query}&${range}`);
+        url = url + `&q=${query}`;
     });
 
     $(".cat-group > input.btn-check").on("click", function(e) {
-        if (query != undefined && query != '') url = `https://example-data.draftbit.com/sneakers?q=${query}&`;
-        else url = `https://example-data.draftbit.com/sneakers?`;
+        if (query != undefined && query != '') url = `https://example-data.draftbit.com/sneakers?_limit=21&q=${query}`;
+        else url = `https://example-data.draftbit.com/sneakers?_limit=21`;
         category = e.target.attributes.value.value;
-        loadSneakers(url + `gender=${category}&${range}`);
-        url = url + `gender=${category}`;
+        loadSneakers(url + `&gender=${category}&${range}`);
+        url = url + `&gender=${category}`;
     });
 
     $(".page-item").on("click", function(e) {
         var pageNumber = e.target.innerHTML;
         $('.active').removeClass('active');
         this.className += ' active';
-        range = `_start=${21 * pageNumber - 21}&_end=${21 * pageNumber}`
-        loadSneakers(url + '&' + range);
+        range = `_page=${pageNumber}`
+        loadSneakers(`${url}&${range}`);
         checkPage();
     });
 
@@ -42,7 +43,7 @@ $(document).ready(function() {
         var nextActive = $('.active').next();
         $('.active').removeClass('active');
         nextActive.addClass('active');
-        range = `_start=${21 * pageNumber - 21}&_end=${21 * pageNumber}`
+        range = `_page=${pageNumber}`
         loadSneakers(url + '&' + range);
         checkPage();
     })
@@ -52,7 +53,7 @@ $(document).ready(function() {
         var nextActive = $('.active').prev();
         $('.active').removeClass('active');
         nextActive.addClass('active');
-        range = `_start=${21 * pageNumber - 21}&_end=${21 * pageNumber}`;
+        range = `_page=${pageNumber}`;
         loadSneakers(url + '&' + range);
         checkPage();
     })
@@ -101,6 +102,17 @@ function selectCat(category) {
     loadSneakers(load);
 }
 
+function loadPageCount(count) {
+    var htmlString = '';
+    htmlString += `<button class="page-link disabled" id="prev-page-button">Prev</button>`
+    htmlString += `<li class="page-item active"><a class="page-link" href="#">1</a></li>`
+    for (var i = 2; i <= count; i++) {
+        htmlString += `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`
+    };
+    htmlString += `<button class="page-link" id="next-page-button">Next</button>`
+    $(".pagination").html(htmlString);
+}
+
 function checkPage() {
     if (($('.active').prev()).text() == "Prev") {
         $("#prev-page-button").addClass('disabled');
@@ -110,15 +122,5 @@ function checkPage() {
     else {
         $("#prev-page-button").removeClass('disabled');
         $("#prev-page-button").prop('disabled', false);
-    }
-
-    if (($('.active').next()).text() == "Next") {
-        $("#next-page-button").addClass('disabled');
-        $("#next-page-button").prop('disabled', true);
-    }
-    
-    else {
-        $("#next-page-button").removeClass('disabled');
-        $("#next-page-button").prop('disabled', false);
     }
 }
