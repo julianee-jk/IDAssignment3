@@ -436,6 +436,12 @@ footer {
     box-shadow: 0 3px 5px rgba(100, 100, 100, 0.5);
 }
 
+.not-loggedin-text {
+    color: #ff0000;
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
 #countdown-box {
     display: flex;
     justify-content: center;
@@ -747,13 +753,17 @@ footer {
     background-color: #4F359B;
     color: #FFF;
 }
-.table-box { padding: 0 38px 38px 38px }
+.table-box, .shopping-form-box { padding: 0 38px 38px 38px }
 
 .total-cost-header { padding: 38px 38px 0 38px }
 
-.shopping-form-box { padding: 0 38px 38px 38px }
-
-#checkout-button { margin-top: 38px }
+.bag-button-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 20em;
+    margin-top: 30px;
+}
 
 .delete {
     cursor: pointer;

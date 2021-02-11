@@ -5,7 +5,14 @@ let coinFlipping = false, heads = false, tails = false, headWin = false, tailWin
 $(document).ready(function () {
     var accLoggedIn = localStorage.getItem('accLoggedIn');
     if (accLoggedIn == null) {
-        window.location.href = 'index.html';
+        $('.not-loggedin-text').show();
+        $("#spin-play-button").attr("disabled", true);
+        $("#flip-play-button").attr("disabled", true);
+    }
+    else {
+        $('.not-loggedin-text').hide();
+        $("#spin-play-button").attr("disabled", false);
+        $("#flip-play-button").attr("disabled", false);
     }
 
     $('#countdown-flip').html('GAME EXPIRED');

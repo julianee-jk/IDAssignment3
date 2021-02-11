@@ -10,6 +10,8 @@ $(document).ready(function () {
     });
 
     if (accLoggedIn != null) {
+        $('.not-loggedin-text').hide();
+        $("#checkout-button").attr("disabled", false);
         $.ajax({ // Get account data from database
             "async": true,
             "crossDomain": true,
@@ -55,7 +57,7 @@ $(document).ready(function () {
                         "processData": false,
                         "data": JSON.stringify(jsondata)
                     }
-                    
+
                     $.ajax(settings).done(function () {
                         account.balance -= totalPrice;
                         addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); 
@@ -63,6 +65,10 @@ $(document).ready(function () {
                 }
             })
         });
+    }
+    else {
+        $('.not-loggedin-text').show();
+        $("#checkout-button").attr("disabled", true);
     }
 });
 
