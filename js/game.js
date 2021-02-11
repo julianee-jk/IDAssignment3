@@ -253,8 +253,11 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                                     wheelSpinning = true;
                                 }
                             }
-                            account.balance += spinAmountWon;
-                            updateAccount(account);
+                            if (spinAmountWon > 0) {
+                                account.balance += spinAmountWon;
+                                updateAccount(account);
+                                addTransactionInfo(account._id, account.balance, 3, 'SpinwheelWin', spinAmountWon, new Date($.now()));
+                            }
                         }
                     }
                 }
@@ -270,8 +273,11 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         if (flipCost == 3) {
                             startFlip();
                         }
-                        account.balance += flipAmountWon;
-                        updateAccount(account);
+                        if (flipAmountWon > 0) {
+                            account.balance += flipAmountWon;
+                            updateAccount(account);
+                            addTransactionInfo(account._id, account.balance, 9, 'CoinflipWin', flipAmountWon, new Date($.now()));
+                        }
                     }
                 }
             }).fail(function () { window.location.href = 'index.html' });
@@ -302,5 +308,33 @@ function updateAccount(account) {
         "data": JSON.stringify(jsondata)
     }).done(function () {
         console.log("Account Info Updated.");
+    });
+}
+
+function addTransactionInfo(userID, balance, moneySpent, purchaseType, purchaseData, purchaseDateTime) {
+    var jsondata = {
+    "userID": userID, 
+    "balance": balance, 
+    "moneySpent": moneySpent, 
+    "purchaseType": purchaseType, 
+    "purchaseData": purchaseData, 
+    "purchaseDateTime": purchaseDateTime}
+
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
+    "method": "POST",
+    "headers": {
+        "content-type": "application/json",
+        "x-apikey": APIKEY,
+        "cache-control": "no-cache"
+    },
+    "processData": false,
+    "data": JSON.stringify(jsondata)
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
     });
 }
