@@ -588,6 +588,11 @@ footer {
     color: #4F359B;
 }
 
+.account-settings > a {
+    color: #4F359B;
+    text-decoration: none;
+}
+
 #logout-button {
     border: none;
     color: #FFF;
