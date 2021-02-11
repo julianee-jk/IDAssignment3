@@ -7,7 +7,7 @@ $(document).ready(function () {
         shoppingBag.splice(e.target.attributes.value.value, 1);
         localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
         checkBagEmpty();
-    })  
+    });
 
     if (accLoggedIn != null) {
         $.ajax({ // Get account data from database
@@ -22,12 +22,12 @@ $(document).ready(function () {
             },
         })
         .done(function(account) {
-            $("#checkout-button").on("click", function(e) {
+            $("#shopping-form").submit(function(e) {
+                e.preventDefault();
                 if (account.balance - totalPrice < 0) {
                     console.log('Insufficient Balance'); // Update message
                 }
                 else {
-                    e.preventDefault();
                     let name = $("#user-name").val();
                     let shippingAddress = $("#shipping-address").val();
                     let contactNumber = $("#contact-number").val();
@@ -55,7 +55,7 @@ $(document).ready(function () {
                         "processData": false,
                         "data": JSON.stringify(jsondata)
                     }
-            
+                    
                     $.ajax(settings).done(function () {
                         account.balance -= totalPrice;
                         addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); 
