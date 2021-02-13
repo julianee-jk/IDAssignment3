@@ -12,8 +12,19 @@ $(document).ready(function() {
       var shoppingBag = [];
   }
 
+  $(".qty").keyup(function(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      if ($(".qty").val() <= 0) $(".qty").val(1);
+    }
+  });
+
   $("#addToCart").click(function(e) {
-      var qty = $(".qty").val();
+      var qty = 1;
+
+      if ($(".qty").val() == 0) qty = 1;
+      else qty = $(".qty").val();
+
       shoppingBag.push([sneaker_id, qty, size]);
       localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag))
   });
@@ -28,11 +39,11 @@ $(document).ready(function() {
       } 
 
       else {
-       // Don't allow decrementing below zero
-        if (oldValue > 0) {
+       // Don't allow decrementing below 1
+        if (oldValue > 1) {
           var newVal = parseFloat(oldValue) - 1;
         } else {
-          newVal = 0;
+          newVal = 1;
         }
       }
 
