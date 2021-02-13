@@ -38,22 +38,26 @@
                 </span>
                 <span class="nav-item">
                     <!-- Button trigger modal -->
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal" id="login-text">Login</a>
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login-modal" id="login-text">Login</a>
                     <a class="nav-link" href="account.html" id="name-text" style="display: none"></a>
                 </span>
             </div>
         </div>
     </nav>
 
-    <!-- Login modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content accLogin-modal-content">
-                <h2 id="login-header-text">Login</h2>
-
-                <div class="login-box">
-                    <small id="login-form-text-error"></small>
+    <!-- Login Modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                
+                <div class="modal-body">
                     <form id="login-form">
+                        <small id="login-form-text-error"></small>
+
                         <div class="form-group">
                             <label for="login-name">Account Name</label>
                             <input type="text" class="form-control" id="login-name" required>
@@ -68,7 +72,7 @@
                             <button type="submit" class="btn btn-primary hvr-glow" id="login-button">Login</button>
                             <h6>
                                 &#8195;or&#8194;
-                                <a data-bs-toggle="modal" data-bs-target="#createModal" id="createModalButton">
+                                <a data-bs-toggle="modal" data-bs-target="#create-modal" id="createModalButton">
                                     Create Account
                                 </a>
                             </h6>
@@ -79,15 +83,19 @@
         </div>
     </div>
 
-    <!-- Create Account modal -->
-    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content accCreate-modal-content">
-                <h2 id="login-header-text">Create Account</h2>
+    <!-- Create Account Modal -->
+    <div class="modal fade" id="create-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
                 
-                <div class="create-box">
-                    <small id="create-form-text-error"></small>
+                <div class="modal-body">
                     <form id="create-form">
+                        <small id="create-form-text-error"></small>
+
                         <div class="form-group">
                             <label for="create-name">Account Name</label>
                             <input type="text" class="form-control" id="create-name" required>
