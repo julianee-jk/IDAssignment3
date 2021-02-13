@@ -14,14 +14,14 @@ $(document).ready(function() {
     });
 
     $("#createModalButton").on("click", function() { // Close login modal when create modal open
-        $('#loginModal').modal('hide');
-        $('#createModal').modal('show');
+        $('#login-modal').modal('hide');
+        $('#create-modal').modal('show');
         $('#login-form-text-error').hide();
     });
     
     $("#loginModalButton").on("click", function() { // Close create modal when login modal open
-        $('#createModal').modal('hide');
-        $('#loginModal').modal('show');
+        $('#create-modal').modal('hide');
+        $('#login-modal').modal('show');
         $('#create-form-text-error').hide();
     });
 
@@ -49,16 +49,20 @@ function loginAccount() {
         },
     })
     .done(function(response) {
+        var accountFound = false;
         response.map((account) => {
             if ($("#login-name").val() === account.name && $("#login-password").val() === account.password) {
                 setAccount(account._id, account.name);
+                accountFound = true;
             }
         })
 
-        $('#create-form-text-error').hide();
-        $('#login-form-text-error').html('Invalid Account Name or Password!');
-        $('#login-form-text-error').css('color','red');
-        $('#login-form-text-error').show();
+        if (accountFound == false) {
+            $('#create-form-text-error').hide();
+            $('#login-form-text-error').html('Invalid Account Name or Password!');
+            $('#login-form-text-error').css('color','red');
+            $('#login-form-text-error').show();
+        }
     });
 }
 
@@ -134,8 +138,8 @@ function createAccount() {
     .done(function() {
         $('#login-form-text-error').html('Account created successfully! Please log in again.');
         $('#login-form-text-error').css('color','green');
-        $('#createModal').modal('hide');
-        $('#loginModal').modal('show');
+        $('#create-modal').modal('hide');
+        $('#login-modal').modal('show');
         $('#create-form-text-error').hide();
         $('#login-form-text-error').show();
     })
