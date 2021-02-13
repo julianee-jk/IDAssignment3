@@ -142,8 +142,17 @@
 
     <div class="sneaker-cards"></div>
 
-    <nav><ul class="pagination justify-content-center"></ul></nav>
-    
+    <nav>
+        <div class="pagination-group">
+            <p>Page</p>
+            <div class="input-group">
+                <button class="btn btn-outline-secondary" type="button" id="prev-button" disabled>&#129120;</button>
+                <input type="text" class="form-control" id="page-input" value="1" maxlength="2">
+                <button class="btn btn-outline-secondary" type="button" id="next-button">&#129122;</button>
+            </div>
+        </div>
+    </nav>
+
     <!-- Footer -->
     <footer>
         <div id="footer-text">Copyright © 2021 Ee Jun Kai Julian & Chew Kah Seng - All Rights Reserved.</div>

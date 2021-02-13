@@ -1,10 +1,11 @@
-let url = `https://example-data.draftbit.com/sneakers?_limit=21`
-var category, query;
-var range = "_page=1";
+let url = "https://example-data.draftbit.com/sneakers?_limit=21";
+let category, query;
+let limit = "_limit=21";
+let range = "_page=1";
+let maxPage = 15;
 
 $(document).ready(function() {
     loadSneakers(`${url}&${range}`);
-    loadPageCount(20);
 
     $("#searchBar").keyup(function(e) {
         if (e.keyCode === 13) {
@@ -13,49 +14,87 @@ $(document).ready(function() {
         }
     });
 
-    $('#search').on("click", function(e) {
+    $('#search').on("click", function() {
         if ($('.cat-group > input.btn-check').is(':checked')) url = `https://example-data.draftbit.com/sneakers?_limit=21&gender=${category}`;
         else url = `https://example-data.draftbit.com/sneakers?_limit=21`;
         query = $("#searchBar").val().replaceAll(' ', '%20');
+        findMaxPage();
         loadSneakers(url + `&q=${query}&${range}`);
         url = url + `&q=${query}`;
     });
 
     $(".cat-group > input.btn-check").on("click", function(e) {
+        $("#next-button").prop('disabled', false);
+        $("#prev-button").prop('disabled', true);
+        range = "_page=1"
+        $("#page-input").val(1);
+
         if (query != undefined && query != '') url = `https://example-data.draftbit.com/sneakers?_limit=21&q=${query}`;
         else url = `https://example-data.draftbit.com/sneakers?_limit=21`;
         category = e.target.attributes.value.value;
+        findMaxPage();
         loadSneakers(url + `&gender=${category}&${range}`);
         url = url + `&gender=${category}`;
     });
 
-    $(".page-item").on("click", function(e) {
-        var pageNumber = e.target.innerHTML;
-        $('.active').removeClass('active');
-        this.className += ' active';
-        range = `_page=${pageNumber}`
-        loadSneakers(`${url}&${range}`);
-        checkPage();
+    $("#page-input").keyup(function(e) {
+        if (e.keyCode === 13) {
+            value = Number($("#page-input").val());
+            
+            if (value <= 1) {
+                $("#next-button").prop('disabled', false);
+                $("#prev-button").prop('disabled', true);
+                $("#page-input").val(1);
+            }
+
+            else if (value >= maxPage) {
+                $("#prev-button").prop('disabled', false);
+                $("#next-button").prop('disabled', true);
+                $("#page-input").val(maxPage);
+            }
+            
+            else {
+                $("#next-button").prop('disabled', false);
+                $("#prev-button").prop('disabled', false);
+                $("#page-input").val(value);
+            }
+
+            range = `_page=${$("#page-input").val()}`
+            loadSneakers(`${url}&${range}`);
+        }
     });
 
-    $("#next-page-button").on("click", function(e) {
-        var pageNumber = ($('.active').next()).text();
-        var nextActive = $('.active').next();
-        $('.active').removeClass('active');
-        nextActive.addClass('active');
-        range = `_page=${pageNumber}`
-        loadSneakers(url + '&' + range);
-        checkPage();
+    $("#prev-button").on("click", function() {
+        value = Number($("#page-input").val()) - 1;
+
+        if (value <= 1) {
+            $("#prev-button").prop('disabled', true);
+            $("#page-input").val(1);
+        }
+
+        else { 
+            $("#next-button").prop('disabled', false);
+            $("#page-input").val(value);
+        }
+
+        range = `_page=${$("#page-input").val()}`
+        loadSneakers(`${url}&${range}`);
     })
 
-    $("#prev-page-button").on("click", function(e) {
-        var pageNumber = ($('.active').prev()).text();
-        var nextActive = $('.active').prev();
-        $('.active').removeClass('active');
-        nextActive.addClass('active');
-        range = `_page=${pageNumber}`;
-        loadSneakers(url + '&' + range);
-        checkPage();
+    $("#next-button").on("click", function() {
+        value = Number($("#page-input").val()) + 1;
+        if (value >= maxPage) {
+            $("#next-button").prop('disabled', true);
+            $("#page-input").val(value);
+        }
+
+        else {
+            $("#prev-button").prop('disabled', false);
+            $("#page-input").val(value);
+        }
+        
+        range = `_page=${$("#page-input").val()}`
+        loadSneakers(`${url}&${range}`);
     })
 });
 
@@ -78,6 +117,7 @@ function loadSneakers(url) {
                 </li>
                 `)
             }
+            
             else {
                 $(".sneaker-cards").append(`
                     <li class="sneaker-card" onclick="selectCard('${s.id}')" id="${s.id}" style="cursor: pointer">
@@ -102,25 +142,30 @@ function selectCat(category) {
     loadSneakers(load);
 }
 
-function loadPageCount(count) {
-    var htmlString = '';
-    htmlString += `<button class="page-link disabled" id="prev-page-button">Prev</button>`
-    htmlString += `<li class="page-item active"><a class="page-link" href="#">1</a></li>`
-    for (var i = 2; i <= count; i++) {
-        htmlString += `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`
-    };
-    htmlString += `<button class="page-link" id="next-page-button">Next</button>`
-    $(".pagination").html(htmlString);
-}
-
-function checkPage() {
-    if (($('.active').prev()).text() == "Prev") {
-        $("#prev-page-button").addClass('disabled');
-        $("#prev-page-button").prop('disabled', true);
+function findMaxPage() {
+    if (query == '') {
+        maxPage = 15;
+        $("#next-button").prop('disabled', false);
+        $("#prev-button").prop('disabled', true);
+        $("#page-input").val(1);
     }
 
     else {
-        $("#prev-page-button").removeClass('disabled');
-        $("#prev-page-button").prop('disabled', false);
+        var checkURL = `https://example-data.draftbit.com/sneakers?`;
+        if (query != undefined) checkURL += `&q=${query}`;
+        if (category != undefined) checkURL += `&gender=${category}`;
+
+        fetch(checkURL)
+        .then(response => response.json())
+        .then(function(data) {
+            maxPage = Math.ceil(data.length / 21);
+            if (maxPage <= 1) {
+                $("#next-button").prop('disabled', true);
+                $("#prev-button").prop('disabled', true);
+                $("#page-input").val(1);
+            }
+
+            else $("#next-button").prop('disabled', false);
+        });
     }
 }
