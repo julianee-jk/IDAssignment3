@@ -128,7 +128,7 @@ footer {
     max-height: 75vh;
 }
 
-.carousel-item > img {
+.carousel-item > a > img {
     height: 40%;
     position: relative;
     bottom: 14.5em;
@@ -165,9 +165,9 @@ footer {
 .carousel-play-text {
     position: absolute;
     color: #000000;
-    bottom: 10em;
-    left: 17em;
-    max-width: 25em;
+    bottom: 12em;
+    left: 16em;
+    max-width: 30em;
 }
 
 .carousel-caption > h5 {
