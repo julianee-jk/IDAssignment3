@@ -59,12 +59,10 @@
             <h2>Account Settings</h2>
             <div class="account-settings">
                 <a data-bs-toggle="modal" data-bs-target="#add-balance-modal">Add More Money to Balance</a>
-                <a>View Account Purchase History</a>
+                <a href="accountHistory.html">View Account Purchase History</a>
                 <a data-bs-toggle="modal" data-bs-target="#change-password-modal">Change Account Password</a>
+                <a data-bs-toggle="modal" data-bs-target="#delete-account-modal">Delete Account</a>      
             </div>
-        </section>
-        
-        <section>
             <button type="button" class="btn btn-danger" id="logout-button">Logout</button>
         </section>
     </div>
@@ -142,7 +140,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary hvr-glow" id="topUp-gc-button" style="margin-top: 24px" >Top Up GC</button>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
@@ -163,8 +161,24 @@
                             <label for="new-password">Enter New Password</label>
                             <input type="password" class="form-control" id="new-password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary hvr-glow" style="margin-top: 24px" >Change Password</button>
+                        <button type="submit" class="btn btn-primary hvr-glow" style="margin-top: 24px">Change Password</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div class="modal fade" id="delete-account-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Account?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Do you really want to delete your account?<br>This process cannot be undone.</h6>
+                    <button type="submit" class="btn btn-primary hvr-glow" id="delete-account">Delete</button>
                 </div>
             </div>
         </div>

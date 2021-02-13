@@ -93,6 +93,11 @@ $(document).ready(function() {
                 localStorage.removeItem('accLoggedIn');
                 window.location.href = 'index.html';
             });
+
+            $("#delete-account").on("click", function() {
+                localStorage.removeItem('accLoggedIn');
+                deleteAccount(account);
+            })
         })
         .fail(function() { window.location.href = 'index.html' });
     }
@@ -129,6 +134,23 @@ function updateAccount(account) {
     });
 }
 
+function deleteAccount(account) {
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/account-info/${account._id}`,
+        "method": "DELETE",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        }
+    })
+    .done(function() {
+        console.log("Account Deleted.");
+        window.location.href = 'index.html';
+    });
+}
 function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
     var jsondata = {
     "userID": userID, 

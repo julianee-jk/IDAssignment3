@@ -596,9 +596,15 @@ footer {
 #logout-button {
     border: none;
     color: #FFF;
+    margin-top: 5px;
 }
 
 #logout-button:hover { background-color: #000 }
+
+#delete-account {
+    margin-top: 24px;
+    background-color: #FF0000;
+}
 
 .modal-content {
     border-radius: 0;
