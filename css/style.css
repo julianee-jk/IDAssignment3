@@ -124,6 +124,7 @@ footer {
 
 /* Main header section - Carousel */
 .carousel-item {
+    cursor: pointer;
     max-height: 75vh;
 }
 
@@ -131,7 +132,32 @@ footer {
     height: 40%;
     position: relative;
     bottom: 14.5em;
-    opacity: 0.8;
+}
+
+.carousel-feature-slide {
+    background-color: #fff;
+}
+
+.carousel-feature-slide > img {
+    position: relative;
+    transform: rotate(350deg) scaleX(-1);
+    bottom: 10%;
+    left: 40%;
+    max-width: 50vw;
+}
+
+.carousel-feature-slide > .carousel-caption {
+    color: #000;
+}
+
+.carousel-feature-text {
+    position: relative;
+    bottom: 27em;
+    left: 15em;
+}
+
+.carousel-feature-slide {
+    cursor: pointer;
 }
 
 .carousel-caption > h5 {
@@ -141,8 +167,22 @@ footer {
     width: 10em;
 }
 
-.carousel-inner {
-    background-color: #000;
+.carousel-caption > p {
+    text-align: left;
+    font-size: 24px;
+    max-width: 20em;
+}
+
+.carousel-control-prev-icon {
+    height: 3em;
+    width: 1.5em;
+    background-color: #999;
+}
+
+.carousel-control-next-icon {
+    height: 3em;
+    width: 1.5em;
+    background-color: #999;
 }
 
 /* Section styles */
