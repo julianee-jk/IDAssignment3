@@ -135,6 +135,7 @@ footer {
 }
 
 .carousel-feature-slide {
+    cursor: pointer;
     background-color: #fff;
 }
 
@@ -156,15 +157,24 @@ footer {
     left: 15em;
 }
 
-.carousel-feature-slide {
-    cursor: pointer;
+.carousel-play-slide > img {
+    position: relative;
+    bottom: 17em;
+}
+
+.carousel-play-text {
+    position: absolute;
+    color: #000000;
+    bottom: 10em;
+    left: 17em;
+    max-width: 25em;
 }
 
 .carousel-caption > h5 {
     text-align: left;
     font-size: 72px;
     font-weight: 900;
-    width: 10em;
+    width: 100%;
 }
 
 .carousel-caption > p {
@@ -808,6 +818,14 @@ footer {
     color: #FFF;
 }
 .table-box, .shopping-form-box { padding: 0 38px 38px 38px }
+
+.table-box > p {
+    float: right;
+    cursor: pointer;
+    width: 5em;
+    color: red;
+    margin-right: 7em;
+}
 
 .total-cost-header { padding: 38px 38px 0 38px }
 
