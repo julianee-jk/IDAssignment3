@@ -1,5 +1,6 @@
 var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
 var totalPrice = 0;
+
 $(document).ready(function () {
     checkBagEmpty();
     $('.table-body').on('click', ".delete", function(e) {
@@ -8,6 +9,12 @@ $(document).ready(function () {
         localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
         checkBagEmpty();
     });
+
+    $('.table-box > p').on('click', function(e) {
+        localStorage.removeItem('shoppingBag');
+        $(".table-body").html("");
+        checkBagEmpty();
+    })
 
     if (accLoggedIn != null) {
         $('.not-loggedin-text').hide();
@@ -116,6 +123,7 @@ function checkBagEmpty() {
         $('footer').css('bottom','0')
         $('.total-cost-header').hide();
         $('.shopping-form-box').hide();
+        $('.table-box > p').hide();
     }
 
     else {
