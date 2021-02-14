@@ -117,7 +117,7 @@
     </div>
 
     <div class="shop-header">
-        <h1>Shopping Bag</h1>
+        <h2>Shopping Bag</h2>
         <small class="not-loggedin-text">WARNING: Create or Login into an Account to Check Out!</small>
     </div>
     
@@ -136,7 +136,8 @@
             </thead>
             <tbody class="table-body"></tbody>
         </table>
-        <p>Delete All</p>
+        <button class="btn btn-danger delete-all" style="float:right">Delete All</button>
+        <h4 id="success-purchase-text" style="display: none;">Successfully Purchased!</h4>
     </div>
 
     <!-- Total cost header -->
@@ -169,6 +170,7 @@
                 <textarea class="form-control" id="special-request" rows="3" placeholder="Optional..."></textarea>
             </div>
             <div class="bag-button-box">
+                <small id="checkout-button-text" style="display: none;">Insufficient balance! <br>Please topup your account balance!</small>
                 <button type="submit" class="btn btn-primary hvr-glow" id="checkout-button">Check out</button>
             </div>
         </form>

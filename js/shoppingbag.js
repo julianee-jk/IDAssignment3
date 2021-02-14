@@ -10,7 +10,7 @@ $(document).ready(function () {
         checkBagEmpty();
     });
 
-    $('.table-box > p').on('click', function(e) {
+    $('.delete-all').on('click', function(e) {
         localStorage.removeItem('shoppingBag');
         $(".table-body").html("");
         checkBagEmpty();
@@ -34,7 +34,9 @@ $(document).ready(function () {
             $("#shopping-form").submit(function(e) {
                 e.preventDefault();
                 if (account.balance - totalPrice < 0) {
-                    console.log('Insufficient Balance'); // Update message
+                    // Insufficient Account Balance
+                    $('#checkout-button-text').show();
+                    setInterval(function(){$('#checkout-button-text').hide();}, 3000);
                 }
                 else {
                     let name = $("#user-name").val();
@@ -66,8 +68,12 @@ $(document).ready(function () {
                     }
 
                     $.ajax(settings).done(function () {
-                        account.balance -= totalPrice;
-                        addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); 
+                        account.balance -= totalPrice; // Account balance
+                        addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); // Add transaction info
+                        localStorage.removeItem('shoppingBag'); // Clear shopping bag when checked out
+                        $('#success-purchase-text').show();
+                        setInterval(function(){$('#success-purchase-text').hide();}, 3000); // Show successful message
+
                     }).fail(function() { alert('Please fill up the shipping form!') });
                 }
             })
@@ -96,7 +102,7 @@ async function loadBag() {
 function displayBag(products) {
     $(".table-body").html("");
     var htmlString = '';
-    for (var i = 0; i <= shoppingBag.length - 1; i++) {
+    for (var i = 0; i < shoppingBag.length; i++) {
         if (shoppingBag[i][0] == products[i].id) {
             var itemPrice = products[i].retailPrice * shoppingBag[i][1]
             totalPrice += itemPrice;
@@ -123,7 +129,7 @@ function checkBagEmpty() {
         $('footer').css('bottom','0')
         $('.total-cost-header').hide();
         $('.shopping-form-box').hide();
-        $('.table-box > p').hide();
+        $('.delete-all').hide();
     }
 
     else {
@@ -133,25 +139,26 @@ function checkBagEmpty() {
 
 function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
     var jsondata = {
-    "userID": userID, 
-    "balance": balance, 
-    "moneySpent": moneySpent, 
-    "purchaseType": 'Product', 
-    "purchaseData": purchaseData, 
-    "purchaseDateTime": purchaseDateTime}
+        "userID": userID, 
+        "balance": balance, 
+        "moneySpent": moneySpent, 
+        "purchaseType": 'Product', 
+        "purchaseData": purchaseData, 
+        "purchaseDateTime": purchaseDateTime
+    }
 
     var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
-    "method": "POST",
-    "headers": {
-        "content-type": "application/json",
-        "x-apikey": APIKEY,
-        "cache-control": "no-cache"
-    },
-    "processData": false,
-    "data": JSON.stringify(jsondata)
+        "async": true,
+        "crossDomain": true,
+        "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
     }
 
     $.ajax(settings).done(function (response) {
