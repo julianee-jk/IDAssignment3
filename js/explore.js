@@ -15,8 +15,14 @@ $(document).ready(function() {
     });
 
     $('#search').on("click", function() {
+        $("#next-button").prop('disabled', false);
+        $("#prev-button").prop('disabled', true);
+        range = "_page=1"
+        $("#page-input").val(1);
+
         if ($('.cat-group > input.btn-check').is(':checked')) url = `https://example-data.draftbit.com/sneakers?_limit=21&gender=${category}`;
         else url = `https://example-data.draftbit.com/sneakers?_limit=21`;
+
         query = $("#searchBar").val().replaceAll(' ', '%20');
         findMaxPage();
         loadSneakers(url + `&q=${query}&${range}`);
@@ -31,6 +37,7 @@ $(document).ready(function() {
 
         if (query != undefined && query != '') url = `https://example-data.draftbit.com/sneakers?_limit=21&q=${query}`;
         else url = `https://example-data.draftbit.com/sneakers?_limit=21`;
+
         category = e.target.attributes.value.value;
         findMaxPage();
         loadSneakers(url + `&gender=${category}&${range}`);
@@ -68,38 +75,61 @@ $(document).ready(function() {
         value = Number($("#page-input").val()) - 1;
 
         if (value <= 1) {
+            $("#next-button").prop('disabled', false);
             $("#prev-button").prop('disabled', true);
             $("#page-input").val(1);
         }
 
-        else { 
+        else if (value >= maxPage) {
+            $("#prev-button").prop('disabled', false);
+            $("#next-button").prop('disabled', true);
+            $("#page-input").val(maxPage);
+        }
+        
+        else {
             $("#next-button").prop('disabled', false);
+            $("#prev-button").prop('disabled', false);
             $("#page-input").val(value);
         }
+
 
         range = `_page=${$("#page-input").val()}`
         loadSneakers(`${url}&${range}`);
-    })
+    });
 
     $("#next-button").on("click", function() {
         value = Number($("#page-input").val()) + 1;
-        if (value >= maxPage) {
-            $("#next-button").prop('disabled', true);
-            $("#page-input").val(value);
+        console.log(value);
+        
+        if (value <= 1) {
+            $("#next-button").prop('disabled', false);
+            $("#prev-button").prop('disabled', true);
+            $("#page-input").val(1);
         }
 
+        else if (value >= maxPage) {
+            $("#prev-button").prop('disabled', false);
+            $("#next-button").prop('disabled', true);
+            $("#page-input").val(maxPage);
+        }
+        
         else {
+            $("#next-button").prop('disabled', false);
             $("#prev-button").prop('disabled', false);
             $("#page-input").val(value);
         }
         
         range = `_page=${$("#page-input").val()}`
         loadSneakers(`${url}&${range}`);
-    })
+    });
+
+    $(".back-to-top").on("click", function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
 });
 
 function loadSneakers(url) {
-    console.log(url);
     $(".sneaker-cards").html("") // clear sneaker cards
 
     fetch(url)
