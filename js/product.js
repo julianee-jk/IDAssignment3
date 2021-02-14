@@ -19,14 +19,23 @@ $(document).ready(function() {
     }
   });
 
-  $("#addToCart").click(function(e) {
+  $("#addToCart").click(function() {
       var qty = 1;
+      var item = [sneaker_id, qty, size];
+      var notDuplicate = true;
 
       if ($(".qty").val() == 0) qty = 1;
       else qty = $(".qty").val();
 
-      shoppingBag.push([sneaker_id, qty, size]);
-      localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag))
+      for (var i = 0; i < shoppingBag.length; i++) {
+        if (item[0] === shoppingBag[i][0] && item[2] === shoppingBag[i][2]) {
+          shoppingBag[i][1] += item[1];
+          notDuplicate = false;
+        }
+      }
+      
+      if (notDuplicate) shoppingBag.push(item);
+      localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
   });
 
   // +/- qty button increment
