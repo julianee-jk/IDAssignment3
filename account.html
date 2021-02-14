@@ -56,6 +56,14 @@
         </section>
 
         <section>
+            <h2>Daily Rewards</h2>
+            <small id="daily-collect-text">Daily Collected!</small>
+            <div class="daily-button-box"></div>
+            <h4>Daily Streak: <span id="daily-streak-id"></span></h4>
+            <h5>GC Gain: <span id="daily-streak-gc"></span></h5>
+        </section>
+
+        <section>
             <h2>Account Settings</h2>
             <div class="account-settings">
                 <a data-bs-toggle="modal" data-bs-target="#add-balance-modal">Add More Money to Balance</a>
@@ -120,7 +128,7 @@
                         <h3><span class="account-gc"></span>GC</h3>
                     </div>
 
-                    <small id="account-gc-error" style="display: none; color: red;">Insufficient Account Balance!</small>
+                    <small id="account-gc-error" style="display: none; color: red">Insufficient Account Balance!</small>
 
                     <div>
                         <p>Choose Top-Up Option</p>
@@ -178,7 +186,7 @@
                 </div>
                 <div class="modal-body">
                     <h6>Do you really want to delete your account?<br>This process cannot be undone.</h6>
-                    <button type="submit" class="btn btn-primary hvr-glow" id="delete-account">Delete</button>
+                    <button type="submit" class="btn btn-danger" id="delete-account">Delete</button>
                 </div>
             </div>
         </div>
