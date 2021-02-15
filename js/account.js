@@ -4,7 +4,6 @@ $(document).ready(function() {
         var dailyGCGain = 0;
         var recentlyCollected = false;
         $('#account-name').html(accLoggedIn[1]);
-        $('#daily-collect-text').hide();
 
         $.ajax({ // Get account data from database
             "async": true,
@@ -52,6 +51,10 @@ $(document).ready(function() {
                             break;
                     }
                     addTransactionInfo(account._id, account.balance, topUpValue, topUpValue, new Date($.now()));
+                    $('#topup-bal-text').html('');
+                    $('#topup-bal-text').append(`Added $${topUpValue} to balance.`);
+                    $('#topup-bal-text').show();
+                    setInterval(function(){$('#topup-bal-text').hide();}, 3000);
                     updateAccount(account);
                 });
 
@@ -226,30 +229,27 @@ function deleteAccount(account) {
 }
 function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
     var jsondata = {
-    "userID": userID, 
-    "balance": balance, 
-    "moneySpent": moneySpent, 
-    "purchaseType": 'BalanceTopUp', 
-    "purchaseData": purchaseData, 
-    "purchaseDateTime": purchaseDateTime}
+        "userID": userID, 
+        "balance": balance, 
+        "moneySpent": moneySpent, 
+        "purchaseType": 'BalanceTopUp', 
+        "purchaseData": purchaseData, 
+        "purchaseDateTime": purchaseDateTime
+    };
 
-    var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
-    "method": "POST",
-    "headers": {
-        "content-type": "application/json",
-        "x-apikey": APIKEY,
-        "cache-control": "no-cache"
-    },
-    "processData": false,
-    "data": JSON.stringify(jsondata)
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
+    })
 }
 
 function loadDailyButtons() {
