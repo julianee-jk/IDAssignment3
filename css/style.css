@@ -23,6 +23,10 @@ h2 {
     color: #4F359B;
 }
 
+.mobile-line, .nav-bag-mobile {
+    display: none;
+}
+
 #login-text, #name-text {
     color: #4F359B; 
     cursor: pointer;
@@ -642,7 +646,8 @@ footer {
 }
 
 /* Daily Rewards */
-#daily-collect-text {
+#daily-collect-text, #topup-bal-text {
+    display: none;
     color: #4a9440;
     font-weight: 500;
 }
@@ -886,13 +891,29 @@ footer {
     }
 }
 
-@media only screen and (max-width: 800px) {
-
-    /* ----- Global Styles ----- */
+@media only screen and (max-width: 991px) { 
+    /* ----- Global Nav bar ----- */
     .nav-link {
         padding-left: 0;
     }
+
+    .nav-bag-mobile {
+        display: contents;
+        padding-top: 0;
+    }
     
+    .nav-bag-mobile-box {
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-line {
+        display: contents;
+    }
+} 
+
+@media only screen and (max-width: 800px) {
+    /* ----- Global Styles ----- */
     #footer-text {
         text-align: center;
         max-width: 26em;
