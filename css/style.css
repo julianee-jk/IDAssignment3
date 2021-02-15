@@ -201,7 +201,7 @@ footer {
 .carousel-feature-slide > img {
     position: relative;
     transform: rotate(350deg) scaleX(-1);
-    left: 35%;
+    left: 38%;
     max-width: 50vw;
 }
 
@@ -212,19 +212,20 @@ footer {
 .carousel-feature-text {
     position: absolute;
     top: 20%;
+    left: 11%;
 }
 
 .carousel-play-slide > .carousel-play-box > img {
     position: relative;
-    left: 8em;
-    bottom: 12em;
+    left: 10%;
+    bottom: 11em;
     max-width: 90%;
 }
 
 .carousel-play-text {
     position: absolute;
     color: #000;
-    bottom: 8em;
+    top: 10%;
     max-width: 10em;
 }
 
@@ -680,9 +681,7 @@ footer {
     text-decoration: none;
 }
 
-.modal-content {
-    border-radius: 0;
-}
+.modal-content { border-radius: 0; }
 
 .modal-title {
     color: #000;
@@ -695,68 +694,47 @@ footer {
     margin-bottom: 12px;
 }
 
-.modal-body > form > .form-group {
-    margin-bottom: 12px;
-}
+.modal-body > form > .form-group { margin-bottom: 12px; }
 
-.modal-body > div > p {
-    margin: 0;
-}
+.modal-body > div > p { margin: 0; }
 
 /* --------------------------------------- Contact Page ------------------------------------- */
 
-.contact-main-box {
+#keep-touch-text {
+    font-weight: 600;
+    color: #4F359B;
+    font-size: 22px;
+    margin-left: 150px;
+}
+
+.contact-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 60px;
     width: 100%;
-    height: 90vh
-}
-
-.contact-form-box {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
     height: 80vh;
-    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
 }
 
 /* Contact details section (purple) */
 .contact-details {
-    width: 30%;
-    height: 80vh;
-    background-color: #4F359B;
-    position: absolute;
-}
-
-.contact-details > h5 {
-    color: #FFF;
-    font-weight: 600;
-    position: relative;
-    top: 20px;
-    left: 20px;
-}
-
-.contact-details > h4 {
-    font-weight: 700;
-    position: absolute;
-    top: -40px;
-    color: #4F359B;
-}
-
-.social-main-box {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: 80vh;
+    background-color: #4F359B;
+    margin-left: 150px;
+    box-shadow: 0 0 3px 2px rgba(100, 100, 100, 0.5);
 }
 
-/* Social media links with icon box */
-.social-text-box {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: #FFF;
-    font-size: 15px;
+.contact-details > h5 {
+    color: #FFFFFF;
+    font-weight: 600;
+    position: relative;
+    bottom: 12%;
+    /* left: -32%; */
 }
 
 .social-box {
@@ -764,8 +742,17 @@ footer {
     justify-content: space-between;
     flex-direction: column;
     width: 50%;
-    height: 50vh;
-    margin: 5.7em;
+    height: 45vh;
+}
+
+/* Social media links with icon box */
+.social-links-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 15px;
+    flex-wrap: wrap;
 }
 
 .social-icon {
@@ -773,65 +760,67 @@ footer {
     height: 60px;
 }
 
-.social-text-box > div > a {
+.social-links-box > div > a {
     text-decoration: none;
     color: #FFF;
 }
 
-.social-text-box > div > a:hover {
-    color: #cfcfcf;
-}
+.social-links-box > div > a:hover { color: #cfcfcf; }
+
 /* Contact form section (white) */
-.contact-form-section {
-    width: 87.5%;
-    height: auto;
-    position: absolute;
-}
-
-.contact-form {
-    position: relative;
-    left: 456px;
-    width: 62.5%;
+.contact-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
     height: 80vh;
-    padding: 50px;
+    margin-right: 150px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px rgba(100, 100, 100, 0.5);
 }
 
-.contact-form > h5 {
+.contact-message > h5 {
     font-weight: 600;
+    color: #000000;
     position: relative;
-    bottom: 27px;
+    bottom: 3.5%;
+    /* left: -30%; */
+}
+
+.form-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Contact Form */
 .form-layer {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 40px;
 }
 
-.form-layer > .form-group {
-    margin-top: 50px;
-}
-
-.form-layer > .form-group > input, .form-layer > .form-group > select {
+.form-layer > input, .form-layer > select {
     border-style: none none solid none;
-    width: 15em;
+    width: 45%;
 }
 
-.form-layer > .form-group > textarea {
-    width: 40.6em;
+.form-layer > textarea {
     height: 9em;
     border-radius: 0;
     resize: none;
-    margin: 5px 0 0 11px;
 }
 
-.form-layer > .form-group > label {
+.form-layer > label {
     color: #6c757d;
     padding: 5px 0 0 11px;
 }
 
 #contact-button {
-    margin: 20px 0 0 539px;
     padding: 10px 40px 10px 40px;
 }
 /* --------------------------------------- Shopping Bag ------------------------------------- */
@@ -877,17 +866,97 @@ footer {
 }
 
 /* --------------------------------------- Responsive ------------------------------------- */
-
 @media only screen and (max-width: 1300px) {
     .carousel-feature-slide img {
         transform: rotate(-25deg) scaleX(-1);
     }
+
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1180px) {
+    .carousel-play-slide > .carousel-play-box > img {
+        bottom: 5em;
+    }
+}
+
+@media only screen and (max-width: 1060px) {
     .carousel-feature-slide img {
-        transform: rotate(-35deg) scaleX(-1);
-        top: 10%;
+        position: absolute;
+        top: 2%;
+        max-width: 50%;
+    }
+}
+
+@media only screen and (max-width: 1025px) {
+    .carousel {
+        height: 50vh;
+    }
+
+    .carousel-play-slide {
+        height: 50vh;
+    }
+
+    .carousel-feature-slide {
+        height: 50vh;
+    }
+
+    .carousel-item > a > img {
+        position: static;
+        height: 50vh;
+    }
+
+    .carousel-caption {
+        top: 40%;
+    }
+
+    .carousel-feature-text {
+        top: 12%;
+    }
+
+    .carousel-play-text {
+        top: 15%;
+    }
+
+    /* Contact Styles */
+    .contact-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contact-details {
+        width: 100%;
+        margin: 0;
+        height: 20vh;
+    }
+
+    .contact-message {
+        width: 100%;
+        margin: 0;
+        height: 40vh;
+        padding: 0 10px 0 10px;
+        margin-bottom: 19%;
+    }
+
+    .contact-message > h5{
+        margin: 0
+    }
+
+    #keep-touch-text {
+        margin-left: 40%;
+    }
+
+    #contact-button {
+        margin-top: 12px;
+    }
+
+    .social-box {
+        width: 80%;
+        height: 10vh;
+        flex-direction: row;
+    }
+
+    .social-links-box > div {
+        margin-left: 14px;
     }
 }
 
@@ -910,6 +979,16 @@ footer {
     .mobile-line {
         display: contents;
     }
+
+    .carousel-caption > h5 {
+        font-size: 42px;
+        width: auto;
+    }
+    
+    .carousel-caption > p {
+        font-size: 16px;
+        max-width: none;
+    }
 } 
 
 @media only screen and (max-width: 800px) {
@@ -919,64 +998,29 @@ footer {
         max-width: 26em;
     }
 
-    /* ----- Index Styles ----- */
-    .carousel {
-        height: 50vh;
-    }
-
-    .carousel-item {
-        height: 50vh;
-    }
-
-    .carousel-item > a > img {
-        height: 50vh;
-    }
-
-    .carousel-caption > h5 {
-        font-size: 42px;
-        width: auto;
-        text-align: center;
-    }
-    
-    .carousel-caption > p {
-        font-size: 16px;
-        max-width: none;
-    }
-
-    /* Carousel feature slide */
-    .carousel-feature-slide {
-        height: 50vh;
-    }
-
-    .carousel-feature-slide > img {
-        left: 20%;
-        top: 40%;
+    .carousel-caption {
+        top: 35%;
     }
 
     .carousel-feature-text {
-        top: 5%;
+        top: 2%;
     }
 
     .carousel-feature-text p, .carousel-feature-text h5 {
         text-align: center;
     }
 
-    /* Carousel play slide */
     .carousel-play-text {
-        top: 5%;
-        left: 25%;
+        top: 2%;
+        left: 35%;
         max-width: 15em;
     }
 
-    .carousel-play-slide {
-        height: 50vh;
+    .carousel-caption > h5 {
+        text-align: center;
     }
 
-    .carousel-play-slide > .carousel-play-box > img {
-        left: -10%;
-        bottom: -8em;
-    }
-
+    /* Carousel play slide */
     .index-sneaker-cards > .card {
         padding-top: 8px;
         flex-direction: column;
@@ -995,11 +1039,6 @@ footer {
     .sneaker-colorway {
         color: #888;
         text-align: center;
-    }
-
-    .carousel-item > a > img {
-        position: static;
-        bottom: none;
     }
 
     /* ----- Explore Styles ----- */
@@ -1053,6 +1092,225 @@ footer {
         width: auto;
     }
 
-    /* ----- Contact Page ----- */
+    /* ----- Contact Styles ----- */
+    .contact-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contact-details {
+        width: 100%;
+        margin: 0;
+        height: 50vh;
+    }
+
+    .contact-message {
+        width: 100%;
+        margin: 0;
+        height: 75vh;
+        padding: 0 10px 0 10px;
+    }
+
+    .contact-message > h5{
+        margin: 0
+    }
+
+    #keep-touch-text {
+        margin-left: 35%;
+    }
+
+    #contact-button {
+        margin-top: 12px;
+    }
+
+    .social-box {
+        flex-direction: column;
+        width: 60%;
+        height: 15vh;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .carousel-feature-slide > img {
+        left: 20%;
+        top: 20%;
+    }
+
+    .carousel-play-slide > .carousel-play-box > img {
+        left: -8%;
+        bottom: 0em;
+    }
+
+    .carousel-caption {
+        top: 50%;
+    }
+
+    .carousel-caption h5 {
+        font-size: 32px;
+    }
     
+    .carousel-feature-text {
+        top: 2%;
+    }
+
+    .carousel-play-text {
+        top: 5%;
+    }
+
+    /* Contact Styles */
+    #keep-touch-text {
+        margin-left: 37%;
+    }
+    
+    .contact-message > h5 {
+        margin-top: 24px;
+    }
+
+    .social-box {
+        height: 30vh;
+        width: 40%;
+    }
+
+    .contact-details {
+        height: 50vh;
+    }
+
+    .contact-message {
+        height: 70vh;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .carousel-play-slide > .carousel-play-box > img {
+        bottom: -5em;
+    }
+
+    .carousel-caption {
+        top: 35%;
+    }
+
+    .carousel-feature-text {
+        top: 2%;
+    }
+
+    .carousel-play-text {
+        top: 5%;
+        left: 27%;
+    }
+
+    /* Contact Styles */
+    #keep-touch-text {
+        margin-left: 32%;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .carousel-play-slide > .carousel-play-box > img {
+        left: -10%;
+        bottom: -7em;
+    }
+
+    .carousel-play-text {
+        top: 2%;
+        left: 20%;
+    }
+
+    /* Contact Styles */
+    #keep-touch-text {
+        margin-left: 25%;
+    }
+    
+    .social-box {
+        height: 35vh;
+        width: 60%;
+    }
+
+    .contact-details {
+        height: 65vh;
+    }
+
+    .contact-message {
+        height: 70vh;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .carousel-caption {
+        top: 32%;
+        left: 10%;
+    }
+
+    .carousel-play-text {
+        top: 2%;
+        left: 18%;
+    }
+
+    .carousel-feature-text {
+        top: 2%;
+        left: 15%;
+    }
+
+    /* Contact Styles */
+    #keep-touch-text {
+        margin-left: 23%;
+    }
+    
+    .contact-message > h5 {
+        margin-top: 24px;
+    }
+
+    .social-box {
+        height: 40vh;
+        width: 70%;
+    }
+
+    .contact-details {
+        height: 70vh;
+    }
+
+    .contact-message {
+        height: 80vh;
+    }
+}
+
+
+@media only screen and (max-width: 360px) {
+    .carousel-caption {
+        top: 40%;
+        left: 15%;
+    }
+
+    .carousel-play-text {
+        top: 2%;
+        left: 16%;
+    }
+
+    .carousel-feature-text {
+        top: 2%;
+    }
+
+    .carousel-caption > h5 {
+        font-size: 24px;
+    }
+    
+    .carousel-caption > p {
+        font-size: 11px;
+    }
+
+    /* Contact Styles */
+    #keep-touch-text {
+        margin-left: 18%;
+    }
+
+    .social-box {
+        height: 45vh;
+    }
+
+    .contact-details {
+        height: 75vh;
+    }
+
+    .contact-message {
+        height: 85vh;
+    }
 }
