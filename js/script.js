@@ -119,7 +119,9 @@ function createAccount() {
         "dob": $("#create-dob").val(), 
         "password": $("#create-password").val(), 
         "balance": 0,
-        "coupon": 0 
+        "coupon": 0,
+        "dailyStreak": 0,
+        "lastDaily": new Date($.now() - 86400000)
     }; 
 
     $.ajax({
