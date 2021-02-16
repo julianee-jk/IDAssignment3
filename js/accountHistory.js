@@ -1,72 +1,78 @@
-var transactions = [] 
-$(document).ready(function () {
+$(document).ready(function() {
+    $('footer').css('position','absolute');
+    $('footer').css('bottom','0');
+
     if (accLoggedIn != null) {
-        $.ajax({ // Get account data from database
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
-            "method": "GET",
-            "headers": {
-              "content-type": "application/json",
-              "x-apikey": APIKEY,
-              "cache-control": "no-cache"
-            },
-        }).done(function(transaction) {
-            for (let i = 0; i < transaction.length; i++) {
-                // console.log(transaction[i].userID)
-                if (transaction[i].userID == null) {
-                    $('.table-body').append(`<tr><th colspan="6" style="text-align: center;">No Purchase History!</th></tr>`)
-                    $('footer').css('position','absolute');
-                    $('footer').css('bottom','0');
-                }
-                else {
-                    transactions.push(transaction[i]);
-                    loadTransaction();
-                    console.log(transaction[i].purchaseData[0])
-                }
-            }
-        }).fail(function() { console.log('Error'); });
+        $('.table-body').html('');
+        loadAccountData();
     }
-    else { windows.location.href = 'index.html' }
+
+    else window.location.href = 'index.html';
 });
 
-async function loadTransaction() {
-    transactions.map(s => {
-        let transaction = fetch(`https://example-data.draftbit.com/sneakers/${s.purchaseData[0][0]}`)
-        .then(res => res.json())
-        .then(data => {
-            return data.title;
-        })
+function loadAccountData() {
+    var userID = JSON.parse(localStorage.getItem('accLoggedIn'))[0];
 
-        transactions.push(transaction);
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/transaction-info?q={"userID":"${userID}"}`,
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": APIKEY,
+          "cache-control": "no-cache"
+        }
     })
-    transactions = await Promise.all(transactions);
-    displayHistory(transactions);
+    .done(function(response) {
+        console.log(response);
+        if (response.length == 0) $('.table-body').append(`<tr><th colspan="7" style="text-align: center;">No Purchase History!</th></tr>`);
+        else loadTransactions(response);
+    });
 }
 
-function displayHistory(transactions) {
-    $(".table-body").html("");
-    console.log(transactions);
+function loadTransactions(transactions) {
+    var i = 0;
     var htmlString = '';
-    for (var i = 0; i <= transactions.length - 1; i++) {
-        htmlString += (`
-            <tr>
-                <th scope="row">${i + 1}</th>
-                <td>Name</td>
-                <td>${transactions[i].purchaseData[0]}</td>
-                <td>${transactions[i].purchaseData[0]}</td>
-                <td>$${transactions[i].moneySpent}</td>
-                <td> ${transactions[i].purchaseType}</td>
-                <td>${transactions[i].purchaseDateTime}</td>
-            </tr>
-        `);
-        // <th scope="col">#</th>
-        // <th scope="col">Product Name</th>
-        // <th scope="col">Qty</th>
-        // <th scope="col">Size</th>
-        // <th scope="col">Cost</th>
-        // <th scope="col">Type</th>
-        // <th scope="col">DateTime</th>
-    }
-    $('.table-body').html(htmlString);
+
+    transactions.map(transaction => {
+        if (transaction.purchaseType == "Product") {
+            transaction.purchaseData.forEach(product => {
+                var url = `https://example-data.draftbit.com/sneakers/${product[0]}`;
+
+                fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    htmlString = (`
+                        <tr>
+                            <th scope="row">${i += 1}</th>
+                            <td>${data.title}</td>
+                            <td>${product[1]}</td>
+                            <td>${product[2]}</td>
+                            <td>$${data.retailPrice * product[1]}</td>
+                            <td>${transaction.purchaseType}</td>
+                            <td>${transaction.purchaseDateTime}</td>
+                        </tr>
+                    `)
+
+                    $('.table-body').append(htmlString);
+                });
+            });
+        }
+
+        else {
+            htmlString = (`
+                <tr>
+                    <th scope="row">${i += 1}</th>
+                    <td>${transaction.purchaseType}</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>$${transaction.purchaseData}</td>
+                    <td>${transaction.purchaseType}</td>
+                    <td>${transaction.purchaseDateTime}</td>
+                </tr>
+            `)
+            $('.table-body').append(htmlString);
+        }
+    });
 }
