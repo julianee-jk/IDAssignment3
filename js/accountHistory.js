@@ -1,7 +1,4 @@
 $(document).ready(function() {
-    $('footer').css('position','absolute');
-    $('footer').css('bottom','0');
-
     if (accLoggedIn != null) {
         $('.table-body').html('');
         loadAccountData();
