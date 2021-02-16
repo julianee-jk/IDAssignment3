@@ -38,16 +38,16 @@ $(document).ready(function() {
                             topUpValue = 10;
                             account.balance += topUpValue;
                             break;
-                        case '$15':
-                            topUpValue = 15;
-                            account.balance += topUpValue;
-                            break;
-                        case '$20':
-                            topUpValue = 20;
-                            account.balance += topUpValue;
-                            break;
                         case '$50':
                             topUpValue = 50;
+                            account.balance += topUpValue;
+                            break;
+                        case '$100':
+                            topUpValue = 100;
+                            account.balance += topUpValue;
+                            break;
+                        case '$150':
+                            topUpValue = 150;
                             account.balance += topUpValue;
                             break;
                     }
