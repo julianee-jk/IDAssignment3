@@ -17,13 +17,6 @@ $(document).ready(function () {
 
     $('#countdown-flip').html('GAME EXPIRED');
     spinTimer();
-    $('#flip-play-button').on('click', function () {
-        $('#flip-text-error').hide();
-    });
-
-    $('#spin-play-button').on('click', function () {
-        $('#spin-text-error').hide();
-    });
 });
 
 // Countdown Timers
@@ -156,6 +149,7 @@ function startFlip() {
             coinFlipping = false;
         }
         timeleft -= 1;
+        setInterval(function(){$('#flip-text-error').hide();}, 3000);
     }, 1000);
 }
 
@@ -166,6 +160,7 @@ let theWheel = new Winwheel({
     'centerX': 217,       // Used to position on the background correctly.
     'centerY': 219,
     'textFontSize': 25,   // Font size.
+    'responsive'   : true,  // This wheel is responsive!
     'segments': [         // Definition of all the segments.
         { 'fillStyle': '#ffb217', 'text': '$100' }, { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
@@ -219,6 +214,7 @@ function alertPrize(indicatedSegment) {
     theWheel.draw();                // Call draw to render changes to the wheel.
     $('#spin-button').html('SPIN');
     wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+    setInterval(function(){$('#spin-text-error').hide();}, 3000);
 }
 
 function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) {
@@ -240,6 +236,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         $('#spin-text-error').show();
                         $('#spin-text-error').css('color', 'red');
                         $('#spin-text-error').html('Not enough GC!');
+                        setInterval(function(){$('#spin-text-error').hide();}, 3000);
                     }
                     else {
                         if (spinExpired == true) {
@@ -249,16 +246,14 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         else {
                             $('#spin-text-error').hide();
                             account.coupon -= spinCost;
-                            if (spinCost == 1) {
+                            if (spinCost == 1 && wheelSpinning == false) {
                                 // Ensure that spinning can't be clicked again while already running.
-                                if (wheelSpinning == false) {
-                                    theWheel.animation.spins = 8;
-                                    $('#spin-button').html('SPINNING');
-                                    // Begin the spin animation by calling startAnimation on the wheel object.
-                                    theWheel.startAnimation();
-                                    // the current animation. The user will have to reset before spinning again.
-                                    wheelSpinning = true;
-                                }
+                                theWheel.animation.spins = 8;
+                                $('#spin-button').html('SPINNING');
+                                // Begin the spin animation by calling startAnimation on the wheel object.
+                                theWheel.startAnimation();
+                                // the current animation. The user will have to reset before spinning again.
+                                wheelSpinning = true;
                             }
                             if (spinAmountWon > 0) {
                                 account.balance += spinAmountWon;
@@ -273,9 +268,10 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         $('#flip-text-error').show();
                         $('#flip-text-error').css('color', 'red');
                         $('#flip-text-error').html('Not enough GC!');
+                        setInterval(function(){$('#flip-text-error').hide();}, 3000);
                     }
                     else {
-                        $('#spin-text-error').hide();
+                        $('#flip-text-error').hide();
                         account.coupon -= flipCost;
                         if (flipCost == 3) {
                             startFlip();
@@ -320,28 +316,24 @@ function updateAccount(account) {
 
 function addTransactionInfo(userID, balance, moneySpent, purchaseType, purchaseData, purchaseDateTime) {
     var jsondata = {
-    "userID": userID, 
-    "balance": balance, 
-    "moneySpent": moneySpent, 
-    "purchaseType": purchaseType, 
-    "purchaseData": purchaseData, 
-    "purchaseDateTime": purchaseDateTime}
+        "userID": userID, 
+        "balance": balance, 
+        "moneySpent": moneySpent, 
+        "purchaseType": purchaseType, 
+        "purchaseData": purchaseData, 
+        "purchaseDateTime": purchaseDateTime}
 
-    var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
-    "method": "POST",
-    "headers": {
-        "content-type": "application/json",
-        "x-apikey": APIKEY,
-        "cache-control": "no-cache"
-    },
-    "processData": false,
-    "data": JSON.stringify(jsondata)
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
+    })
 }

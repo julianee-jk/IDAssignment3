@@ -498,10 +498,24 @@ footer {
     box-shadow: 0 3px 5px rgba(100, 100, 100, 0.5);
 }
 
+/* Game header titles - before play */
+.game-box > h2 {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+/* Game header titles in modal */
+.spin-text-box > h2, .flip-text-box > h2 {
+    font-weight: 600;
+    font-size: 32px;
+    margin-top: 34px;
+}
+
 .not-loggedin-text {
     color: red;
     font-weight: 700;
     margin-bottom: 1em;
+    display: none;
 }
 
 #countdown-box {
@@ -530,6 +544,10 @@ footer {
     margin-top: 10px;
 }
 
+#spinNWinModal, #coinFlipModal {
+    padding: 0;
+}
+
 /* Spin N Win Game */
 .canvas-box {
     display: flex;
@@ -544,9 +562,7 @@ footer {
     flex-direction: column;
 }
 
-#spin-text-error, #flip-text-error {
-    color: red;
-}
+#spin-text-error, #flip-text-error { color: red; }
 
 /* Coin Flip Game */
 #coin {
@@ -555,7 +571,6 @@ footer {
     height: 180px;
     position: relative;
 }
-
 
 #coin div {
     width: 100%;
@@ -585,24 +600,19 @@ footer {
     margin: 0;
 }
 
-.side-a {
-    background-color: #4F359B;
+.side-a { 
+    z-index: 100;
+    background-color: #4F359B; 
 }
 
-.side-b {
-    background-color: #3e3e3e;
+.side-b { 
+    background-color: #3e3e3e; 
+    transform: rotateY(-180deg);
 }
   
 #coin {
     transition: transform 1s ease-in;
     transform-style: preserve-3d;
-}
-
-.side-a {
-    z-index: 100;
-}
-.side-b {
-    transform: rotateY(-180deg);
 }
   
 #coin.heads {
@@ -668,9 +678,16 @@ footer {
     color: #000000;
     opacity: 0.4;
 }
+
 /* Dashboard */
+.chart-box {
+    position: relative;
+    height: 70vh;
+    width: 100vw;
+}
+
 #accountChart {
-    max-height: 80%;
+    max-height: 100%;
     max-width: 60%;
 }
 
@@ -740,7 +757,6 @@ footer {
     font-weight: 600;
     position: relative;
     bottom: 12%;
-    /* left: -32%; */
 }
 
 .social-box {
@@ -791,7 +807,6 @@ footer {
     color: #000000;
     position: relative;
     bottom: 3.5%;
-    /* left: -30%; */
 }
 
 .form-box {
@@ -932,6 +947,10 @@ footer {
     .social-links-box > div {
         margin-left: 14px;
     }
+    /* Account Styles */
+    body.modal-open {
+        position: fixed;
+    }
 }
 
 @media only screen and (max-width: 1025px) {
@@ -1012,6 +1031,10 @@ footer {
 } 
 
 @media only screen and (max-width: 800px) {
+    .container-fluid {
+        padding: 0;
+    }
+
     /* ----- Global Styles ----- */
     #footer-text {
         text-align: center;
@@ -1125,6 +1148,24 @@ footer {
         flex-direction: column;
         width: 40%;
         height: 30vh;
+    }
+
+    /* ----- Account Styles ----- */
+    .account { padding: 24px }
+
+    .daily-button-box {
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .dailyButton {
+        width: 95px;
+    }
+
+    .chart-box {
+        height: 30vh;
+        width: 135vw;
     }
 }
 

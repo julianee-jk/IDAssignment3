@@ -291,7 +291,9 @@ function accountDashboard(id) {
             },
 
             // Configuration options go here
-            options: {}
+            options: {
+                maintainAspectRatio: false
+            }
         });
 
     }).fail(function() { console.log('Error'); });
