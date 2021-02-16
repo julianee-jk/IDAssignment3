@@ -668,6 +668,12 @@ footer {
     color: #000000;
     opacity: 0.4;
 }
+/* Dashboard */
+#accountChart {
+    max-height: 80%;
+    max-width: 60%;
+}
+
 /* Account settings section */
 .account-settings {
     cursor: pointer;

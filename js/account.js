@@ -1,6 +1,7 @@
 $(document).ready(function() {
     loadDailyButtons();
     if (accLoggedIn != null) { // Check if user is logged in
+        accountDashboard(accLoggedIn[0]);
         var dailyGCGain = 0;
         var recentlyCollected = false;
         $('#account-name').html(accLoggedIn[1]);
@@ -250,6 +251,50 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         "processData": false,
         "data": JSON.stringify(jsondata)
     })
+}
+
+function accountDashboard(id) {
+    $.ajax({ // Get account data from database
+        "async": true,
+        "crossDomain": true,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/transaction-info?q={"userID": "${id}", "$or": [{"purchaseType": "BalanceTopUp"}, {"purchaseType": "Product"}]}`,
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": APIKEY,
+          "cache-control": "no-cache"
+        },
+    }).done(function(transaction) {
+        var janData = 0, febData = 0, marData = 0;
+        for (let i = 0; i < transaction.length; i++){
+            if (new Date(transaction[i].purchaseDateTime).getMonth()+1 == 1)
+                janData += transaction[i].moneySpent;
+            else if (new Date(transaction[i].purchaseDateTime).getMonth()+1 == 2)
+                febData += transaction[i].moneySpent;
+            else if (new Date(transaction[i].purchaseDateTime).getMonth()+1 == 3)
+                marData += transaction[i].moneySpent;
+        }
+        
+        chart = new Chart($('#accountChart')[0].getContext('2d'), {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['January', 'February', 'March'],
+                datasets: [{
+                    label: 'First Quarter 2021 Spendings',
+                    backgroundColor: '#4F359B',
+                    borderColor: '#2e1e5f',
+                    data: [janData, febData, marData]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+
+    }).fail(function() { console.log('Error'); });
 }
 
 function loadDailyButtons() {
