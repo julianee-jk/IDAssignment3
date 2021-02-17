@@ -258,7 +258,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                             if (spinAmountWon > 0) {
                                 account.balance += spinAmountWon;
                                 updateAccount(account);
-                                addTransactionInfo(account._id, account.balance, 3, 'SpinwheelWin', spinAmountWon, new Date($.now()));
+                                addTransactionInfo(account._id, account.balance, 3, spinAmountWon, new Date($.now()));
                             }
                         }
                     }
@@ -279,7 +279,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         if (flipAmountWon > 0) {
                             account.balance += flipAmountWon;
                             updateAccount(account);
-                            addTransactionInfo(account._id, account.balance, 9, 'CoinflipWin', flipAmountWon, new Date($.now()));
+                            addTransactionInfo(account._id, account.balance, 9, flipAmountWon, new Date($.now()));
                         }
                     }
                 }
@@ -314,12 +314,12 @@ function updateAccount(account) {
     });
 }
 
-function addTransactionInfo(userID, balance, moneySpent, purchaseType, purchaseData, purchaseDateTime) {
+function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
     var jsondata = {
         "userID": userID, 
         "balance": balance, 
         "moneySpent": moneySpent, 
-        "purchaseType": purchaseType, 
+        "purchaseType": 'GameWin', 
         "purchaseData": purchaseData, 
         "purchaseDateTime": purchaseDateTime}
 
