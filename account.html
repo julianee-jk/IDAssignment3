@@ -55,8 +55,23 @@
 
         <section>
             <h2>Dashboard</h2>
-            <div class="chart-box">
-                <canvas id="accountChart"></canvas>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#spendings-chart-tab" type="button" role="tab" aria-controls="nav-spendings" aria-selected="true">Spendings 2021</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#winnings-chart-tab" type="button" role="tab" aria-controls="nav-winnings" aria-selected="false">Winnings 2021</button>
+                </div>
+            </nav>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="spendings-chart-tab" role="tabpanel" aria-labelledby="nav-spendings">
+                    <div class="chart-box">
+                        <canvas id="spendings-chart"></canvas>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="winnings-chart-tab" role="tabpanel" aria-labelledby="nav-winnings">
+                    <div class="chart-box">
+                        <canvas id="winnings-chart"></canvas>
+                    </div>
+                </div>
             </div>
         </section>
 

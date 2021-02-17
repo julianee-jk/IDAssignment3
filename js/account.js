@@ -113,6 +113,7 @@ $(document).ready(function() {
 
                 // On page load, automatically enable button according to daily streak
                 var firstButton = $("#day1Button");
+                // for (let i=0; i<=7; i++) {}
                 if (account.dailyStreak == 1)
                     firstButton = $("#day2Button");
                 else if (account.dailyStreak == 2)
@@ -257,46 +258,66 @@ function accountDashboard(id) {
     $.ajax({ // Get account data from database
         "async": true,
         "crossDomain": true,
-        "url": `https://sneakerzone-11b9.restdb.io/rest/transaction-info?q={"userID": "${id}", "$or": [{"purchaseType": "BalanceTopUp"}, {"purchaseType": "Product"}]}`,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/transaction-info?q={"userID": "${id}"}`,
         "method": "GET",
         "headers": {
           "content-type": "application/json",
           "x-apikey": APIKEY,
           "cache-control": "no-cache"
         },
-    }).done(function(transaction) {
-        var janData = 0, febData = 0, marData = 0;
-        for (let i = 0; i < transaction.length; i++){
-            if (new Date(transaction[i].purchaseDateTime).getMonth()+1 == 1)
-                janData += transaction[i].moneySpent;
-            else if (new Date(transaction[i].purchaseDateTime).getMonth()+1 == 2)
-                febData += transaction[i].moneySpent;
-            else if (new Date(transaction[i].purchaseDateTime).getMonth()+1 == 3)
-                marData += transaction[i].moneySpent;
-        }
+    })
+    .done(function(transaction) {
+        var spendingArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var winningsArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         
-        chart = new Chart($('#accountChart')[0].getContext('2d'), {
-            // The type of chart we want to create
-            type: 'line',
+        for (let i = 0; i < transaction.length; i++) {
+            if (transaction[i].purchaseType == 'Product' || transaction[i].purchaseType == 'BalanceTopUp') {
+                for (let x = 0; x < 12; x++) {
+                    if (new Date(transaction[i].purchaseDateTime).getMonth() == x) spendingArray[x] += transaction[i].moneySpent;
+                    else continue;
+                }
+            }
+            else {
+                for (let x = 0; x < 12; x++) {
+                    if (new Date(transaction[i].purchaseDateTime).getMonth() == x) winningsArray[x] += transaction[i].moneySpent;
+                    else continue;
+                }
+            }
+        }
 
-            // The data for our dataset
-            data: {
-                labels: ['January', 'February', 'March'],
+        // BalanceTopup & Product
+        spendingsChart = new Chart($('#spendings-chart')[0].getContext('2d'), {
+            type: 'line', // The type of chart we want to create
+            data: { // The data for our dataset
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
-                    label: 'First Quarter 2021 Spendings',
+                    label: 'Account Spendings in 2021',
                     backgroundColor: '#4F359B',
                     borderColor: '#2e1e5f',
-                    data: [janData, febData, marData]
+                    data: [spendingArray[0], spendingArray[1], spendingArray[2], spendingArray[3], spendingArray[4], 
+                    spendingArray[5], spendingArray[6], spendingArray[7], spendingArray[8], spendingArray[9], 
+                    spendingArray[10], spendingArray[11], spendingArray[12]]
                 }]
             },
-
-            // Configuration options go here
-            options: {
-                maintainAspectRatio: false
-            }
+            options: { maintainAspectRatio: false } // Configuration options go here
         });
 
-    }).fail(function() { console.log('Error'); });
+        winningsChart = new Chart($('#winnings-chart')[0].getContext('2d'), {
+            type: 'line', // The type of chart we want to createv
+            data: { // The data for our dataset
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Account Winnings in 2021',
+                    backgroundColor: '#4F359B',
+                    borderColor: '#2e1e5f',
+                    data: [winningsArray[0], winningsArray[1], winningsArray[2], winningsArray[3], winningsArray[4], 
+                    winningsArray[5], winningsArray[6], winningsArray[7], winningsArray[8], winningsArray[9], 
+                    winningsArray[10], winningsArray[11], winningsArray[12]]
+                }]
+            },
+            options: { maintainAspectRatio: false } // Configuration options go here
+        });
+    });
 }
 
 function loadDailyButtons() {
