@@ -1,15 +1,18 @@
 var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
 var totalPrice = 0;
+
 $(document).ready(function () {
     checkBagEmpty();
     $('.table-body').on('click', ".delete", function(e) {
         $(".table-body").html("");
+        totalPrice = 0;
         shoppingBag.splice(e.target.attributes.value.value, 1);
         localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
         checkBagEmpty();
     });
 
     $('.delete-all').on('click', function(e) {
+        totalPrice = 0;
         localStorage.removeItem('shoppingBag');
         $(".table-body").html("");
         checkBagEmpty();
