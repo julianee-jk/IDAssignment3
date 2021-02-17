@@ -44,6 +44,23 @@ $(document).ready(function() {
         url = url + `&gender=${category}`;
     });
 
+    $(".sort-group > input.btn-check").on("click", function(e) {
+        if ($(".sort-group > input.btn-check:checked").val() == "trending") {
+            $(".pagination-group").hide();
+            $(".searchBar").hide();
+            $(".cat-group").hide();
+            $(".sneaker-cards").html("");
+            loadTrending();
+        }
+
+        else {
+            $(".pagination-group").show();
+            $(".searchBar").show();
+            $(".cat-group").show();
+            loadSneakers(`${url}&${range}`);
+        }
+    });
+
     $("#page-input").keyup(function(e) {
         if (e.keyCode === 13) {
             value = Number($("#page-input").val());
@@ -99,7 +116,6 @@ $(document).ready(function() {
 
     $("#next-button").on("click", function() {
         value = Number($("#page-input").val()) + 1;
-        console.log(value);
         
         if (value <= 1) {
             $("#next-button").prop('disabled', false);
@@ -167,11 +183,6 @@ function selectCard(sneakerId) {
     window.location.href = "product.html";
 }
 
-function selectCat(category) {
-    var load = url + `gender=${category}`;
-    loadSneakers(load);
-}
-
 function findMaxPage() {
     if (query == '') {
         maxPage = 15;
@@ -198,4 +209,48 @@ function findMaxPage() {
             else $("#next-button").prop('disabled', false);
         });
     }
+}
+
+function loadTrending() {
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/transaction-info?q={"purchaseType":"Product"}&max=21&h={"$orderby":{"purchaseDateTime":-1}}`,
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": APIKEY,
+          "cache-control": "no-cache"
+        }
+    })
+    .done(function(response) {
+        var trendingArray = [];
+
+        response.map(transaction => {
+            transaction.purchaseData.map(data => {
+                if (!(trendingArray.includes(data[0]))) {
+                    trendingArray.push(data[0]);
+                }
+            });
+        })
+
+        displayTrending(trendingArray);
+    });
+}
+
+function displayTrending(trendingArray) {
+    trendingArray.map(function(sneakerID) {
+        fetch(`https://example-data.draftbit.com/sneakers/${sneakerID}`)
+        .then(res => res.json())
+        .then(function(s) {
+            $(".sneaker-cards").append(`
+                <li class="sneaker-card" onclick="selectCard('${s.id}')" id="${s.id}" style="cursor: pointer">
+                    <img src="${s.media.imageUrl}" alt="${s.title}" />
+                    <span class="sneaker-title">${s.title}</span>
+                    <span class="sneaker-colorway">${s.colorway}</span>
+                    <span class="sneaker-price">$${s.retailPrice}</span>
+                </li>
+            `)
+        })
+    })
 }
