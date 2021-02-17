@@ -16,7 +16,7 @@ $(document).ready(function () {
     }
 
     $('#countdown-flip').html('GAME EXPIRED');
-    spinTimer();
+    flipTimer();
 });
 
 // Countdown Timers
@@ -149,7 +149,8 @@ function startFlip() {
             coinFlipping = false;
         }
         timeleft -= 1;
-        setInterval(function(){$('#flip-text-error').hide();}, 3000);
+        $('.game-flip-loading').hide();
+        setInterval(function(){$('#flip-text-error').hide();}, 5000);
     }, 1000);
 }
 
@@ -212,12 +213,17 @@ function alertPrize(indicatedSegment) {
     theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
     theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
     theWheel.draw();                // Call draw to render changes to the wheel.
-    $('#spin-button').html('SPIN');
+    $('#spin-text').html("SPIN");
+    $('.game-spin-loading').hide();
+    $('#spin-text').show();
     wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
     setInterval(function(){$('#spin-text-error').hide();}, 3000);
 }
 
 function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) {
+    $('#spin-text').hide();
+    $('.game-spin-loading').show();
+    $('.game-flip-loading').show();
     if (accLoggedIn != null) { // Check if user is logged in
         if (spinAmountWon > 0 || spinCost == 1 || flipAmountWon > 0 || flipCost == 3) {
             $.ajax({ // Get account data from database
@@ -231,6 +237,9 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                     "cache-control": "no-cache"
                 },
             }).done(function (account) {
+                $('.game-spin-loading').hide();
+                $('.game-flip-loading').hide();
+                $('#spin-text').show();
                 if (flipAmountWon == 0 && flipCost == 0) {
                     if (account.coupon - spinCost < 0) {
                         $('#spin-text-error').show();
@@ -249,7 +258,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                             if (spinCost == 1 && wheelSpinning == false) {
                                 // Ensure that spinning can't be clicked again while already running.
                                 theWheel.animation.spins = 8;
-                                $('#spin-button').html('SPINNING');
+                                $('#spin-text').html("SPINNING");
                                 // Begin the spin animation by calling startAnimation on the wheel object.
                                 theWheel.startAnimation();
                                 // the current animation. The user will have to reset before spinning again.

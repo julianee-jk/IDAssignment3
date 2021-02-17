@@ -549,6 +549,12 @@ footer {
     padding: 0;
 }
 
+.game-loading-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Spin N Win Game */
 .canvas-box {
     display: flex;
