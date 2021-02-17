@@ -16,7 +16,7 @@ $(document).ready(function () {
     }
 
     $('#countdown-flip').html('GAME EXPIRED');
-    flipTimer();
+    spinTimer();
 });
 
 // Countdown Timers

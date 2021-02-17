@@ -1232,6 +1232,10 @@ footer {
         width: auto;
         margin-bottom: 24px;
     }
+    /* ----- Shopping Bag Styles ----- */
+    .games-header-text {
+        padding: 1em 1em 0 1em;
+    }
 }
 
 @media only screen and (max-width: 768px) {
