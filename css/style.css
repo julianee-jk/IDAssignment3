@@ -52,15 +52,6 @@ footer {
     margin-top: 5px;
 }
 
-.shopping-form-box > form > .form-group {
-    margin-top: 30px;
-}
-
-.shopping-form-box > form > .form-group > textarea {
-    resize: none;
-    height: 12em;
-}
-
 .header-left-text {
     color: #000;
     font-size: 40px;
@@ -686,9 +677,9 @@ footer {
     width: 100vw;
 }
 
-#accountChart {
+#spendings-chart, #winnings-chart {
     max-height: 100%;
-    max-width: 60%;
+    max-width: 70%;
 }
 
 /* Account settings section */
@@ -853,6 +844,15 @@ footer {
     color: #FFF;
 }
 .table-box, .shopping-form-box { padding: 0 38px 38px 38px }
+
+.shopping-form-box > form > .form-group {
+    margin-top: 30px;
+}
+
+.shopping-form-box > form > .form-group > textarea {
+    resize: none;
+    height: 12em;
+}
 
 .table-box > p {
     float: right;
@@ -1151,7 +1151,7 @@ footer {
     }
 
     /* ----- Account Styles ----- */
-    .account { padding: 24px }
+    .account, .shop-header { padding: 24px }
 
     .daily-button-box {
         display: flex;
@@ -1167,6 +1167,8 @@ footer {
         height: 30vh;
         width: 135vw;
     }
+    /* ----- Shopping Bag Styles ----- */
+    .table-box, .shopping-form-box { padding: 0 5px 12px 5px }
 }
 
 @media only screen and (max-width: 768px) {

@@ -1,6 +1,5 @@
 var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
 var totalPrice = 0;
-
 $(document).ready(function () {
     checkBagEmpty();
     $('.table-body').on('click', ".delete", function(e) {
@@ -39,21 +38,15 @@ $(document).ready(function () {
                     setInterval(function(){$('#checkout-button-text').hide();}, 3000);
                 }
                 else {
-                    let name = $("#user-name").val();
-                    let shippingAddress = $("#shipping-address").val();
-                    let contactNumber = $("#contact-number").val();
-                    let emailAddress = $("#email-address").val();
-                    let specialRequest = $("#special-request").val();
-            
                     let jsondata = {
-                        "name": name,
-                        "shippingAddress": shippingAddress,
-                        "contactNumber": contactNumber,
-                        "emailAddress": emailAddress,
-                        "specialRequest": specialRequest
+                        "name": $("#user-name").val(),
+                        "shippingAddress": $("#shipping-address").val(),
+                        "contactNumber": $("#contact-number").val(),
+                        "emailAddress": $("#email-address").val(),
+                        "specialRequest": $("#special-request").val()
                     };
                     
-                    var settings = {
+                    $.ajax({
                         "async": true,
                         "crossDomain": true, 
                         "url": "https://sneakerzone-11b9.restdb.io/rest/shipping-info",
@@ -65,15 +58,11 @@ $(document).ready(function () {
                         },
                         "processData": false,
                         "data": JSON.stringify(jsondata)
-                    }
 
-                    $.ajax(settings).done(function () {
+                    }).done(function () {
                         account.balance -= totalPrice; // Account balance
+                        updateAccount(account);
                         addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); // Add transaction info
-                        localStorage.removeItem('shoppingBag'); // Clear shopping bag when checked out
-                        $('#success-purchase-text').show();
-                        setInterval(function(){$('#success-purchase-text').hide();}, 3000); // Show successful message
-
                     }).fail(function() { alert('Please fill up the shipping form!') });
                 }
             })
@@ -132,9 +121,7 @@ function checkBagEmpty() {
         $('.delete-all').hide();
     }
 
-    else {
-        loadBag();
-    }
+    else { loadBag(); }
 }
 
 function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
@@ -147,7 +134,7 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         "purchaseDateTime": purchaseDateTime
     }
 
-    var settings = {
+    $.ajax({
         "async": true,
         "crossDomain": true,
         "url": "https://sneakerzone-11b9.restdb.io/rest/transaction-info",
@@ -159,9 +146,39 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         },
         "processData": false,
         "data": JSON.stringify(jsondata)
-    }
+    
+    }).done(function() {
+        localStorage.removeItem('shoppingBag'); // Clear shopping bag when checked out
+        $(".table-body").html("");
+        checkBagEmpty();
+        $('#success-purchase-text').show();
+        setInterval(function(){$('#success-purchase-text').hide();}, 10000); // Show successful message
+    });
+}
 
-    $.ajax(settings).done(function (response) {
-        console.log(response);
+function updateAccount(account) {
+    var jsondata = { 
+        "name": account.name, 
+        "dob": account.dob, 
+        "password": account.password, 
+        "balance": account.balance, 
+        "coupon": account.coupon
+    };
+
+    $.ajax({
+        "async": true,
+        "crossDomain": true,
+        "url": `https://sneakerzone-11b9.restdb.io/rest/account-info/${account._id}`,
+        "method": "PUT",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
+    })
+    .done(function() {
+        console.log("Account Info Updated.");
     });
 }
