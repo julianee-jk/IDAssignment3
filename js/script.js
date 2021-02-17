@@ -121,7 +121,7 @@ function createAccount() {
         "balance": 0,
         "coupon": 0,
         "dailyStreak": 0,
-        "lastDaily": new Date($.now() - 86400000)
+        "lastDaily": null
     }; 
 
     $.ajax({
