@@ -20,7 +20,9 @@ $(document).ready(function() {
   });
 
   $("#addToCart").click(function() {
-      var qty = 1;
+      if ($(".qty").val() <= 0) $(".qty").val(1);
+      
+      var qty = Number($(".qty").val());
       var item = [sneaker_id, qty, size];
       var notDuplicate = true;
 
