@@ -239,6 +239,11 @@ footer {
     margin-bottom: 24px;
 }
 
+.trending, .latest {
+    display: flex;
+    justify-content: center;
+}
+
 /* Individual displayed cards */
 .card {
     height: 200px;
@@ -458,9 +463,14 @@ footer {
     width: 40px;
 }
 
-#addToCart {
-    width: 130px;
+.add-to-bag-box {
+    display: flex;
+    justify-content: center;
     margin-top: 48px;
+}
+
+#addToBag {
+    width: 100%;
 }
 
 /* --------------------------------------- Game Page ------------------------------------- */
@@ -681,6 +691,12 @@ footer {
     max-width: 100%;
 }
 
+.chart-loading-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Account settings section */
 .account-settings {
     cursor: pointer;
@@ -832,6 +848,7 @@ footer {
 }
 
 #contact-button {
+    margin-top: 12px;
     padding: 10px 40px 10px 40px;
 }
 
@@ -844,7 +861,10 @@ footer {
     color: #FFF;
 }
 
-.table-box, .shopping-form-box { padding: 0 38px 38px 38px }
+.table-box, .shopping-form-box { 
+    padding: 0 38px 38px 38px; 
+    height: 100%;
+}
 
 .shopping-form-box > form > .form-group {
     margin-top: 30px;
@@ -1031,10 +1051,6 @@ footer {
 
     .product-qty > .input-group > input {
         max-width: none;
-    }
-
-    #addToCart {
-        width: auto;
     }
 }
 

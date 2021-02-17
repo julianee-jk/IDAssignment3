@@ -6,22 +6,29 @@ $(document).ready(function () {
 
 function loadFeaturing() {
     var url = `https://example-data.draftbit.com/sneakers?_start=0&_end=420`
-    var i = Math.floor(Math.random() * 420);
 
     fetch(url)
     .then(response => response.json())
     .then(function(data) {
+        var i = Math.floor(Math.random() * 420);
         var sneaker = data[i];
-        var htmlString = (`
-            <div class="carousel-feature-slide" onclick=selectCard('${sneaker.id}')>
-                <img src="${sneaker.media.imageUrl}" class="d-block w-100">
-                <div class="carousel-caption carousel-feature-text d-md-block">
-                    <h5>FEATURING</h5>
-                    <p>${sneaker.title}</p>
+
+        if (sneaker.retailPrice == null) {
+            sneaker = sneaker[Math.floor(Math.random() * 420)];
+        }
+
+        else {
+            var htmlString = (`
+                <div class="carousel-feature-slide" onclick=selectCard('${sneaker.id}')>
+                    <img src="${sneaker.media.imageUrl}" class="d-block w-100">
+                    <div class="carousel-caption carousel-feature-text d-md-block">
+                        <h5>FEATURING</h5>
+                        <p>${sneaker.title}</p>
+                    </div>
                 </div>
-            </div>
-        `);
-        $(".featured-sneaker").html(htmlString);
+            `);
+            $(".featured-sneaker").html(htmlString);
+        }
     })
     .catch(function(e) {
         var htmlString = (`
@@ -69,6 +76,9 @@ function loadTrending() {
 }
 
 function displayTrending(trendingArray) {
+    $(".trending").html("");
+    $(".trending").css("justify-content","flex-start");
+
     trendingArray.map(function(sneakerID) {
         fetch(`https://example-data.draftbit.com/sneakers/${sneakerID}`)
         .then(res => res.json())
@@ -88,6 +98,9 @@ function displayTrending(trendingArray) {
 }
 
 function loadLatest() {
+    $(".latest").html("");
+    $(".latest").css("justify-content","flex-start");
+
     var url = "https://example-data.draftbit.com/sneakers?_limit=10"
     fetch(url)
     .then(response => response.json())

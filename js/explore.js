@@ -46,17 +46,21 @@ $(document).ready(function() {
 
     $(".sort-group > input.btn-check").on("click", function(e) {
         if ($(".sort-group > input.btn-check:checked").val() == "trending") {
+            $(".loading-icon").show();
             $(".pagination-group").hide();
             $(".searchBar").hide();
             $(".cat-group").hide();
             $(".sneaker-cards").html("");
+            $(".back-to-top").css("margin-top", "42px");
             loadTrending();
         }
 
         else {
+            $(".loading-icon").show();
             $(".pagination-group").show();
             $(".searchBar").show();
             $(".cat-group").show();
+            $(".back-to-top").css("margin-top", "0");
             loadSneakers(`${url}&${range}`);
         }
     });
@@ -147,7 +151,6 @@ $(document).ready(function() {
 
 function loadSneakers(url) {
     $(".sneaker-cards").html("") // clear sneaker cards
-
     fetch(url)
     .then(response => response.json())
     .then(function(data) {
@@ -176,6 +179,8 @@ function loadSneakers(url) {
             }
         });
     });
+    
+    $(".loading-icon").hide();
 }
 
 function selectCard(sneakerId) {
@@ -253,4 +258,6 @@ function displayTrending(trendingArray) {
             `)
         })
     })
+
+    $(".loading-icon").hide();
 }

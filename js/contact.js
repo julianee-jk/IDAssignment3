@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const APIKEY = "601a5d306adfba69db8b6cfc";
-    $("#contact-button").on("click", function (e) {
+    $("#contact-form").submit(function(e) {
+        $('.contact-loading').show(); // Show lottie loading icon
+        $('#contact-button').hide(); // Hide send button
         e.preventDefault();
         let jsondata = {
             "name": $("#contact-name").val(),
@@ -24,6 +26,8 @@ $(document).ready(function () {
             "data": JSON.stringify(jsondata)
         }).done(function() {
             // Display thank you message
+            $('.contact-loading').hide(); // Hide lottie loading icon
+            $('#contact-button').show(); // Show send button
         });
     });
 });

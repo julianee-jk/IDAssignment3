@@ -120,7 +120,7 @@
     </div>
 
     <div class="product">
-        <div class="product-img">
+        <div class="product-img" >
             <span class="product-header"></span>
         </div>
 
@@ -147,7 +147,10 @@
                 </div>
             </div>
 
-            <button type="button" id="addToCart" class="btn btn-primary">Add to Bag</button>
+            <div class="add-to-bag-box">
+                <lottie-player class="check-loading-icon" style="display: none; width: 60px; height: 60px;" src="assets/img/icons/check-loading-icon.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                <button type="button" id="addToBag" class="btn btn-primary">Add to Bag</button>
+            </div>
         </div>
     </div>
     
@@ -157,6 +160,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>

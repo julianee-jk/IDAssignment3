@@ -19,7 +19,10 @@ $(document).ready(function() {
     }
   });
 
-  $("#addToCart").click(function() {
+  $("#addToBag").click(function() {
+      $(".check-loading-icon").show();
+      $("#addToBag").hide();
+
       if ($(".qty").val() <= 0) $(".qty").val(1);
       
       var qty = Number($(".qty").val());
@@ -35,9 +38,9 @@ $(document).ready(function() {
           notDuplicate = false;
         }
       }
-      
       if (notDuplicate) shoppingBag.push(item);
       localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
+      setTimeout(function(){$("#addToBag").show(); $(".check-loading-icon").hide();}, 2800);
   });
 
   // +/- qty button increment

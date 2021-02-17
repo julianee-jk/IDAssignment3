@@ -43,14 +43,14 @@
             <h2>Balance
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#add-balance-modal">+</button>
             </h2>
-            <h3>$<span class="account-balance"></h3>
+            <h3 style="display: flex; align-items: center;">$<span class="account-balance"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span></h3>
         </section>
 
         <section>
             <h2>Game Coupons
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#add-gc-modal">+</button>
             </h2>
-            <h3><span class="account-gc"></span>GC</h3>
+            <h3 style="display: flex; align-items: center;"><span class="account-gc"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span>GC</h3>
         </section>
 
         <section>
@@ -62,13 +62,16 @@
                 </div>
             </nav>
             <div class="tab-content">
+                <div class="chart-loading-box">
+                    <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_f0w5moo8.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                </div>
                 <div class="tab-pane fade show active" id="spendings-chart-tab" role="tabpanel" aria-labelledby="nav-spendings">
-                    <div class="chart-box">
+                    <div class="chart-box" style="display: none;">
                         <canvas id="spendings-chart"></canvas>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="winnings-chart-tab" role="tabpanel" aria-labelledby="nav-winnings">
-                    <div class="chart-box">
+                    <div class="chart-box" style="display: none;">
                         <canvas id="winnings-chart"></canvas>
                     </div>
                 </div>
@@ -79,8 +82,8 @@
             <h2>Daily Rewards</h2>
             <small id="daily-collect-text">Daily Collected!</small>
             <div class="daily-button-box"></div>
-            <h4>Daily Streak: <span id="daily-streak-id"></span></h4>
-            <h5>GC Gain: <span id="daily-streak-gc"></span></h5>
+            <h4 style="display: flex; align-items: center;">Daily Streak:&nbsp;<span id="daily-streak-id"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 32px; height: 32px;"  loop  autoplay></lottie-player></span></h4>
+            <h5 style="display: flex; align-items: center;">GC Gain:&nbsp;<span id="daily-streak-gc"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 32px; height: 32px;"  loop  autoplay></lottie-player></span></h5>
         </section>
 
         <section>
@@ -107,7 +110,7 @@
                 <div class="modal-body">
                     <div>
                         <p>Current Account Balance</p>
-                        <h3>$<span class="account-balance"></span></h3>
+                        <h3 style="display: flex; align-items: center;">$<span class="account-balance"><span class="account-balance"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span></h3>
                     </div>
 
                     <div>
@@ -145,7 +148,7 @@
                 <div class="modal-body">
                     <div>
                         <p>Current Account Game Coupons</p>
-                        <h3><span class="account-gc"></span>GC</h3>
+                        <h3 style="display: flex; align-items: center;"><span class="account-gc"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span>GC</h3>
                     </div>
 
                     <small id="account-gc-error" style="display: none; color: red">Insufficient Account Balance!</small>
@@ -218,6 +221,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

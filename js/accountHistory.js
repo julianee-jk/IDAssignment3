@@ -31,7 +31,7 @@ function loadAccountData() {
 function loadTransactions(transactions) {
     var i = 0;
     var htmlString = '';
-
+    $('.history-loading').hide();
     transactions.map(transaction => {
         if (transaction.purchaseType == "Product") {
             transaction.purchaseData.forEach(product => {

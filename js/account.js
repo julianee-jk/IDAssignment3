@@ -29,6 +29,7 @@ $(document).ready(function() {
             $('.account-gc').html(account.coupon);
         
             $('#topUp-balance-button').on("click", function() {
+                $('#topUp-balance-button').attr("disabled", true);
                 var topUpBalance = $('input[name=topUpBalance]:checked').val();
                 switch(topUpBalance) {
                     case '$10':
@@ -53,10 +54,12 @@ $(document).ready(function() {
                 $('#topup-bal-text').append(`Added $${topUpValue} to balance.`);
                 $('#topup-bal-text').show();
                 setInterval(function(){$('#topup-bal-text').hide();}, 3000);
+                setTimeout(function(){$('#topUp-balance-button').attr("disabled", false);}, 3000);
                 updateAccount(account);
             });
 
             $('#topUp-gc-button').on("click", function() {
+                $('#topUp-gc-button').attr("disabled", true);
                 var topUpGC = $('input[name=topUpGC]:checked').val();
                 var gcCost = 0, coupon = 0;
 
@@ -88,6 +91,7 @@ $(document).ready(function() {
                     account.balance -= gcCost;
                     account.coupon += coupon;
                     updateAccount(account);
+                    setTimeout(function(){$('#topUp-gc-button').attr("disabled", false);}, 3000);
                 }
             });
             
@@ -290,7 +294,8 @@ function accountDashboard(id) {
                 }
             }
         }
-
+        $('.chart-loading-box').hide();
+        $('.chart-box').show();
         // BalanceTopup & Product
         spendingsChart = new Chart($('#spendings-chart')[0].getContext('2d'), {
             type: 'line', // The type of chart we want to create
