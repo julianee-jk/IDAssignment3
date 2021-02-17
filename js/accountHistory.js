@@ -42,13 +42,13 @@ function loadTransactions(transactions) {
                 .then(data => {
                     htmlString = (`
                         <tr>
-                            <th scope="row">${i += 1}</th>
-                            <td>${data.title}</td>
-                            <td>${product[1]}</td>
-                            <td>${product[2]}</td>
-                            <td>$${data.retailPrice * product[1]}</td>
-                            <td>${transaction.purchaseType}</td>
-                            <td>${transaction.purchaseDateTime}</td>
+                            <th scope="row" class="history-index">${i += 1}</th>
+                            <td class="history-product-name">${data.title}</td>
+                            <td class="history-qty">${product[1]}</td>
+                            <td class="history-size">${product[2]}</td>
+                            <td class="history-cost">$${data.retailPrice * product[1]}</td>
+                            <td class="history-type">${transaction.purchaseType}</td>
+                            <td class="history-datetime">${transaction.purchaseDateTime}</td>
                         </tr>
                     `)
 
@@ -60,13 +60,13 @@ function loadTransactions(transactions) {
         else {
             htmlString = (`
                 <tr>
-                    <th scope="row">${i += 1}</th>
-                    <td>${transaction.purchaseType}</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>$${transaction.purchaseData}</td>
-                    <td>${transaction.purchaseType}</td>
-                    <td>${transaction.purchaseDateTime}</td>
+                    <th scope="row" class="history-index">${i += 1}</th>
+                    <td class="history-product-name">${transaction.purchaseType}</td>
+                    <td class="history-qty">NA</td>
+                    <td class="history-size">NA</td>
+                    <td class="history-cost">$${transaction.purchaseData}</td>
+                    <td class="history-type">${transaction.purchaseType}</td>
+                    <td class="history-datetime">${transaction.purchaseDateTime}</td>
                 </tr>
             `)
             $('.table-body').append(htmlString);

@@ -677,9 +677,8 @@ footer {
     width: 100vw;
 }
 
-#spendings-chart, #winnings-chart {
-    max-height: 100%;
-    max-width: 70%;
+.chart-box {
+    max-width: 100%;
 }
 
 /* Account settings section */
@@ -835,6 +834,7 @@ footer {
 #contact-button {
     padding: 10px 40px 10px 40px;
 }
+
 /* --------------------------------------- Shopping Bag ------------------------------------- */
 
 .shop-header { padding: 38px }
@@ -843,6 +843,7 @@ footer {
     background-color: #4F359B;
     color: #FFF;
 }
+
 .table-box, .shopping-form-box { padding: 0 38px 38px 38px }
 
 .shopping-form-box > form > .form-group {
@@ -947,10 +948,6 @@ footer {
     .social-links-box > div {
         margin-left: 14px;
     }
-    /* Account Styles */
-    body.modal-open {
-        position: fixed;
-    }
 }
 
 @media only screen and (max-width: 1025px) {
@@ -997,101 +994,6 @@ footer {
         height: 10vh;
         flex-direction: row;
     }
-}
-
-@media only screen and (max-width: 991px) { 
-    /* ----- Global Nav bar ----- */
-    .nav-link {
-        padding-left: 0;
-    }
-
-    .nav-bag-mobile {
-        display: contents;
-        padding-top: 0;
-    }
-    
-    .nav-bag-mobile-box {
-        display: flex;
-        align-items: center;
-    }
-
-    .mobile-line {
-        display: contents;
-    }
-
-    .carousel-caption > h5 {
-        font-size: 42px;
-        width: auto;
-    }
-    
-    .carousel-caption > p {
-        font-size: 16px;
-        max-width: none;
-    }
-} 
-
-@media only screen and (max-width: 800px) {
-    .container-fluid {
-        padding: 0;
-    }
-
-    /* ----- Global Styles ----- */
-    #footer-text {
-        text-align: center;
-        max-width: 26em;
-    }
-
-    .carousel-caption {
-        top: 35%;
-    }
-
-    .carousel-feature-text {
-        top: 2%;
-    }
-
-    .carousel-feature-text p, .carousel-feature-text h5 {
-        text-align: center;
-    }
-
-    .carousel-play-text {
-        top: 2%;
-        left: 35%;
-        max-width: 15em;
-    }
-
-    .carousel-caption > h5 {
-        text-align: center;
-    }
-
-    /* Carousel play slide */
-    .index-sneaker-cards > .card {
-        padding-top: 8px;
-        flex-direction: column;
-        height: 400px;
-        min-width: 360px;
-    }
-
-    .index-sneaker-cards > .card > img {
-        max-width: 300px;
-    }
-
-    .sneaker-title, .sneaker-price  {
-        text-align: center;
-    }
-
-    .sneaker-colorway {
-        color: #888;
-        text-align: center;
-    }
-
-    /* ----- Explore Styles ----- */
-    .sneaker-card img {
-        margin-left: 12px;
-    }
-    
-    .sneaker-card {
-        min-width: 50%;
-    }
 
     /* ----- Product Styles ----- */
     .product {
@@ -1134,6 +1036,128 @@ footer {
     #addToCart {
         width: auto;
     }
+}
+
+@media only screen and (max-width: 991px) { 
+    /* ----- Global Nav bar ----- */
+    .nav-link {
+        padding-left: 0;
+    }
+
+    .nav-bag-mobile {
+        display: contents;
+        padding-top: 0;
+    }
+    
+    .nav-bag-mobile-box {
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-line {
+        display: contents;
+    }
+
+    .carousel-caption > h5 {
+        font-size: 42px;
+        width: auto;
+    }
+    
+    .carousel-caption > p {
+        font-size: 16px;
+        max-width: none;
+    }
+} 
+
+@media only screen and (max-width: 800px) {
+    h2 {
+        font-size: 24px;
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    /* ----- Global Styles ----- */
+    #footer-text {
+        text-align: center;
+        max-width: 26em;
+    }
+
+    .carousel-caption {
+        top: 35%;
+    }
+
+    .carousel-feature-text {
+        top: 2%;
+    }
+
+    .carousel-feature-text p, .carousel-feature-text h5 {
+        text-align: center;
+    }
+
+    .carousel-play-text {
+        top: 2%;
+        left: 35%;
+        max-width: 15em;
+    }
+
+    .carousel-caption > h5 {
+        text-align: center;
+    }
+
+    /* Carousel play slide */
+    .index-sneaker-cards > .card {
+        padding-top: 8px;
+        flex-direction: column;
+        height: 280px;
+        min-width: 250px;
+    }
+
+    .index-sneaker-cards > .card > img {
+        max-width: 200px;
+    }
+
+    .index-sneaker-cards > .card > .card-body {
+        display: flex;
+        flex-direction: column;
+        padding: 0 12px 0 12px;
+    }
+
+    .sneaker-title, .sneaker-price  {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .sneaker-colorway {
+        color: #888;
+        text-align: center;
+        font-size: 11px;
+    }
+
+    /* ----- Explore Styles ----- */
+    .explore {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .explore > .sort-group {
+        margin-left: 0px;
+    }
+
+    .searchBar {
+        width: 100px;
+    }
+
+    .sneaker-card img {
+        margin-left: 12px;
+    }
+    
+    .sneaker-card {
+        min-width: 50%;
+    }
 
     /* ----- Contact Styles ----- */
     .contact-details {
@@ -1160,15 +1184,32 @@ footer {
     }
     
     .dailyButton {
-        width: 95px;
+        width: 105px;
     }
 
     .chart-box {
         height: 30vh;
         width: 135vw;
     }
+
     /* ----- Shopping Bag Styles ----- */
-    .table-box, .shopping-form-box { padding: 0 5px 12px 5px }
+    .history-index, .history-size, .history-type {
+        display: none;
+    }
+
+    .table-box, .shopping-form-box { 
+        padding: 0 8px 12px 8px;
+        font-size: 14px;
+    }
+
+    .total-cost-header {
+        padding: 0 0 0 8px;
+    }
+
+    .bag-button-box {
+        width: auto;
+        margin-bottom: 24px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1273,6 +1314,42 @@ footer {
     .contact-message {
         height: 70vh;
     }
+
+    /* ----- Explore Styles ----- */
+
+    .explore > .cat-group {
+        width: auto;
+    }
+
+    .explore > .sort-group {
+        margin-left: 0px;
+        width: auto;
+    }
+
+    #searchBar {
+        width: 12em;
+    }
+
+    /* ----- Product Styles ----- */
+    .product-title, .product-price, .product-header {
+        font-size: 21px;
+    }
+
+    .product-colorway, .product-release-date, .product-category {
+        font-size: 11px;
+    }
+
+    .product-header {
+        top: -20px;
+    }
+
+    .product-size {
+        margin-right: 1px;
+    }
+
+    .button-group h6 {
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 376px) {
@@ -1353,5 +1430,9 @@ footer {
 
     .contact-message {
         height: 85vh;
+    }
+
+    .button-group h6 {
+        font-size: 9.3px;
     }
 }
