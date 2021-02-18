@@ -57,7 +57,7 @@ function loadTransactions(transactions) {
             });
         }
 
-        else {
+        else if (transaction.purchaseType == "BalanceTopUp") {
             htmlString = (`
                 <tr>
                     <th scope="row" class="history-index">${i += 1}</th>
