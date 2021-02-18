@@ -289,7 +289,7 @@ function accountDashboard(id) {
                     else continue;
                 }
             }
-            else {
+            else if (transaction[i].purchaseType == 'GameWin') {
                 for (let x = 0; x < 12; x++) {
                     if (new Date(transaction[i].purchaseDateTime).getMonth() == x) winningsArray[x] += transaction[i].moneySpent;
                     else continue;
