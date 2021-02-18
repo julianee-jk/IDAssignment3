@@ -16,7 +16,7 @@ $(document).ready(function () {
     }
 
     $('#countdown-flip').html('GAME EXPIRED');
-    flipTimer();
+    spinTimer();
 });
 
 // Countdown Timers
@@ -234,10 +234,15 @@ function alertPrize(indicatedSegment) {
 }
 
 function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) {
-    $('#spin-text').hide();
-    $('.game-spin-loading').show();
-    $('.game-flip-loading').show();
-    $(".flip-button").attr("disabled", true);
+    if (spinExpired == false) {
+        $('.game-spin-loading').show();
+        $('#spin-text').hide();
+    }
+    else {
+        $(".flip-button").attr("disabled", true);
+        $('.game-flip-loading').show();
+    }
+
     if (accLoggedIn != null) { // Check if user is logged in
         if (spinAmountWon > 0 || spinCost == 1 || flipAmountWon > 0 || flipCost == 3) {
             $.ajax({ // Get account data from database

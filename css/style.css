@@ -576,6 +576,7 @@ footer {
 #spin-text-error, #flip-text-error { 
     color: red; 
     display: none;
+    text-align: center;
 }
 
 /* Coin Flip Game */
@@ -996,6 +997,10 @@ footer {
         height: 50vh;
     }
 
+    .carousel-play-slide > .carousel-play-box > img {
+        bottom: 0em;
+    }
+
     .carousel-feature-slide {
         height: 50vh;
     }
@@ -1257,7 +1262,6 @@ footer {
 
     .carousel-play-slide > .carousel-play-box > img {
         left: -8%;
-        bottom: 0em;
     }
 
     .carousel-caption {
@@ -1326,7 +1330,6 @@ footer {
 @media only screen and (max-width: 415px) {
     .carousel-play-slide > .carousel-play-box > img {
         left: -10%;
-        bottom: -7em;
     }
 
     .carousel-play-text {
@@ -1477,5 +1480,9 @@ footer {
 
     .button-group h6 {
         font-size: 9.3px;
+    }
+
+    .table-head, .table-body {
+        font-size: 10px;
     }
 }
