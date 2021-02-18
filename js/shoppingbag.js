@@ -36,6 +36,8 @@ $(document).ready(function () {
         })
         .done(function(account) {
             $("#shopping-form").submit(function(e) {
+                $('#checkout-button').hide(); // Hide checkout button when loading
+                $('.checkout-loading').show(); // Show loading icon when user click checkout button
                 e.preventDefault();
                 if (account.balance - totalPrice < 0) { // Check if account has sufficient balance
                     $('#checkout-button-text').show(); // Show check out button if user logged in
@@ -138,7 +140,7 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         "userID": userID, 
         "balance": balance, 
         "moneySpent": moneySpent, 
-        "purchaseType": 'Product', 
+        "purchaseType": 'Product',
         "purchaseData": purchaseData, 
         "purchaseDateTime": purchaseDateTime
     };
@@ -157,6 +159,8 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         "data": JSON.stringify(jsondata)
     
     }).done(function() {
+        $('#checkout-button').show(); // Show checkout button after finish loading
+        $('.checkout-loading').hide(); // Hide loading icon
         localStorage.removeItem('shoppingBag'); // Clear shopping bag when checked out
         $(".table-body").html(""); // Reset table html
         checkBagEmpty(); // Check if bag empty
