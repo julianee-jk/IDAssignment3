@@ -2,6 +2,7 @@ var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
 var totalPrice = 0;
 
 $(document).ready(function () {
+    $('.bag-loading').show();
     checkBagEmpty();
     $('.table-body').on('click', ".delete", function(e) {
         $(".table-body").html("");
@@ -92,6 +93,7 @@ async function loadBag() {
 }
 
 function displayBag(products) {
+    $('.bag-loading').hide();
     $(".table-body").html("");
     var htmlString = '';
     for (var i = 0; i < shoppingBag.length; i++) {
