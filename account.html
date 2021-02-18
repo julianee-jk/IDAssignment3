@@ -35,11 +35,16 @@
             </div>
         </div>
     </nav>
+
+    <!-- Main Account Container -->
     <div class="account">
+
+        <!-- Greet user section -->
         <section>
             <h2>Hi <span id="account-name" style="color: #4F359B"></span></h2>
         </section>
 
+        <!-- Account Balance -->
         <section>
             <h2>Balance
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#add-balance-modal">+</button>
@@ -47,6 +52,7 @@
             <h3 style="display: flex; align-items: center;">$<span class="account-balance"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span></h3>
         </section>
 
+        <!-- Account Game Coupons -->
         <section>
             <h2>Game Coupons
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#add-gc-modal">+</button>
@@ -54,14 +60,17 @@
             <h3 style="display: flex; align-items: center;"><span class="account-gc"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span>GC</h3>
         </section>
 
+        <!-- Account Dashboard -->
         <section>
             <h2>Dashboard</h2>
+            <!-- Dashboard Chart Tabs -->
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-spendings-tab" data-bs-toggle="tab" data-bs-target="#spendings-chart-tab" type="button" role="tab" aria-selected="true">Spendings 2021</button>
                     <button class="nav-link" id="nav-winnings-tab" data-bs-toggle="tab" data-bs-target="#winnings-chart-tab" type="button" role="tab" aria-selected="false">Winnings 2021</button>
                 </div>
             </nav>
+            <!-- Dashboard Chart Tabs Content -->
             <div class="tab-content">
                 <div class="chart-loading-box">
                     <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_f0w5moo8.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
@@ -75,6 +84,7 @@
             </div>
         </section>
 
+        <!-- Account Daily Rewards -->
         <section>
             <h2>Daily Rewards</h2>
             <small id="daily-collect-text">Daily Collected!</small>
@@ -83,6 +93,7 @@
             <h5 style="display: flex; align-items: center;">GC Gain:&nbsp;<span id="daily-streak-gc"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 32px; height: 32px;"  loop  autoplay></lottie-player></span></h5>
         </section>
 
+        <!-- Account Settings -->
         <section>
             <h2>Account Settings</h2>
             <div class="account-settings">
@@ -115,7 +126,7 @@
                     </div>
 
                     <div>
-                        <p>Choose Top-Up Option</p>
+                        <p>Choose Top-Up Option</p> <!-- Top-Up Balance Options -->
                         <small id="topup-bal-text"></small><br>
                         <div class="btn-group topUp-group" style="margin: 0 0 0 1px" role="group">
                             <input type="radio" class="btn-check" name="topUpBalance" id="topUp$10" value="$10" checked>
@@ -152,10 +163,11 @@
                         <h3 style="display: flex; align-items: center;"><span class="account-gc"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span>GC</h3>
                     </div>
 
+                    <!-- Insufficient Balance Text -->
                     <small id="account-gc-error" style="display: none; color: red">Insufficient Account Balance!</small>
 
                     <div>
-                        <p>Choose Top-Up Option</p>
+                        <p>Choose Top-Up Option</p> <!-- Top-Up Coupons Options -->
                         <div class="btn-group topUp-group" style="margin: 0 0 0 1px" role="group">
                             <input type="radio" class="btn-check" name="topUpGC" id="topUp1GC" value="1GC" checked>
                             <label class="btn btn-outline-primary" for="topUp1GC">1GC<br><span style="color: #888">for $3</span></label>

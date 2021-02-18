@@ -1,22 +1,23 @@
-var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
-var totalPrice = 0;
+var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag')); // Get shopping bag data from local storage
+var totalPrice = 0; // Inital total price set as 0
 
 $(document).ready(function () {
-    $('.bag-loading').show();
-    checkBagEmpty();
-    $('.table-body').on('click', ".delete", function(e) {
-        $(".table-body").html("");
-        totalPrice = 0;
-        shoppingBag.splice(e.target.attributes.value.value, 1);
-        localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag));
-        checkBagEmpty();
+    $('.bag-loading').show(); // Show bag loading icon
+    checkBagEmpty(); // Check if the bag is empty
+
+    $('.table-body').on('click', ".delete", function(e) { // If user clicks on delete button
+        $(".table-body").html(""); // Clear the table
+        totalPrice = 0; // Set back total price variable to 0
+        shoppingBag.splice(e.target.attributes.value.value, 1); // Remove item from shopping bag
+        localStorage.setItem('shoppingBag', JSON.stringify(shoppingBag)); // Reset the local storage shopping bag array
+        checkBagEmpty(); // Check if the bag is empty
     });
 
-    $('.delete-all').on('click', function(e) {
+    $('.delete-all').on('click', function(e) { // If user clicks delete all button
         totalPrice = 0;
-        localStorage.removeItem('shoppingBag');
-        $(".table-body").html("");
-        checkBagEmpty();
+        localStorage.removeItem('shoppingBag'); // Remove shopping bag from array
+        $(".table-body").html(""); // Clear the table
+        checkBagEmpty(); // Check if the bag is empty
     });
 
     if (accLoggedIn != null) {
@@ -36,10 +37,9 @@ $(document).ready(function () {
         .done(function(account) {
             $("#shopping-form").submit(function(e) {
                 e.preventDefault();
-                if (account.balance - totalPrice < 0) {
-                    // Insufficient Account Balance
-                    $('#checkout-button-text').show();
-                    setInterval(function(){$('#checkout-button-text').hide();}, 3000);
+                if (account.balance - totalPrice < 0) { // Check if account has sufficient balance
+                    $('#checkout-button-text').show(); // Show check out button if user logged in
+                    setInterval(function(){$('#checkout-button-text').hide();}, 3000); // Hide check out button after 3 seconds
                 }
                 else {
                     let jsondata = {
@@ -64,20 +64,21 @@ $(document).ready(function () {
                         "data": JSON.stringify(jsondata)
 
                     }).done(function () {
-                        account.balance -= totalPrice; // Account balance
-                        updateAccount(account);
+                        account.balance -= totalPrice; // Deduct total price from account balance
+                        updateAccount(account); // Update account information
                         addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); // Add transaction info
-                    }).fail(function() { alert('Please fill up the shipping form!'); });
+                    }).fail(function() { alert('Please fill up the shipping form!'); }); // If fail to POST, alert user to fill up form
                 }
             });
         });
     }
-    else {
-        $('.not-loggedin-text').show();
-        $("#checkout-button").attr("disabled", true);
+    else { // If user not logged in
+        $('.not-loggedin-text').show(); // Display warning text
+        $("#checkout-button").attr("disabled", true); // Disable check out button
     }
 });
 
+// Fetch products according to shoppingBag localStorage
 async function loadBag() {
     var products = [];
     shoppingBag.map(s => {
@@ -92,6 +93,7 @@ async function loadBag() {
     displayBag(products);
 }
 
+// Display products in shoppingBag table
 function displayBag(products) {
     $('.bag-loading').hide();
     $(".table-body").html("");
@@ -116,7 +118,7 @@ function displayBag(products) {
     $('#total-cost').html(`$${totalPrice}`);
 }
 
-function checkBagEmpty() {
+function checkBagEmpty() { // If the shopping bag is empty, show "shopping bag is empty" message, Otherwise, load shopping bag items
     if (localStorage.getItem('shoppingBag') == null || localStorage.getItem('shoppingBag') == "[]") {
         $('.table-body').append(`<tr><th colspan="6" style="text-align: center;">Your bag is empty!</th></tr>`);
         $('footer').css('position','absolute');
@@ -130,6 +132,7 @@ function checkBagEmpty() {
     else { loadBag(); }
 }
 
+// Add account transaction information
 function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
     var jsondata = {
         "userID": userID, 
@@ -155,9 +158,9 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
     
     }).done(function() {
         localStorage.removeItem('shoppingBag'); // Clear shopping bag when checked out
-        $(".table-body").html("");
-        checkBagEmpty();
-        $('#success-purchase-text').show();
+        $(".table-body").html(""); // Reset table html
+        checkBagEmpty(); // Check if bag empty
+        $('#success-purchase-text').show(); // Display success message
         setInterval(function(){$('#success-purchase-text').hide();}, 10000); // Show successful message
     });
 }

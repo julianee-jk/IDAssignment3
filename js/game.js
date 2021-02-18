@@ -4,19 +4,19 @@ var coinFlipping = false, heads = false, tails = false, headWin = false, tailWin
 
 $(document).ready(function () {
     var accLoggedIn = localStorage.getItem('accLoggedIn');
-    if (accLoggedIn == null) {
+    if (accLoggedIn == null) { // If account NOT logged in, disable play buttons
         $('.not-loggedin-text').show();
         $("#spin-play-button").attr("disabled", true);
         $("#flip-play-button").attr("disabled", true);
     }
     else {
-        $('.not-loggedin-text').hide();
+        $('.not-loggedin-text').hide(); // If account logged in, enable play buttons
         $("#spin-play-button").attr("disabled", false);
         $("#flip-play-button").attr("disabled", false);
     }
 
-    $('#countdown-flip').html('GAME EXPIRED');
-    spinTimer();
+    $('#countdown-flip').html('GAME EXPIRED'); // Set flip countdown to expired
+    spinTimer(); // Start spin timer
 });
 
 // Countdown Timers
@@ -39,13 +39,13 @@ function spinTimer() {
                 <div class="countdown-timer">${seconds}<div class="countdown-text">SECS</div></div>
             </div>
         `);
-        // Alternate timer
+        // Check when timer runs out
         if (distance < 0) {
             clearInterval(x);
-            $('#countdown-spin').html('GAME EXPIRED');
-            spinExpired = true;
-          	flipExpired = false;
-            flipTimer();
+            $('#countdown-spin').html('GAME EXPIRED'); // Set countdown text to expire when timer runs out
+            spinExpired = true; // Set spin expire to true
+          	flipExpired = false; // Set flip expire to false
+            flipTimer(); // Start fliptimer when spintimer ends
         }
     }, 1000);
 }
@@ -70,30 +70,30 @@ function flipTimer() {
                 <div class="countdown-timer">${seconds}<div class="countdown-text">SECS</div></div>
             </div>
         `);
-        // If the count down is finished, check
+        // Check when timer runs out
         if (distance < 0) {
             clearInterval(x);
-            $('#countdown-flip').html('GAME EXPIRED');
-            flipExpired = true;
-            spinExpired = false;
-            spinTimer();
+            $('#countdown-flip').html('GAME EXPIRED'); // Set countdown text to expire when timer runs out
+            flipExpired = true; // Set flip expire to true
+            spinExpired = false; // Set spin expire to false
+            spinTimer(); // Start spin timer when flip timer ends
         }
     }, 1000);
 }
 
 // Change heads button text & disable when tails is clicked
 $('#heads-button').on("click", function() {
-    if (tails == false && flipExpired == false) {
-        heads = true;
-        $('#heads-button').html('You picked Heads!');
+    if (tails == false && flipExpired == false) { // Check to prevent user from clicking button if flipping or expired
+        heads = true; // User pick heads - set heads to true
+        $('#heads-button').html('You picked Heads!'); // Change button text onclick
     }
 });
 
 // Change tails button text & disable when heads is clicked
 $('#tails-button').on("click", function() {
-    if (heads == false && flipExpired == false) {
-        tails = true;
-        $('#tails-button').html('You picked Tails!');
+    if (heads == false && flipExpired == false) { // Check to prevent user from clicking button if flipping or expired
+        tails = true; // User pick tails - set tails to true
+        $('#tails-button').html('You picked Tails!'); // Change button text onclick
     }
 });
 
@@ -191,7 +191,7 @@ let theWheel = new Winwheel({
     }
 });
 
-// Called when the animation has finished.
+// Alert prize when animation is finished
 function alertPrize(indicatedSegment) {
     var spinAmountWon = 0;
     $('#spin-text-error').css('color', 'green');
@@ -219,26 +219,26 @@ function alertPrize(indicatedSegment) {
         default:
             $('#spin-text-error').css('color', 'red');
             $('#spin-text-error').html('You did not win anything!');
-            $('#spin-button').attr("disabled", false);
+            $('#spin-button').attr("disabled", false); // Enable button lose
     }
     $('#spin-text-error').show();
     ModifyAccountBalance(spinAmountWon, 0, 0, 0);
     theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
     theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
     theWheel.draw();                // Call draw to render changes to the wheel.
-    $('#spin-text').html("SPIN");
-    $('.game-spin-loading').hide();
-    $('#spin-text').show();
+    $('#spin-text').html("SPIN");   // Reset button text to Spin
+    $('.game-spin-loading').hide(); // Hide lottie animation
+    $('#spin-text').show();         // Show button text
     wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
     setTimeout(function(){$('#spin-text-error').hide();}, 5000);
 }
 
 function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) {
-    if (spinExpired == false) {
+    if (spinExpired == false) { // Display spin lottie animation only when spin not expired
         $('.game-spin-loading').show();
         $('#spin-text').hide();
     }
-    else {
+    else { // Display flip lottie animation only when flip not expired
         $(".flip-button").attr("disabled", true);
         $('.game-flip-loading').show();
     }
@@ -256,17 +256,17 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                     "cache-control": "no-cache"
                 }
             }).done(function (account) {
-                $('.game-spin-loading').hide();
-                $('#spin-text').show();
-                $('#spin-text-error').show();
-                if (flipAmountWon == 0 && flipCost == 0) {
-                    if (account.coupon - spinCost < 0) {
+                $('.game-spin-loading').hide(); // Hide spin lottie loading animation
+                $('#spin-text').show(); // Display spin text
+                $('#spin-text-error').show(); // Show spin text error
+                if (flipAmountWon == 0 && flipCost == 0) { // To check if user playing SPIN WHEEL
+                    if (account.coupon - spinCost < 0) { // Check if user has sufficient game coupons
                         $('#spin-text-error').css('color', 'red');
                         $('#spin-text-error').html('Not enough GC!');
                         setInterval(function(){$('#spin-text-error').hide();}, 3000);
                     }
                     else {
-                        if (spinExpired == true) {
+                        if (spinExpired == true) { // Check if game expired
                             $('#spin-text-error').css('color', 'red');
                             $('#spin-text-error').html('Game has already expired, wait for next opening time!');
                         }
@@ -283,36 +283,37 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                                 wheelSpinning = true;
                                 $('#spin-button').attr("disabled", true);
                             }
-                            if (spinAmountWon > 0) {
-                                account.balance += spinAmountWon;
-                                updateAccount(account);
-                                addTransactionInfo(account._id, account.balance, 3, spinAmountWon, new Date($.now()));
+                            if (spinAmountWon > 0) { // Check if user win prize from spin wheel
+                                account.balance += spinAmountWon; // Add amount won to account balance
+                                updateAccount(account); // Update account information
+                                addTransactionInfo(account._id, account.balance, 3, spinAmountWon, new Date($.now())); // Add transaction info
                             }
                         }
                     }
                 }
-                if (spinAmountWon == 0 && spinCost == 0) {
-                    if (account.coupon - flipCost < 0) {
+                if (spinAmountWon == 0 && spinCost == 0) { // To check if user playing COIN FLIP
+                    if (account.coupon - flipCost < 0) { // Check if user has sufficient game coupons
                         $('#flip-text-error').show();
                         $('#flip-text-error').css('color', 'red');
                         $('#flip-text-error').html('Not enough GC!');
                         setTimeout(function(){$('#flip-text-error').hide();}, 5000);
                     }
                     else {
-                        account.coupon -= flipCost;
-                        if (flipCost == 3) startFlip();
-                        else if (flipAmountWon > 0) {
-                            account.balance += flipAmountWon;
-                            updateAccount(account);
-                            addTransactionInfo(account._id, account.balance, 9, flipAmountWon, new Date($.now()));
+                        account.coupon -= flipCost; // Deduct game coupon
+                        if (flipCost == 3) startFlip(); // Start flip if user paid
+                        else if (flipAmountWon > 0) { // Check if user win prize from coin flip
+                            account.balance += flipAmountWon; // Add amount won to account balance
+                            updateAccount(account); // Update account information
+                            addTransactionInfo(account._id, account.balance, 9, flipAmountWon, new Date($.now())); // Add transaction info
                         }
                     }
                 }
-            }).fail(function () { window.location.href = 'index.html'; });
+            }).fail(function () { window.location.href = 'index.html'; }); // In case function fails, re-direct user to home page
         }
     }
 }
 
+// Update account information function
 function updateAccount(account) {
     var jsondata = {
         "name": account.name,
@@ -335,11 +336,13 @@ function updateAccount(account) {
         "processData": false,
         "data": JSON.stringify(jsondata)
     }).done(function () { 
+        // Enable both buttons when PUT successfully
         $(".flip-button").attr("disabled", false); 
         $('#spin-button').attr("disabled", false);
     });
 }
 
+// Add Transaction Info function
 function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
     var jsondata = {
         "userID": userID, 

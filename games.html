@@ -121,15 +121,17 @@
         </div>
     </div>
 
+    <!-- Games header title & text -->
     <div class="header-text">
         <h2>Games</h2>
         <div class="games-header-text">Gamble and win unique prizes! Are you willing to risk it!?</div>
     </div>
+    <!-- Container to hold both games -->
     <div class="game-container">
         <div class="game-box">
             <h2>Spin N Win</h2>
             <h6>1GC per Spin!</h6>
-            <small class="not-loggedin-text">Create or Login into an Account to play!</small>
+            <small class="not-loggedin-text">Create or Login into an Account to play!</small> <!-- Error message if user not logged in -->
             <!-- Spin N Win Modal Button  -->
             <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".spinNWinModal" id="spin-play-button">Play Now!</button>
             <!-- Spin N Win Modal -->
@@ -139,13 +141,15 @@
                         <div class="spin-text-box">
                             <h2>Spin N Win</h2>
                             <h3>&darr;</h3>
-                            <small id="spin-text-error"></small>
+                            <small id="spin-text-error"></small> <!-- Spin error message -->
                         </div>
+                         <!-- Canvas box for spin wheel -->
                         <div class="canvas-box">
                             <canvas id="canvas" width="435" height="470" data-responsiveMinWidth="180" data-responsiveScaleHeight="true" data-responsiveMargin="50">
                                 Canvas not supported, use another browser.
                             </canvas>
                         </div>
+                        <!-- Button to start spin -->
                         <button type="button" id="spin-button" class="btn btn-primary hvr-glow" onClick="ModifyAccountBalance(0,1,0,0);">
                             <span class="game-loading-box">
                                 <lottie-player class="game-spin-loading" src="https://assets9.lottiefiles.com/packages/lf20_rOGnxz.json"  background="transparent"  speed="1"  style="width: 30px; height: 30px; display: none;" loop autoplay></lottie-player>
@@ -161,7 +165,7 @@
         <div class="game-box">
             <h2>Coin Flip</h2>
             <h6>3GC per Flip!</h6>
-            <small class="not-loggedin-text">Create or Login into an Account to play!</small>
+            <small class="not-loggedin-text">Create or Login into an Account to play!</small> <!-- Error message if user not logged in -->
             <!-- Coin Flip Modal Button -->
             <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".coinFlipModal" id="flip-play-button">Play Now!</button>
             <!-- Coin Flip Modal -->
@@ -171,12 +175,14 @@
                         <div class="flip-text-box">
                             <h2>Coin Flip</h2>
                             <h3 id="flip-text">Flip the Coin!</h3>
-                            <small id="flip-text-error"></small>
+                            <small id="flip-text-error"></small> <!-- Flip error message -->
                         </div>
+                        <!-- Coin faces -->
                         <div id="coin">
                             <div class="side-a"></div>
                             <div class="side-b"></div>
                         </div>
+                        <!-- Buttons for user to start flip -->
                         <div class="coin-flip-button-box">
                             <button type="button" id="heads-button" class="btn btn-primary hvr-glow flip-button" onClick="ModifyAccountBalance(0,0,0,3);">HEADS</button>
                             <lottie-player class="game-flip-loading" src="assets/img/icons/black-circle-loading-icon.json"  background="transparent"  speed="1"  style="width: 30px; height: 30px; display: none;" loop autoplay></lottie-player>

@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    loadDailyButtons();
+    loadDailyButtons(); // Load all daily rewards buttons
     if (accLoggedIn != null) { // Check if user is logged in
-        accountDashboard(accLoggedIn[0]);
+        accountDashboard(accLoggedIn[0]); // Run account dashboard
         var dailyGCGain = 0;
         var recentlyCollected = false;
         $('#account-name').html(accLoggedIn[1]);
@@ -28,9 +28,10 @@ $(document).ready(function() {
             $('.account-balance').html(account.balance);
             $('.account-gc').html(account.coupon);
         
+            // Top up balance button
             $('#topUp-balance-button').on("click", function() {
-                $('#topUp-balance-button').attr("disabled", true);
-                var topUpBalance = $('input[name=topUpBalance]:checked').val();
+                $('#topUp-balance-button').attr("disabled", true); // On-click, disable button to prevent spam
+                var topUpBalance = $('input[name=topUpBalance]:checked').val(); // Get value of radio button according to what user picks
                 switch(topUpBalance) {
                     case '$10':
                         topUpValue = 10;
@@ -49,18 +50,19 @@ $(document).ready(function() {
                         account.balance += topUpValue;
                         break;
                 }
-                addTransactionInfo(account._id, account.balance, topUpValue, topUpValue, new Date($.now()));
-                $('#topup-bal-text').html('');
-                $('#topup-bal-text').append(`Added $${topUpValue} to balance.`);
-                $('#topup-bal-text').show();
-                setInterval(function(){$('#topup-bal-text').hide();}, 3000);
-                setTimeout(function(){$('#topUp-balance-button').attr("disabled", false);}, 3000);
+                addTransactionInfo(account._id, account.balance, topUpValue, topUpValue, new Date($.now())); // Add transaction info
+                $('#topup-bal-text').html(''); // Clear html text
+                $('#topup-bal-text').append(`Added $${topUpValue} to balance.`); // Append message according to what user picks
+                $('#topup-bal-text').show(); // Display topup balance text
+                setInterval(function(){$('#topup-bal-text').hide();}, 3000); // Hide topup balance text after 3 seconds
+                setTimeout(function(){$('#topUp-balance-button').attr("disabled", false);}, 3000); // Enable topup balance after 3 seconds
                 updateAccount(account);
             });
 
+            // Top up game coupon button
             $('#topUp-gc-button').on("click", function() {
-                $('#topUp-gc-button').attr("disabled", true);
-                var topUpGC = $('input[name=topUpGC]:checked').val();
+                $('#topUp-gc-button').attr("disabled", true); // On-click, disable button to prevent spam
+                var topUpGC = $('input[name=topUpGC]:checked').val(); // Get value of radio button according to what user picks
                 var gcCost = 0, coupon = 0;
 
                 switch(topUpGC) {
@@ -82,33 +84,33 @@ $(document).ready(function() {
                         break;
                 }
 
-                if (account.balance - gcCost < 0) { // Check if sufficient account balance
-                    $('#account-gc-error').show(); 
-                }
-
+                if (account.balance - gcCost < 0) { $('#account-gc-error').show(); } // Check if sufficient account balance 
                 else { 
                     $('#account-gc-error').hide(); 
-                    account.balance -= gcCost;
-                    account.coupon += coupon;
-                    updateAccount(account);
-                    setTimeout(function(){$('#topUp-gc-button').attr("disabled", false);}, 3000);
+                    account.balance -= gcCost; // Deduct cost of GC according to what user picks
+                    account.coupon += coupon; // Add coupon according to what user picks
+                    updateAccount(account); // Update account information
+                    setTimeout(function(){$('#topUp-gc-button').attr("disabled", false);}, 3000); // Enable button after 3 seconds
                 }
             });
             
+            // Change password button
             $("#password-change").submit(function(e) {
                 e.preventDefault();
-                account.password = $("#new-password").val();
-                updateAccount(account);
+                account.password = $("#new-password").val(); // Change account password
+                updateAccount(account); // Update account information
                 $('#password-change-text').show();
             });
 
+            // Logout account button
             $("#logout-button").on("click", function() {
-                localStorage.removeItem('accLoggedIn');
-                window.location.href = 'index.html';
+                localStorage.removeItem('accLoggedIn'); // Remove from localStorage
+                window.location.href = 'index.html'; // Re-direct user back to index
             });
 
+            // Delete account button
             $("#delete-account").on("click", function() {
-                localStorage.removeItem('accLoggedIn');
+                localStorage.removeItem('accLoggedIn'); // Remove from localStorage
                 deleteAccount(account);
             });
 
@@ -156,24 +158,23 @@ $(document).ready(function() {
                     $('#daily-collect-text').html('You missed a day! Your daily streak has been broken! Claim it again!');
                     streakBroken = true;
                 }
-                // Check if user recently collect daily
-                else {
+                else { // Check if user recently collect daily
                     $('#daily-collect-text').html('You recently collected your daily! Come back tomorrow!');
                     recentlyCollected = true;
                 }
                 $('#daily-collect-text').show();
                 setInterval(function(){$('#daily-collect-text').hide();}, 3000);
 
-                // Next button 
+                // Every click on daily button, disable previous, enable next day
                 if (e.target.innerHTML == 'Day 7') { $(firstButton).attr("disabled", false); } 
                 else {
-                    if (recentlyCollected == false) {
+                    if (recentlyCollected == false) { // Make sure account has not recently collected
                         firstButton = firstButton.next();
                         $(this).attr("disabled", true);
                         $(firstButton).attr("disabled", false);
                         updateAccount(account);
                     }
-                    if (streakBroken == true) {
+                    if (streakBroken == true) { // Check if daily streak broken
                         $(firstButton).attr("disabled", true);
                         $('#day1Button').attr("disabled", false);
                         firstButton = $("#day1Button");
@@ -190,6 +191,7 @@ $(document).ready(function() {
     else window.location.href = 'index.html';
 });
 
+// Update account information
 function updateAccount(account) {
     $('.account-balance').html(account.balance);
     $('.account-gc').html(account.coupon);
@@ -219,6 +221,7 @@ function updateAccount(account) {
     });
 }
 
+// Delete account function
 function deleteAccount(account) {
     $.ajax({
         "async": true,
@@ -235,6 +238,8 @@ function deleteAccount(account) {
         window.location.href = 'index.html';
     });
 }
+
+// Add transaction info
 function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseDateTime) {
     var jsondata = {
         "userID": userID, 
@@ -260,6 +265,7 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
     });
 }
 
+// Display account dashboard
 function accountDashboard(id) {
     $.ajax({ // Get account data from database
         "async": true,
@@ -292,7 +298,7 @@ function accountDashboard(id) {
         }
         $('.chart-loading-box').hide();
         $('.chart-box').show();
-        // BalanceTopup & Product
+        // Display chart for Product Types: BalanceTopup & Product
         spendingsChart = new Chart($('#spendings-chart')[0].getContext('2d'), {
             type: 'line', // The type of chart we want to create
             data: { // The data for our dataset
@@ -308,7 +314,7 @@ function accountDashboard(id) {
             },
             options: { maintainAspectRatio: false } // Configuration options go here
         });
-
+        // Display chart for Product Types: GameWin
         winningsChart = new Chart($('#winnings-chart')[0].getContext('2d'), {
             type: 'line', // The type of chart we want to createv
             data: { // The data for our dataset
@@ -327,6 +333,7 @@ function accountDashboard(id) {
     });
 }
 
+// Load daily buttons
 function loadDailyButtons() {
     for (let i = 1; i <= 7; i++) {
         $('.daily-button-box').append(`<button class="btn btn-outline-primary dailyButton" disabled="disabled" id="day${i}Button">Day ${i}</button>`);

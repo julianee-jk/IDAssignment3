@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const APIKEY = "601a5d306adfba69db8b6cfc";
+    // Send contact form data on subimt
     $("#contact-form").submit(function(e) {
         $('.contact-loading').show(); // Show lottie loading icon
         $('#contact-button').hide(); // Hide send button

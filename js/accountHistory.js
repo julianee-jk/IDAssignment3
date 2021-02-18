@@ -1,12 +1,12 @@
 $(document).ready(function() {
-    if (accLoggedIn != null) {
-        $('.table-body').html('');
-        loadAccountData();
+    if (accLoggedIn != null) { // Check if user logged in
+        $('.table-body').html(''); // Clear table
+        loadAccountData(); // Load account data accordingly
     }
-
-    else window.location.href = 'index.html';
+    else window.location.href = 'index.html'; // If user not logged in, re-direct to index
 });
 
+// Retrieve and load account data
 function loadAccountData() {
     var userID = JSON.parse(localStorage.getItem('accLoggedIn'))[0];
 
@@ -22,20 +22,22 @@ function loadAccountData() {
         }
     })
     .done(function(response) {
+        // If account has no transactions, display message
         if (response.length == 0) $('.table-body').append(`<tr><th colspan="7" style="text-align: center;">No Purchase History!</th></tr>`);
-        else loadTransactions(response);
+        else loadTransactions(response); // If account HAS transactions
     });
 }
 
+// Load account transactions
 function loadTransactions(transactions) {
     var i = 0;
     var htmlString = '';
     $('.history-loading').hide();
     transactions.map(transaction => {
+         // Check if Product Type is 'Product'
         if (transaction.purchaseType == "Product") {
             transaction.purchaseData.forEach(product => {
                 var url = `https://example-data.draftbit.com/sneakers/${product[0]}`;
-
                 fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -55,7 +57,7 @@ function loadTransactions(transactions) {
                 });
             });
         }
-
+        // Check if Product Type is 'BalanceTopUp'
         else if (transaction.purchaseType == "BalanceTopUp") {
             htmlString = (`
                 <tr>
