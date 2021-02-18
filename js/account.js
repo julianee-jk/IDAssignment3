@@ -216,9 +216,6 @@ function updateAccount(account) {
         },
         "processData": false,
         "data": JSON.stringify(jsondata)
-    })
-    .done(function() {
-        console.log("Account Info Updated.");
     });
 }
 
@@ -235,7 +232,6 @@ function deleteAccount(account) {
         }
     })
     .done(function() {
-        console.log("Account Deleted.");
         window.location.href = 'index.html';
     });
 }

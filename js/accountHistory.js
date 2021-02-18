@@ -22,7 +22,6 @@ function loadAccountData() {
         }
     })
     .done(function(response) {
-        console.log(response);
         if (response.length == 0) $('.table-body').append(`<tr><th colspan="7" style="text-align: center;">No Purchase History!</th></tr>`);
         else loadTransactions(response);
     });

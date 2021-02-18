@@ -124,6 +124,7 @@ function checkBagEmpty() {
         $('.total-cost-header').hide();
         $('.shopping-form-box').hide();
         $('.delete-all').hide();
+        $('.bag-loading').hide();
     }
 
     else { loadBag(); }
@@ -182,8 +183,5 @@ function updateAccount(account) {
         },
         "processData": false,
         "data": JSON.stringify(jsondata)
-    })
-    .done(function() {
-        console.log("Account Info Updated.");
     });
 }

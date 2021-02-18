@@ -25,7 +25,6 @@ $(document).ready(function () {
             "processData": false,
             "data": JSON.stringify(jsondata)
         }).done(function() {
-            // Display thank you message
             $('.contact-loading').hide(); // Hide lottie loading icon
             $('#contact-button').show(); // Show send button
         });
