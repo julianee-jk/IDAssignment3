@@ -21,7 +21,7 @@ Click [here](https://julianee-jk.github.io/IDAssignment3/) to view GitHub Page.
 Click [here](https://drive.google.com/drive/folders/1IcL7KOWMJAyCx89rF3M2u-kz5Ym3ynNT?usp=sharing) to view Wireframe.
 
 ## Features ##
-These are the current features and pages of my website as well as the additional features we plan to add in the future.
+These are the current features and pages of our website as well as the additional features we plan to add in the future.
 ### Existing Features ###
 * **General**
     * Navigation bar w/ Logo, Shopping Bag Icon & Login
@@ -63,7 +63,7 @@ These are the current features and pages of my website as well as the additional
         * Brand, Name, Cost, Release Date, Category, Size, Quantity, Add to Bag.
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/product.gif" alt="ProductGIF" width="568" height="270">
+    <img src="assets/img/preview/product.gif" alt="ProductGIF" width="568" height="270">
 </p>
 <hr>
 
@@ -74,7 +74,7 @@ These are the current features and pages of my website as well as the additional
     * Shipping Form **(Only displayed if there's item in bag)**
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/shoppingbag.gif" alt="ShoppingBagGIF" width="568" height="270">
+    <img src="assets/img/preview/shoppingbag.gif" alt="ShoppingBagGIF" width="568" height="270">
 </p>
 <hr>
 
@@ -92,7 +92,7 @@ These are the current features and pages of my website as well as the additional
     * Logout button    
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/account.gif" alt="AccountGIF" width="568" height="270">
+    <img src="assets/img/preview/account.gif" alt="AccountGIF" width="568" height="270">
 </p>
 <hr>
 
@@ -107,7 +107,7 @@ These are the current features and pages of my website as well as the additional
     * Pay to play functionality
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/games.gif" alt="GamesGIF" width="568" height="270">
+    <img src="assets/img/preview/games.gif" alt="GamesGIF" width="568" height="270">
 </p>
 <hr>
 
@@ -118,7 +118,7 @@ These are the current features and pages of my website as well as the additional
     * Contact Form
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/contact.gif" alt="ContactGIF" width="568" height="270">
+    <img src="assets/img/preview/contact.gif" alt="ContactGIF" width="568" height="270">
 </p>
 <hr>
 
@@ -162,7 +162,7 @@ These are all the tools and languages which we used to construct this project.
 ### Validators ###
 * [HTML Validator](https://validator.w3.org/)
 * [CSS Validator](https://jigsaw.w3.org/css-validator/)
-* [JS & JQuery Validator](https://jshint.com/) → 'Unused' variables when it is used in formatting & undefined variables (if defined, will have error).
+* [JS & JQuery Validator](https://jshint.com/)
 
 ## Credits ##
 ### Content ###
