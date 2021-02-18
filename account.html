@@ -58,8 +58,8 @@
             <h2>Dashboard</h2>
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#spendings-chart-tab" type="button" role="tab" aria-controls="nav-spendings" aria-selected="true">Spendings 2021</button>
-                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#winnings-chart-tab" type="button" role="tab" aria-controls="nav-winnings" aria-selected="false">Winnings 2021</button>
+                    <button class="nav-link active" id="nav-spendings-tab" data-bs-toggle="tab" data-bs-target="#spendings-chart-tab" type="button" role="tab" aria-controls="nav-spendings" aria-selected="true">Spendings 2021</button>
+                    <button class="nav-link" id="nav-winnings-tab" data-bs-toggle="tab" data-bs-target="#winnings-chart-tab" type="button" role="tab" aria-controls="nav-winnings" aria-selected="false">Winnings 2021</button>
                 </div>
             </nav>
             <div class="tab-content">
@@ -67,14 +67,10 @@
                     <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_f0w5moo8.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
                 </div>
                 <div class="tab-pane fade show active" id="spendings-chart-tab" role="tabpanel" aria-labelledby="nav-spendings">
-                    <div class="chart-box" style="display: none;">
-                        <canvas id="spendings-chart"></canvas>
-                    </div>
+                    <div class="chart-box" style="display: none;"><canvas id="spendings-chart"></canvas></div>
                 </div>
                 <div class="tab-pane fade" id="winnings-chart-tab" role="tabpanel" aria-labelledby="nav-winnings">
-                    <div class="chart-box" style="display: none;">
-                        <canvas id="winnings-chart"></canvas>
-                    </div>
+                    <div class="chart-box" style="display: none;"><canvas id="winnings-chart"></canvas></div>
                 </div>
             </div>
         </section>
@@ -220,7 +216,7 @@
     <footer>
         <div id="footer-text">
             Copyright © 2021 Ee Jun Kai Julian & Chew Kah Seng - All Rights Reserved.
-            <div>Data Retrieve from: &nbsp;<img src="assets/img/draftbit-icon.png" alt="draftbit-icon" width="85" height="20"/></div>
+            <div>Data Retrieved from: &nbsp;<img src="assets/img/draftbit-icon.png" alt="draftbit-icon" width="85" height="20"/></div>
         </div>
     </footer>
 

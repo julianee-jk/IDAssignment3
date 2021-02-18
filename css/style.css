@@ -33,7 +33,7 @@ h2 {
 }
 
 footer {
-    background-color: #000;
+    background-color: #000000;
     height: 5em;
     width: 100%;
     display: flex;
@@ -670,6 +670,10 @@ footer {
     margin: 0;
 }
 
+#nav-tab > .nav-link {
+    padding-left: 16px;
+}
+
 /* Daily Rewards */
 #daily-collect-text, #topup-bal-text {
     display: none;
@@ -876,7 +880,7 @@ footer {
 
 .table-box, .shopping-form-box { 
     padding: 0 38px 38px 38px; 
-    height: 100%;
+    height: auto;
 }
 
 .shopping-form-box > form > .form-group {
