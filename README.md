@@ -8,6 +8,7 @@ This website/mobile application is made to allow anybody, Customers or even Snea
 This project makes use of Draftbit's E-Commerce Sneaker API to retrieve and gather information like Brand, Name, Cost etc.. of various sneakers.
 
 We initially decided to come up with an E-Commerce website. Our goal was to make shopping experiences fun, exciting and simple. Not only that, we also have an interest in sneakers so we decided to fuse our passion & ideas to eventually come up with SneakerZone. Overall, we try to explore different ways to increase customer engagement and interactivity as well as improve customer experiences.
+
 ## Design Process ##
 * **Customers**
     * Customers will be able to check out a wide variety of sneakers & also purchase them.
@@ -17,8 +18,9 @@ We initially decided to come up with an E-Commerce website. Our goal was to make
     * Sneaker Enthusiasts can search up and stay updated with what is available in the market.
     * Sneaker Enthusiasts will also be able to look up the retail prices of certain sneakers.
 
-Click [here](https://julianee-jk.github.io/IDAssignment3/) to view GitHub Page.
-Click [here](https://drive.google.com/drive/folders/1IcL7KOWMJAyCx89rF3M2u-kz5Ym3ynNT?usp=sharing) to view Wireframe.
+Click [here](https://julianee-jk.github.io/IDAssignment3/) to view GitHub Page.<br/>
+Click [here](https://drive.google.com/drive/folders/1IcL7KOWMJAyCx89rF3M2u-kz5Ym3ynNT?usp=sharing) to view Wireframe.<br/>
+Click [here](https://drive.google.com/file/d/13lUU3HXeuHHYGt_3jQJYcZeJ0uzNEY8w/view?usp=sharing) to watch SneakerZone Pitch.
 
 ## Features ##
 These are the current features and pages of our website as well as the additional features we plan to add in the future.
@@ -26,7 +28,7 @@ These are the current features and pages of our website as well as the additiona
 * **General**
     * Navigation bar w/ Logo, Shopping Bag Icon & Login
     * Login & Create Account Modal
-    * Footer with Copyright
+    * Footer with Copyright & Acknowledgement
     * URL Modification Prevention **(If user tries to access account.html/accountHistory.html by modifying the URL, they will be redirected to index page.)**
     * Lottie Loading Animations
 
@@ -84,7 +86,7 @@ These are the current features and pages of our website as well as the additiona
         * Add Account Balance
     * Game Coupons
     * Daily Rewards
-    * Dashboard of Account Statistics
+    * Dashboard of Account Spendings/Winnings
     * Account Settings
         * Change Account Password
         * Add Account Balance
