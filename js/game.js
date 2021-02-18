@@ -272,8 +272,8 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         }
                         else {
                             $('#spin-text-error').hide();
-                            account.coupon -= spinCost;
                             if (spinCost == 1 && wheelSpinning == false) {
+                                account.coupon -= spinCost;
                                 // Ensure that spinning can't be clicked again while already running.
                                 theWheel.animation.spins = 8;
                                 $('#spin-text').html("SPINNING");
@@ -285,9 +285,9 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                             }
                             if (spinAmountWon > 0) { // Check if user win prize from spin wheel
                                 account.balance += spinAmountWon; // Add amount won to account balance
-                                updateAccount(account); // Update account information
                                 addTransactionInfo(account._id, account.balance, 3, spinAmountWon, new Date($.now())); // Add transaction info
                             }
+                            updateAccount(account); // Update account information
                         }
                     }
                 }
