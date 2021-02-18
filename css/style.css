@@ -573,7 +573,10 @@ footer {
     flex-direction: column;
 }
 
-#spin-text-error, #flip-text-error { color: red; }
+#spin-text-error, #flip-text-error { 
+    color: red; 
+    display: none;
+}
 
 /* Coin Flip Game */
 #coin {
@@ -1343,6 +1346,12 @@ footer {
 
     .contact-message {
         height: 70vh;
+    }
+
+    /* ----- Index Styles ----- */
+
+    .sneaker-title, .sneaker-price {
+        font-size: 14px;
     }
 
     /* ----- Explore Styles ----- */

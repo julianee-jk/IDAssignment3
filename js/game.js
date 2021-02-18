@@ -106,6 +106,7 @@ function startFlip() {
     }
     else {
         if (coinFlipping == false) {
+            $('.game-flip-loading').hide();
             var flipResult = Math.random();
             $('#flip-text').html('Flipping..');
             $('#coin').removeClass(); // Remove class from coin to stop animation
@@ -126,21 +127,22 @@ function startFlip() {
     // Set 2 secs cooldown
     var timeleft = 2;
     var flipAmountWon = 0;
-    var downloadTimer = setInterval(function () {
+    var flipWinTimer = setInterval(function () {
         if (timeleft <= 0) {
-            clearInterval(downloadTimer);
+            clearInterval(flipWinTimer);
             $('#flip-text-error').show();
             // Check if heads win & Check if user picked heads - Win || Check if tails win & Check if user picked tails - Win
             if (headWin == true && heads == true || tailWin == true && tails == true) {
                 flipAmountWon = 18;
                 $('#flip-text-error').css('color', 'green');
                 $('#flip-text-error').html('You won $18!');
+                ModifyAccountBalance(0, 0, flipAmountWon, 0);
             }
             else if (headWin == true && heads == false || tailWin == true && tails == false) {
                 $('#flip-text-error').css('color', 'red');
                 $('#flip-text-error').html('You lost!');
+                $(".flip-button").attr("disabled", false);
             }
-            ModifyAccountBalance(0, 0, flipAmountWon, 0);
             heads = false, tails = false, headWin = false, tailWin = false; // Reset user option to false
             $('#flip-text').html('Flip the Coin!');
             $('#heads-button').html('HEADS');
@@ -150,7 +152,7 @@ function startFlip() {
         }
         timeleft -= 1;
         $('.game-flip-loading').hide();
-        setInterval(function(){$('#flip-text-error').hide();}, 5000);
+        setTimeout(function(){$('#flip-text-error').hide();}, 8000);
     }, 1000);
 }
 
@@ -164,15 +166,15 @@ let theWheel = new Winwheel({
     'responsive'   : true,  // This wheel is responsive!
     'segments': [         // Definition of all the segments.
         { 'fillStyle': '#ffb217', 'text': '$100' }, { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
+        { 'fillStyle': '#9560a6', 'text': '$10' },  { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '$20' },  { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '$20' },  { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '$30' },  { 'fillStyle': '#c8b0d9', 'text': '' },
+        { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '$30' },
         { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
         { 'fillStyle': '#9560a6', 'text': '$50' },  { 'fillStyle': '#c8b0d9', 'text': '' },
-        { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' }
+        { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '$20' },
+        { 'fillStyle': '#9560a6', 'text': '' },     { 'fillStyle': '#c8b0d9', 'text': '' },
+        { 'fillStyle': '#9560a6', 'text': '$30' },  { 'fillStyle': '#c8b0d9', 'text': '' },
+        { 'fillStyle': '#9560a6', 'text': '$10' },  { 'fillStyle': '#c8b0d9', 'text': '' }
     ],
     'animation': // Definition of the animation
     {
@@ -188,6 +190,10 @@ function alertPrize(indicatedSegment) {
     var spinAmountWon = 0;
     $('#spin-text-error').css('color', 'green');
     switch (indicatedSegment.text) {
+        case '$10':
+            spinAmountWon = 10;
+            $('#spin-text-error').html('You won $10!');
+            break;
         case '$20':
             spinAmountWon = 20;
             $('#spin-text-error').html('You won $20!');
@@ -202,11 +208,12 @@ function alertPrize(indicatedSegment) {
             break;
         case '$100':
             spinAmountWon = 100;
-            $('#spin-text-error').html('You won $100!');
+            $('#spin-text-error').html('You hit the JACKPOT of $100!');
             break;
         default:
             $('#spin-text-error').css('color', 'red');
             $('#spin-text-error').html('You did not win anything!');
+            $('#spin-button').attr("disabled", false);
     }
     $('#spin-text-error').show();
     ModifyAccountBalance(spinAmountWon, 0, 0, 0);
@@ -217,13 +224,14 @@ function alertPrize(indicatedSegment) {
     $('.game-spin-loading').hide();
     $('#spin-text').show();
     wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
-    setInterval(function(){$('#spin-text-error').hide();}, 3000);
+    setTimeout(function(){$('#spin-text-error').hide();}, 5000);
 }
 
 function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) {
     $('#spin-text').hide();
     $('.game-spin-loading').show();
     $('.game-flip-loading').show();
+    $(".flip-button").attr("disabled", true);
     if (accLoggedIn != null) { // Check if user is logged in
         if (spinAmountWon > 0 || spinCost == 1 || flipAmountWon > 0 || flipCost == 3) {
             $.ajax({ // Get account data from database
@@ -238,11 +246,10 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                 },
             }).done(function (account) {
                 $('.game-spin-loading').hide();
-                $('.game-flip-loading').hide();
                 $('#spin-text').show();
+                $('#spin-text-error').show();
                 if (flipAmountWon == 0 && flipCost == 0) {
                     if (account.coupon - spinCost < 0) {
-                        $('#spin-text-error').show();
                         $('#spin-text-error').css('color', 'red');
                         $('#spin-text-error').html('Not enough GC!');
                         setInterval(function(){$('#spin-text-error').hide();}, 3000);
@@ -263,6 +270,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                                 theWheel.startAnimation();
                                 // the current animation. The user will have to reset before spinning again.
                                 wheelSpinning = true;
+                                $('#spin-button').attr("disabled", true);
                             }
                             if (spinAmountWon > 0) {
                                 account.balance += spinAmountWon;
@@ -277,15 +285,12 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         $('#flip-text-error').show();
                         $('#flip-text-error').css('color', 'red');
                         $('#flip-text-error').html('Not enough GC!');
-                        setInterval(function(){$('#flip-text-error').hide();}, 3000);
+                        setTimeout(function(){$('#flip-text-error').hide();}, 3000);
                     }
                     else {
-                        $('#flip-text-error').hide();
                         account.coupon -= flipCost;
-                        if (flipCost == 3) {
-                            startFlip();
-                        }
-                        if (flipAmountWon > 0) {
+                        if (flipCost == 3) startFlip();
+                        else if (flipAmountWon > 0) {
                             account.balance += flipAmountWon;
                             updateAccount(account);
                             addTransactionInfo(account._id, account.balance, 9, flipAmountWon, new Date($.now()));
@@ -318,8 +323,9 @@ function updateAccount(account) {
         },
         "processData": false,
         "data": JSON.stringify(jsondata)
-    }).done(function () {
-        console.log("Account Info Updated.");
+    }).done(function () { 
+        $(".flip-button").attr("disabled", false); 
+        $('#spin-button').attr("disabled", false);
     });
 }
 
