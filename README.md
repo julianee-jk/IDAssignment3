@@ -38,6 +38,8 @@ These are the current features and pages of my website as well as the additional
     * Generation of Latest cards
     * Generation of Trending cards
 
+<img src="assets/img/preview/index.gif" alt="IndexGIF" width="568" height="270">
+
 * **Explore**:
     * Search bar
     * Product Cards **(Clickable)**
@@ -46,15 +48,21 @@ These are the current features and pages of my website as well as the additional
     * Pagination
     * Back to top button
 
+<img src="assets/img/preview/explore.gif" alt="ExploreGIF" width="568" height="270">
+
 * **Product**:
     * Product Card Info
         * Brand, Name, Cost, Release Date, Category, Size, Quantity, Add to Bag.
+
+<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/product.gif" alt="ProductGIF" width="568" height="270">
 
 * **Shoppingbag**:
     * Shopping Bag Table (Auto-Update)
         * Delete feature
     * Total Item Cost **(Only displayed if there's item in bag)**
     * Shipping Form **(Only displayed if there's item in bag)**
+
+<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/shoppingbag.gif" alt="ShoppingBagGIF" width="568" height="270">
 
 * **Account**:
     * User greeting message **(Hi, Name)**
@@ -68,7 +76,9 @@ These are the current features and pages of my website as well as the additional
         * Add Account Balance
         * View Account Purchase History
     * Logout button    
-    
+
+<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/account.gif" alt="AccountGIF" width="568" height="270">
+
 * **Games**:
     * Spin N Win Game
         * Toggle ON/OFF when game expire
@@ -79,11 +89,15 @@ These are the current features and pages of my website as well as the additional
     * Alternating Countdown Timers
     * Pay to play functionality
 
+<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/games.gif" alt="GamesGIF" width="568" height="270">
+
 * **Contact**:
     * Developer Contact Details
         * Social media links
         * Email
     * Contact Form
+
+<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/contact.gif" alt="ContactGIF" width="568" height="270">
 
 ### Features Left to Implement ###
 * Completed all intended features as of (18/02/2021)
