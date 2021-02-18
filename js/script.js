@@ -2,6 +2,8 @@ const APIKEY = "601a5d306adfba69db8b6cfc";
 const accLoggedIn = JSON.parse(localStorage.getItem('accLoggedIn'));
 
 $(document).ready(function() {
+    $('.mobile-line').append(`<hr/>`);
+
     if (accLoggedIn != null) { // Check if the user is logged in
         $('#login-text').hide(); // Hide login text in nav bar
         $('#name-text').html(accLoggedIn[1]); // Set it to account name
@@ -46,7 +48,7 @@ function loginAccount() {
             "content-type": "application/json",
             "x-apikey": APIKEY,
             "cache-control": "no-cache"
-        },
+        }
     })
     .done(function(response) {
         var accountFound = false;
@@ -55,7 +57,7 @@ function loginAccount() {
                 setAccount(account._id, account.name);
                 accountFound = true;
             }
-        })
+        });
 
         if (accountFound == false) {
             $('#create-form-text-error').hide();
@@ -83,7 +85,7 @@ function validateNewAccount() {
             "content-type": "application/json",
             "x-apikey": APIKEY,
             "cache-control": "no-cache"
-        },
+        }
     })
     .done(function(response) {
         var checkName = true;
@@ -96,10 +98,10 @@ function validateNewAccount() {
                 $('#create-form-text-error').show();
                 checkName = false;
             }
-        })
+        });
 
         if (checkName) {
-            if (new Date($("#create-dob").val()) > new Date) {
+            if (new Date($("#create-dob").val()) > new Date() ) {
                 $('#login-form-text-error').hide();
                 $('#create-form-text-error').html('Invalid Account Details!');
                 $('#create-form-text-error').css('color','red');
@@ -144,5 +146,5 @@ function createAccount() {
         $('#login-modal').modal('show');
         $('#create-form-text-error').hide();
         $('#login-form-text-error').show();
-    })
+    });
 }

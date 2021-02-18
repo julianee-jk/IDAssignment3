@@ -17,7 +17,7 @@ $(document).ready(function() {
     $('#search').on("click", function() {
         $("#next-button").prop('disabled', false);
         $("#prev-button").prop('disabled', true);
-        range = "_page=1"
+        range = "_page=1";
         $("#page-input").val(1);
 
         if ($('.cat-group > input.btn-check').is(':checked')) url = `https://example-data.draftbit.com/sneakers?_limit=21&gender=${category}`;
@@ -32,7 +32,7 @@ $(document).ready(function() {
     $(".cat-group > input.btn-check").on("click", function(e) {
         $("#next-button").prop('disabled', false);
         $("#prev-button").prop('disabled', true);
-        range = "_page=1"
+        range = "_page=1";
         $("#page-input").val(1);
 
         if (query != undefined && query != '') url = `https://example-data.draftbit.com/sneakers?_limit=21&q=${query}`;
@@ -87,7 +87,7 @@ $(document).ready(function() {
                 $("#page-input").val(value);
             }
 
-            range = `_page=${$("#page-input").val()}`
+            range = `_page=${$("#page-input").val()}`;
             loadSneakers(`${url}&${range}`);
         }
     });
@@ -114,7 +114,7 @@ $(document).ready(function() {
         }
 
 
-        range = `_page=${$("#page-input").val()}`
+        range = `_page=${$("#page-input").val()}`;
         loadSneakers(`${url}&${range}`);
     });
 
@@ -139,7 +139,7 @@ $(document).ready(function() {
             $("#page-input").val(value);
         }
         
-        range = `_page=${$("#page-input").val()}`
+        range = `_page=${$("#page-input").val()}`;
         loadSneakers(`${url}&${range}`);
     });
 
@@ -150,7 +150,7 @@ $(document).ready(function() {
 });
 
 function loadSneakers(url) {
-    $(".sneaker-cards").html("") // clear sneaker cards
+    $(".sneaker-cards").html(""); // clear sneaker cards
     fetch(url)
     .then(response => response.json())
     .then(function(data) {
@@ -164,7 +164,7 @@ function loadSneakers(url) {
                     <span class="sneaker-colorway">${s.colorway}</span>
                     <span class="sneaker-price">Not Available</span>
                 </li>
-                `)
+                `);
             }
             
             else {
@@ -175,7 +175,7 @@ function loadSneakers(url) {
                         <span class="sneaker-colorway">${s.colorway}</span>
                         <span class="sneaker-price">$${s.retailPrice}</span>
                     </li>
-                `)
+                `);
             }
         });
     });
@@ -237,7 +237,7 @@ function loadTrending() {
                     trendingArray.push(data[0]);
                 }
             });
-        })
+        });
 
         displayTrending(trendingArray);
     });
@@ -255,9 +255,9 @@ function displayTrending(trendingArray) {
                     <span class="sneaker-colorway">${s.colorway}</span>
                     <span class="sneaker-price">$${s.retailPrice}</span>
                 </li>
-            `)
-        })
-    })
+            `);
+        });
+    });
 
     $(".loading-icon").hide();
 }

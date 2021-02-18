@@ -27,9 +27,9 @@
                     <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <span class="mobile-line"><hr></span>
+                <span class="mobile-line"></span>
                 <span class="nav-item">
-                    <a class="nav-link nav-bag-mobile-box" href="shoppingbag.html"><span class="nav-bag-mobile" style="color: #737373;">Shopping Bag&nbsp;&nbsp;</span><img src="assets/img/icons/shoppingbag.svg" width="28px" height="28px" alt="shopping-bag"/></a>
+                    <a class="nav-link nav-bag-mobile-box" href="shoppingbag.html"><span class="nav-bag-mobile" style="color: #737373;">Shopping Bag&nbsp;&nbsp;</span><img src="assets/img/icons/shoppingbag.svg" width="28" height="28" alt="shopping-bag"/></a>
                 </span>
                 <span class="nav-item"><a class="nav-link" href="account.html" id="name-text"></a></span>
             </div>
@@ -58,18 +58,18 @@
             <h2>Dashboard</h2>
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-spendings-tab" data-bs-toggle="tab" data-bs-target="#spendings-chart-tab" type="button" role="tab" aria-controls="nav-spendings" aria-selected="true">Spendings 2021</button>
-                    <button class="nav-link" id="nav-winnings-tab" data-bs-toggle="tab" data-bs-target="#winnings-chart-tab" type="button" role="tab" aria-controls="nav-winnings" aria-selected="false">Winnings 2021</button>
+                    <button class="nav-link active" id="nav-spendings-tab" data-bs-toggle="tab" data-bs-target="#spendings-chart-tab" type="button" role="tab" aria-selected="true">Spendings 2021</button>
+                    <button class="nav-link" id="nav-winnings-tab" data-bs-toggle="tab" data-bs-target="#winnings-chart-tab" type="button" role="tab" aria-selected="false">Winnings 2021</button>
                 </div>
             </nav>
             <div class="tab-content">
                 <div class="chart-loading-box">
                     <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_f0w5moo8.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
                 </div>
-                <div class="tab-pane fade show active" id="spendings-chart-tab" role="tabpanel" aria-labelledby="nav-spendings">
+                <div class="tab-pane fade show active" id="spendings-chart-tab" role="tabpanel">
                     <div class="chart-box" style="display: none;"><canvas id="spendings-chart"></canvas></div>
                 </div>
-                <div class="tab-pane fade" id="winnings-chart-tab" role="tabpanel" aria-labelledby="nav-winnings">
+                <div class="tab-pane fade" id="winnings-chart-tab" role="tabpanel">
                     <div class="chart-box" style="display: none;"><canvas id="winnings-chart"></canvas></div>
                 </div>
             </div>
@@ -107,23 +107,27 @@
                 <div class="modal-body">
                     <div>
                         <p>Current Account Balance</p>
-                        <h3 style="display: flex; align-items: center;">$<span class="account-balance"><span class="account-balance"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player></span></h3>
+                        <h3 style="display: flex; align-items: center;">$
+                            <span class="account-balance">
+                                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_XRJeIQ.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;"  loop  autoplay></lottie-player>
+                            </span>
+                        </h3>
                     </div>
 
                     <div>
                         <p>Choose Top-Up Option</p>
                         <small id="topup-bal-text"></small><br>
                         <div class="btn-group topUp-group" style="margin: 0 0 0 1px" role="group">
-                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$10" value="$10" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$10" value="$10" checked>
                             <label class="btn btn-outline-primary" for="topUp$10">$10</label>
                         
-                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$50" value="$50" autocomplete="off">
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$50" value="$50">
                             <label class="btn btn-outline-primary" for="topUp$50">$50</label>
                         
-                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$100" value="$100" autocomplete="off">
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$100" value="$100">
                             <label class="btn btn-outline-primary" for="topUp$100">$100</label>
 
-                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$150" value="$150" autocomplete="off">
+                            <input type="radio" class="btn-check" name="topUpBalance" id="topUp$150" value="$150">
                             <label class="btn btn-outline-primary" for="topUp$150">$150</label>
                         </div>
                     </div>
@@ -153,16 +157,16 @@
                     <div>
                         <p>Choose Top-Up Option</p>
                         <div class="btn-group topUp-group" style="margin: 0 0 0 1px" role="group">
-                            <input type="radio" class="btn-check" name="topUpGC" id="topUp1GC" value="1GC" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp1GC" value="1GC" checked>
                             <label class="btn btn-outline-primary" for="topUp1GC">1GC<br><span style="color: #888">for $3</span></label>
                         
-                            <input type="radio" class="btn-check" name="topUpGC" id="topUp5GC" value="5GC" autocomplete="off">
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp5GC" value="5GC">
                             <label class="btn btn-outline-primary" for="topUp5GC">5GC<br><span style="color: #888">for $14</span></label>
 
-                            <input type="radio" class="btn-check" name="topUpGC" id="topUp15GC" value="15GC" autocomplete="off">
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp15GC" value="15GC">
                             <label class="btn btn-outline-primary" for="topUp15GC">15GC<br><span style="color: #888">for $43</span></label>
 
-                            <input type="radio" class="btn-check" name="topUpGC" id="topUp50GC" value="50GC" autocomplete="off">
+                            <input type="radio" class="btn-check" name="topUpGC" id="topUp50GC" value="50GC">
                             <label class="btn btn-outline-primary" for="topUp50GC">50GC<br><span style="color: #888">for $145</span></label>
                         </div>
                     </div>

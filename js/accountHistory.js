@@ -50,7 +50,7 @@ function loadTransactions(transactions) {
                             <td class="history-type">${transaction.purchaseType}</td>
                             <td class="history-datetime">${transaction.purchaseDateTime}</td>
                         </tr>
-                    `)
+                    `);
 
                     $('.table-body').append(htmlString);
                 });
@@ -68,7 +68,7 @@ function loadTransactions(transactions) {
                     <td class="history-type">${transaction.purchaseType}</td>
                     <td class="history-datetime">${transaction.purchaseDateTime}</td>
                 </tr>
-            `)
+            `);
             $('.table-body').append(htmlString);
         }
     });

@@ -16,7 +16,7 @@ $(document).ready(function () {
         localStorage.removeItem('shoppingBag');
         $(".table-body").html("");
         checkBagEmpty();
-    })
+    });
 
     if (accLoggedIn != null) {
         $('.not-loggedin-text').hide();
@@ -30,7 +30,7 @@ $(document).ready(function () {
                 "content-type": "application/json",
                 "x-apikey": APIKEY,
                 "cache-control": "no-cache"
-            },
+            }
         })
         .done(function(account) {
             $("#shopping-form").submit(function(e) {
@@ -66,9 +66,9 @@ $(document).ready(function () {
                         account.balance -= totalPrice; // Account balance
                         updateAccount(account);
                         addTransactionInfo(account._id, account.balance, totalPrice, shoppingBag, new Date($.now())); // Add transaction info
-                    }).fail(function() { alert('Please fill up the shipping form!') });
+                    }).fail(function() { alert('Please fill up the shipping form!'); });
                 }
-            })
+            });
         });
     }
     else {
@@ -84,9 +84,9 @@ async function loadBag() {
         .then(res => res.json())
         .then(data => {
             return data;
-        })
+        });
         products.push(product);
-    })
+    });
     products = await Promise.all(products);
     displayBag(products);
 }
@@ -96,7 +96,7 @@ function displayBag(products) {
     var htmlString = '';
     for (var i = 0; i < shoppingBag.length; i++) {
         if (shoppingBag[i][0] == products[i].id) {
-            var itemPrice = products[i].retailPrice * shoppingBag[i][1]
+            var itemPrice = products[i].retailPrice * shoppingBag[i][1];
             totalPrice += itemPrice;
             htmlString += (`
                 <tr>
@@ -116,9 +116,9 @@ function displayBag(products) {
 
 function checkBagEmpty() {
     if (localStorage.getItem('shoppingBag') == null || localStorage.getItem('shoppingBag') == "[]") {
-        $('.table-body').append(`<tr><th colspan="6" style="text-align: center;">Your bag is empty!</th></tr>`)
-        $('footer').css('position','absolute')
-        $('footer').css('bottom','0')
+        $('.table-body').append(`<tr><th colspan="6" style="text-align: center;">Your bag is empty!</th></tr>`);
+        $('footer').css('position','absolute');
+        $('footer').css('bottom','0');
         $('.total-cost-header').hide();
         $('.shopping-form-box').hide();
         $('.delete-all').hide();
@@ -135,7 +135,7 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         "purchaseType": 'Product', 
         "purchaseData": purchaseData, 
         "purchaseDateTime": purchaseDateTime
-    }
+    };
 
     $.ajax({
         "async": true,

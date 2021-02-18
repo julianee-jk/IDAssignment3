@@ -5,9 +5,7 @@ $(document).ready(function () {
 });
 
 function loadFeaturing() {
-    var url = `https://example-data.draftbit.com/sneakers?_start=0&_end=420`
-
-    fetch(url)
+    fetch("https://example-data.draftbit.com/sneakers?_start=0&_end=420")
     .then(response => response.json())
     .then(function(data) {
         var i = Math.floor(Math.random() * 420);
@@ -69,7 +67,7 @@ function loadTrending() {
                     i++;
                 }
             });
-        })
+        });
 
         displayTrending(trendingArray);
     });
@@ -92,17 +90,16 @@ function displayTrending(trendingArray) {
                     <span class="sneaker-price">$${s.retailPrice}</span>
                 </div>
             </div>
-            `)
-        })
-    })
+            `);
+        });
+    });
 }
 
 function loadLatest() {
     $(".latest").html("");
     $(".latest").css("justify-content","flex-start");
 
-    var url = "https://example-data.draftbit.com/sneakers?_limit=10"
-    fetch(url)
+    fetch("https://example-data.draftbit.com/sneakers?_limit=10")
     .then(response => response.json())
     .then(function(data) {
         var sneakers = data;
@@ -116,7 +113,7 @@ function loadLatest() {
                         <span class="sneaker-price">$${s.retailPrice}</span>
                     </div>
                 </div>
-            `)
+            `);
         });
     });
 }

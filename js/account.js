@@ -14,10 +14,10 @@ $(document).ready(function() {
                 "content-type": "application/json",
                 "x-apikey": APIKEY,
                 "cache-control": "no-cache"
-            },
+            }
         })
         .done(function(account) {
-            if (account.lastDaily == null) { account.lastDaily = new Date($.now() - 86400000) } // Set new account lastDaily to 1 day ago
+            if (account.lastDaily == null) { account.lastDaily = new Date($.now() - 86400000); } // Set new account lastDaily to 1 day ago
             // Check dailystreak and set game coupon
             if (account.dailyStreak >= 0 && account.dailyStreak <= 3) dailyGCGain = 1;
             else if (account.dailyStreak > 3 && account.dailyStreak <= 6) dailyGCGain = 2;
@@ -110,7 +110,7 @@ $(document).ready(function() {
             $("#delete-account").on("click", function() {
                 localStorage.removeItem('accLoggedIn');
                 deleteAccount(account);
-            })
+            });
 
             // On page load, automatically enable button according to daily streak
             var firstButton = $("#day1Button");
@@ -185,7 +185,7 @@ $(document).ready(function() {
                 $('#daily-streak-gc').html(dailyGCGain);
             });
         })
-        .fail(function() { window.location.href = 'index.html' });
+        .fail(function() { window.location.href = 'index.html'; });
     }
     else window.location.href = 'index.html';
 });
@@ -261,7 +261,7 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         },
         "processData": false,
         "data": JSON.stringify(jsondata)
-    })
+    });
 }
 
 function accountDashboard(id) {
@@ -274,7 +274,7 @@ function accountDashboard(id) {
           "content-type": "application/json",
           "x-apikey": APIKEY,
           "cache-control": "no-cache"
-        },
+        }
     })
     .done(function(transaction) {
         var spendingArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -333,6 +333,6 @@ function accountDashboard(id) {
 
 function loadDailyButtons() {
     for (let i = 1; i <= 7; i++) {
-        $('.daily-button-box').append(`<button class="btn btn-outline-primary dailyButton" disabled="disabled" id="day${i}Button">Day ${i}</button>`)
+        $('.daily-button-box').append(`<button class="btn btn-outline-primary dailyButton" disabled="disabled" id="day${i}Button">Day ${i}</button>`);
     }
 }

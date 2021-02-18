@@ -1,15 +1,16 @@
 var size = '';
 
 $(document).ready(function() {
-  sneaker_id = localStorage.getItem('viewProductId')
+  sneaker_id = localStorage.getItem('viewProductId');
   loadSneakers(sneaker_id);
-
+  var shoppingBag;
+  
   if (localStorage.getItem('shoppingBag') != null) {
-      var shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'))
+      shoppingBag = JSON.parse(localStorage.getItem('shoppingBag'));
   }
   
   else {
-      var shoppingBag = [];
+      shoppingBag = [];
   }
 
   $(".qty").keyup(function(e) {
@@ -66,7 +67,7 @@ $(document).ready(function() {
 });
 
 function loadSneakers(sneaker_id) {
-  var url = `https://example-data.draftbit.com/sneakers/${sneaker_id}`
+  var url = `https://example-data.draftbit.com/sneakers/${sneaker_id}`;
 
   fetch(url)
   .then(response => response.json())
@@ -91,13 +92,13 @@ function checkCategorySize(category) {
       htmlString += `
         <input type="radio" class="btn-check" name="sizeGroup" id="sizeGroupUS6" onclick="setSize('US6')" checked>
         <label class="btn btn-outline-primary" for="sizeGroupUS6">US6</label>
-      `
+      `;
 
       for (let i = 7; i <= 12; i++) {
         htmlString += `
           <input type="radio" class="btn-check" name="sizeGroup" id="sizeGroupUS${i}" onclick="setSize('US${i}')">
           <label class="btn btn-outline-primary" for="sizeGroupUS${i}">US${i}</label>
-        `
+        `;
       }
 
       $('.size').html(htmlString);
@@ -108,13 +109,13 @@ function checkCategorySize(category) {
       htmlString += `
         <input type="radio" class="btn-check" name="sizeGroup" id="sizeGroupUS4" onclick="setSize('US4')" checked>
         <label class="btn btn-outline-primary" for="sizeGroupUS4">US4</label>
-      `
+      `;
 
       for (let i = 5; i <= 10; i++) {
         htmlString += `
           <input type="radio" class="btn-check" name="sizeGroup" id="sizeGroupUS${i}" onclick="setSize('US${i}')">
           <label class="btn btn-outline-primary" for="sizeGroupUS${i}">US${i}</label>
-        `
+        `;
       }
 
       $('.size').html(htmlString);
@@ -125,13 +126,15 @@ function checkCategorySize(category) {
       htmlString += `
         <input type="radio" class="btn-check" name="sizeGroup" id="sizeGroupUS3" onclick="setSize('US3')" checked>
         <label class="btn btn-outline-primary" for="sizeGroupUS3">US3</label>
-      `
+      `;
+          
       for (let i = 4; i <= 7; i++) {
         htmlString += `
           <input type="radio" class="btn-check" name="sizeGroup" id="sizeGroupUS${i}" onclick="setSize('US${i}')">
           <label class="btn btn-outline-primary" for="sizeGroupUS${i}">US${i}</label>
-        `
+        `;
       }
+            
       $('.size').html(htmlString);
       size = 'US3';
       break;

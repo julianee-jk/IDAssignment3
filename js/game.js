@@ -1,6 +1,6 @@
-let spinExpired = false, flipExpired = false
-let wheelSpinning = false; // Spin N Win
-let coinFlipping = false, heads = false, tails = false, headWin = false, tailWin = false; // Coin flip
+var spinExpired = false, flipExpired = false;
+var wheelSpinning = false; // Spin N Win
+var coinFlipping = false, heads = false, tails = false, headWin = false, tailWin = false; // Coin flip
 
 $(document).ready(function () {
     var accLoggedIn = localStorage.getItem('accLoggedIn');
@@ -16,7 +16,7 @@ $(document).ready(function () {
     }
 
     $('#countdown-flip').html('GAME EXPIRED');
-    spinTimer();
+    flipTimer();
 });
 
 // Countdown Timers
@@ -43,11 +43,12 @@ function spinTimer() {
         if (distance < 0) {
             clearInterval(x);
             $('#countdown-spin').html('GAME EXPIRED');
-            spinExpired = true, flipExpired = false;
+            spinExpired = true;
+          	flipExpired = false;
             flipTimer();
         }
-    }, 1000)
-};
+    }, 1000);
+}
 
 function flipTimer() {
     spinExpired = true;
@@ -73,27 +74,28 @@ function flipTimer() {
         if (distance < 0) {
             clearInterval(x);
             $('#countdown-flip').html('GAME EXPIRED');
-            flipExpired = true, spinExpired = false;
+            flipExpired = true;
+            spinExpired = false;
             spinTimer();
         }
-    }, 1000)
-};
+    }, 1000);
+}
 
 // Change heads button text & disable when tails is clicked
-function headButton() {
+$('#heads-button').on("click", function() {
     if (tails == false && flipExpired == false) {
         heads = true;
         $('#heads-button').html('You picked Heads!');
     }
-}
+});
 
 // Change tails button text & disable when heads is clicked
-function tailButton() {
+$('#tails-button').on("click", function() {
     if (heads == false && flipExpired == false) {
         tails = true;
         $('#tails-button').html('You picked Tails!');
     }
-}
+});
 
 // Start coin flip animation
 function startFlip() {
@@ -102,7 +104,8 @@ function startFlip() {
     if (flipExpired == true) {
         $('#flip-text-error').css('color', 'red');
         $('#flip-text-error').html('Game has already expired, wait for next opening time!');
-        heads = false, tails = false;
+        heads = false;
+      	tails = false;
     }
     else {
         if (coinFlipping == false) {
@@ -143,7 +146,10 @@ function startFlip() {
                 $('#flip-text-error').html('You lost!');
                 $(".flip-button").attr("disabled", false);
             }
-            heads = false, tails = false, headWin = false, tailWin = false; // Reset user option to false
+            heads = false;	// Reset user option to false
+            tails = false;	// Reset user option to false
+         	headWin = false; // Reset heads win to false
+          	tailWin = false; // Reset tais win to false
             $('#flip-text').html('Flip the Coin!');
             $('#heads-button').html('HEADS');
             $('#tails-button').html('TAILS');
@@ -243,7 +249,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                     "content-type": "application/json",
                     "x-apikey": APIKEY,
                     "cache-control": "no-cache"
-                },
+                }
             }).done(function (account) {
                 $('.game-spin-loading').hide();
                 $('#spin-text').show();
@@ -285,7 +291,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         $('#flip-text-error').show();
                         $('#flip-text-error').css('color', 'red');
                         $('#flip-text-error').html('Not enough GC!');
-                        setTimeout(function(){$('#flip-text-error').hide();}, 3000);
+                        setTimeout(function(){$('#flip-text-error').hide();}, 5000);
                     }
                     else {
                         account.coupon -= flipCost;
@@ -297,7 +303,7 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                         }
                     }
                 }
-            }).fail(function () { window.location.href = 'index.html' });
+            }).fail(function () { window.location.href = 'index.html'; });
         }
     }
 }
@@ -336,7 +342,8 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         "moneySpent": moneySpent, 
         "purchaseType": 'GameWin', 
         "purchaseData": purchaseData, 
-        "purchaseDateTime": purchaseDateTime}
+        "purchaseDateTime": purchaseDateTime
+    };
 
     $.ajax({
         "async": true,
@@ -350,5 +357,5 @@ function addTransactionInfo(userID, balance, moneySpent, purchaseData, purchaseD
         },
         "processData": false,
         "data": JSON.stringify(jsondata)
-    })
+    });
 }

@@ -27,9 +27,9 @@
                     <li class="nav-item"><a class="nav-link" href="games.html"><span class="nav-active">Games</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <span class="mobile-line"><hr></span>
+                <span class="mobile-line"></span>
                 <span class="nav-item">
-                    <a class="nav-link nav-bag-mobile-box" href="shoppingbag.html"><span class="nav-bag-mobile" style="color: #737373;">Shopping Bag&nbsp;&nbsp;</span><img src="assets/img/icons/shoppingbag.svg" width="28px" height="28px" alt="shopping-bag"/></a>
+                    <a class="nav-link nav-bag-mobile-box" href="shoppingbag.html"><span class="nav-bag-mobile" style="color: #737373;">Shopping Bag&nbsp;&nbsp;</span><img src="assets/img/icons/shoppingbag.svg" width="28" height="28" alt="shopping-bag"/></a>
                 </span>
                 <span class="nav-item">
                     <!-- Button trigger modal -->
@@ -110,7 +110,7 @@
                             <button type="submit" class="btn btn-primary hvr-glow" id="create-button">Create</button>
                             <h6>
                                 &#8195;or&#8194;
-                                <a data-toggle="modal" data-toggle="modal" data-target="#login-modal" id="loginModalButton">
+                                <a data-toggle="modal" data-target="#login-modal" id="loginModalButton">
                                     Login to an Existing Account
                                 </a>
                             </h6>
@@ -133,7 +133,7 @@
             <!-- Spin N Win Modal Button  -->
             <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".spinNWinModal" id="spin-play-button">Play Now!</button>
             <!-- Spin N Win Modal -->
-            <div class="modal fade spinNWinModal" tabindex="-1" aria-labelledby="spinWinModal" aria-hidden="true">
+            <div class="modal fade spinNWinModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="spin-text-box">
@@ -142,14 +142,14 @@
                             <small id="spin-text-error"></small>
                         </div>
                         <div class="canvas-box">
-                            <canvas id="canvas" width="435px" height="470px" data-responsiveMinWidth="180" data-responsiveScaleHeight="true" data-responsiveMargin="50">
+                            <canvas id="canvas" width="435" height="470" data-responsiveMinWidth="180" data-responsiveScaleHeight="true" data-responsiveMargin="50">
                                 Canvas not supported, use another browser.
                             </canvas>
                         </div>
                         <button type="button" id="spin-button" class="btn btn-primary hvr-glow" onClick="ModifyAccountBalance(0,1,0,0);">
-                            <div class="game-loading-box">
+                            <span class="game-loading-box">
                                 <lottie-player class="game-spin-loading" src="https://assets9.lottiefiles.com/packages/lf20_rOGnxz.json"  background="transparent"  speed="1"  style="width: 30px; height: 30px; display: none;" loop autoplay></lottie-player>
-                            </div>
+                            </span>
                             <span id="spin-text">SPIN</span>
                         </button>
                     </div>
@@ -165,7 +165,7 @@
             <!-- Coin Flip Modal Button -->
             <button type="button" class="btn btn-primary hvr-glow" data-bs-toggle="modal" data-bs-target=".coinFlipModal" id="flip-play-button">Play Now!</button>
             <!-- Coin Flip Modal -->
-            <div class="modal fade coinFlipModal" tabindex="-1" aria-labelledby="coinFlipModal" aria-hidden="true">
+            <div class="modal fade coinFlipModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="flip-text-box">
@@ -178,9 +178,9 @@
                             <div class="side-b"></div>
                         </div>
                         <div class="coin-flip-button-box">
-                            <button type="button" id="heads-button" class="btn btn-primary hvr-glow flip-button" onClick="headButton();ModifyAccountBalance(0,0,0,3);">HEADS</button>
+                            <button type="button" id="heads-button" class="btn btn-primary hvr-glow flip-button" onClick="ModifyAccountBalance(0,0,0,3);">HEADS</button>
                             <lottie-player class="game-flip-loading" src="assets/img/icons/black-circle-loading-icon.json"  background="transparent"  speed="1"  style="width: 30px; height: 30px; display: none;" loop autoplay></lottie-player>
-                            <button type="button" id="tails-button" class="btn btn-primary hvr-glow flip-button" onClick="tailButton();ModifyAccountBalance(0,0,0,3);">TAILS</button>
+                            <button type="button" id="tails-button" class="btn btn-primary hvr-glow flip-button" onClick="ModifyAccountBalance(0,0,0,3);">TAILS</button>
                         </div>
                     </div>
                 </div>
