@@ -30,6 +30,8 @@ These are the current features and pages of my website as well as the additional
     * URL Modification Prevention **(If user tries to access account.html/accountHistory.html by modifying the URL, they will be redirected to index page.)**
     * Lottie Loading Animations
 
+<hr>
+
 * **Index**:
     * Featured Carousel
     * Trending Product Cards **(Clickable)**
@@ -38,7 +40,10 @@ These are the current features and pages of my website as well as the additional
     * Generation of Latest cards
     * Generation of Trending cards
 
-<img src="assets/img/preview/index.gif" alt="IndexGIF" width="568" height="270">
+<p align="center">
+    <img src="assets/img/preview/index.gif" alt="IndexGIF" width="568" height="270">
+</p>
+<hr>
 
 * **Explore**:
     * Search bar
@@ -48,13 +53,19 @@ These are the current features and pages of my website as well as the additional
     * Pagination
     * Back to top button
 
-<img src="assets/img/preview/explore.gif" alt="ExploreGIF" width="568" height="270">
+<p align="center">
+    <img src="assets/img/preview/explore.gif" alt="ExploreGIF" width="568" height="270">
+</p>
+<hr>
 
 * **Product**:
     * Product Card Info
         * Brand, Name, Cost, Release Date, Category, Size, Quantity, Add to Bag.
 
-<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/product.gif" alt="ProductGIF" width="568" height="270">
+<p align="center">
+    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/product.gif" alt="ProductGIF" width="568" height="270">
+</p>
+<hr>
 
 * **Shoppingbag**:
     * Shopping Bag Table (Auto-Update)
@@ -62,7 +73,10 @@ These are the current features and pages of my website as well as the additional
     * Total Item Cost **(Only displayed if there's item in bag)**
     * Shipping Form **(Only displayed if there's item in bag)**
 
-<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/shoppingbag.gif" alt="ShoppingBagGIF" width="568" height="270">
+<p align="center">
+    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/shoppingbag.gif" alt="ShoppingBagGIF" width="568" height="270">
+</p>
+<hr>
 
 * **Account**:
     * User greeting message **(Hi, Name)**
@@ -77,7 +91,10 @@ These are the current features and pages of my website as well as the additional
         * View Account Purchase History
     * Logout button    
 
-<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/account.gif" alt="AccountGIF" width="568" height="270">
+<p align="center">
+    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/account.gif" alt="AccountGIF" width="568" height="270">
+</p>
+<hr>
 
 * **Games**:
     * Spin N Win Game
@@ -89,7 +106,10 @@ These are the current features and pages of my website as well as the additional
     * Alternating Countdown Timers
     * Pay to play functionality
 
-<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/games.gif" alt="GamesGIF" width="568" height="270">
+<p align="center">
+    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/games.gif" alt="GamesGIF" width="568" height="270">
+</p>
+<hr>
 
 * **Contact**:
     * Developer Contact Details
@@ -97,7 +117,10 @@ These are the current features and pages of my website as well as the additional
         * Email
     * Contact Form
 
-<img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/contact.gif" alt="ContactGIF" width="568" height="270">
+<p align="center">
+    <img src="https://raw.githubusercontent.com/julianee-jk/IDAssignment3/main/assets/img/preview/contact.gif" alt="ContactGIF" width="568" height="270">
+</p>
+<hr>
 
 ### Features Left to Implement ###
 * Completed all intended features as of (18/02/2021)
@@ -119,6 +142,9 @@ These are all the tools and languages which we used to construct this project.
 ## Testing ##
 ### Browsers Tested ###
 * [Brave](https://brave.com/)
+* [Google Chrome](https://www.google.com/intl/en_sg/chrome/)
+* [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+
 ### Mobile Devices Tested ###
 * **Motorola Moto G4**
 * **Samsung Galaxy S5**
