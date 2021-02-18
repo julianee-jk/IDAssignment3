@@ -282,12 +282,13 @@ function ModifyAccountBalance(spinAmountWon, spinCost, flipAmountWon, flipCost) 
                                 // the current animation. The user will have to reset before spinning again.
                                 wheelSpinning = true;
                                 $('#spin-button').attr("disabled", true);
+                                updateAccount(account); // Update account information
                             }
                             if (spinAmountWon > 0) { // Check if user win prize from spin wheel
                                 account.balance += spinAmountWon; // Add amount won to account balance
+                                updateAccount(account); // Update account information
                                 addTransactionInfo(account._id, account.balance, 3, spinAmountWon, new Date($.now())); // Add transaction info
                             }
-                            updateAccount(account); // Update account information
                         }
                     }
                 }
