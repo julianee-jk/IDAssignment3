@@ -132,10 +132,14 @@ These are all the tools and languages which we used to construct this project.
 ### Tools ###
 * [Visual Studio Code](https://code.visualstudio.com/) → Integrated Development Environment (IDE) used.
 * [Adobe XD](https://www.adobe.com/sea/products/xd.html) → To make the wireframes of the website. (Desktop & Mobile).
+* [Adobe Photoshop](https://www.adobe.com/sea/products/photoshopfamily.html) → To create and edit placeholder images & icons.
+* [Adobe Premiere Pro](https://www.adobe.com/sea/products/premiere.html) → To edit pitch recordings.
 * [Bootstrap](https://getbootstrap.com/) → To make the responsive navigation bar, icons and more.
 * [RestDB](https://restdb.io/) → To contain account-info, contact-form info, shipping-info.
 * [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) → Property used to store & retrieve temporary data.
 * [VSC LiveShare Extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) → Used for real-time code editing.
+* [OBS Studio](https://obsproject.com/) → To record pitch.
+
 ### Languages ###
 * [Hypertext Markup Language (HTML)](https://html.spec.whatwg.org/) → To create the content of the website.
 * [Cascading Style Sheets (CSS)](https://www.w3.org/Style/CSS/Overview.en.html) → To style the content of the website.
